@@ -50,37 +50,39 @@ Route::prefix('{locale}')
     });
 
 // Backend
-Route::prefix('backend')->name('backend.')->middleware('auth')->group(function () {
+Route::prefix('backend')->name('backend.')->group(function () {
     Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
 
-    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
-    Route::get('/bio', [DoctorBioController::class, 'edit'])->name('bio.edit');
-    Route::get('/services', [BackendServiceController::class, 'index'])->name('services.index');
-    Route::get('/services/create', [BackendServiceController::class, 'create'])->name('services.create');
-    Route::get('/services/{service}/edit', [BackendServiceController::class, 'edit'])->name('services.edit');
-    Route::get('/articles', [BackendArticleController::class, 'index'])->name('articles.index');
-    Route::get('/articles/create', [BackendArticleController::class, 'create'])->name('articles.create');
-    Route::get('/articles/{article}/edit', [BackendArticleController::class, 'edit'])->name('articles.edit');
-    Route::get('/photos', [PhotoController::class, 'index'])->name('photos.index');
-    Route::get('/photos/create', [PhotoController::class, 'create'])->name('photos.create');
-    Route::get('/photos/{photo}/edit', [PhotoController::class, 'edit'])->name('photos.edit');
-    Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
-    Route::get('/videos/create', [VideoController::class, 'create'])->name('videos.create');
-    Route::get('/videos/{video}/edit', [VideoController::class, 'edit'])->name('videos.edit');
-    Route::get('/faqs', [FaqController::class, 'index'])->name('faqs.index');
-    Route::get('/faqs/create', [FaqController::class, 'create'])->name('faqs.create');
-    Route::get('/faqs/{faq}/edit', [FaqController::class, 'edit'])->name('faqs.edit');
-    Route::get('/clinics', [ClinicController::class, 'index'])->name('clinics.index');
-    Route::get('/clinics/create', [ClinicController::class, 'create'])->name('clinics.create');
-    Route::get('/clinics/{clinic}/edit', [ClinicController::class, 'edit'])->name('clinics.edit');
-    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
-    Route::get('/reviews/{patientReview}', [ReviewController::class, 'show'])->name('reviews.show');
-    Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
-    Route::get('/messages/{contact}', [MessageController::class, 'show'])->name('messages.show');
-    Route::get('/contacts', [ContactDataController::class, 'edit'])->name('contacts.edit');
-    Route::get('/social', [SocialMediaController::class, 'edit'])->name('social.edit');
-    Route::get('/seo', [SeoController::class, 'edit'])->name('seo.edit');
-    Route::get('/users', [UserController::class, 'index'])->name('users.index');
-    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
-    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    Route::group(['middleware' => 'auth'], function () {
+        Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+        Route::get('/bio', [DoctorBioController::class, 'edit'])->name('bio.edit');
+        Route::get('/services', [BackendServiceController::class, 'index'])->name('services.index');
+        Route::get('/services/create', [BackendServiceController::class, 'create'])->name('services.create');
+        Route::get('/services/{service}/edit', [BackendServiceController::class, 'edit'])->name('services.edit');
+        Route::get('/articles', [BackendArticleController::class, 'index'])->name('articles.index');
+        Route::get('/articles/create', [BackendArticleController::class, 'create'])->name('articles.create');
+        Route::get('/articles/{article}/edit', [BackendArticleController::class, 'edit'])->name('articles.edit');
+        Route::get('/photos', [PhotoController::class, 'index'])->name('photos.index');
+        Route::get('/photos/create', [PhotoController::class, 'create'])->name('photos.create');
+        Route::get('/photos/{photo}/edit', [PhotoController::class, 'edit'])->name('photos.edit');
+        Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
+        Route::get('/videos/create', [VideoController::class, 'create'])->name('videos.create');
+        Route::get('/videos/{video}/edit', [VideoController::class, 'edit'])->name('videos.edit');
+        Route::get('/faqs', [FaqController::class, 'index'])->name('faqs.index');
+        Route::get('/faqs/create', [FaqController::class, 'create'])->name('faqs.create');
+        Route::get('/faqs/{faq}/edit', [FaqController::class, 'edit'])->name('faqs.edit');
+        Route::get('/clinics', [ClinicController::class, 'index'])->name('clinics.index');
+        Route::get('/clinics/create', [ClinicController::class, 'create'])->name('clinics.create');
+        Route::get('/clinics/{clinic}/edit', [ClinicController::class, 'edit'])->name('clinics.edit');
+        Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+        Route::get('/reviews/{patientReview}', [ReviewController::class, 'show'])->name('reviews.show');
+        Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+        Route::get('/messages/{contact}', [MessageController::class, 'show'])->name('messages.show');
+        Route::get('/contacts', [ContactDataController::class, 'edit'])->name('contacts.edit');
+        Route::get('/social', [SocialMediaController::class, 'edit'])->name('social.edit');
+        Route::get('/seo', [SeoController::class, 'edit'])->name('seo.edit');
+        Route::get('/users', [UserController::class, 'index'])->name('users.index');
+        Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+        Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
+    });
 });
