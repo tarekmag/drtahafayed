@@ -153,7 +153,14 @@
                                             </div>
                                         </div>
                                     @empty
-                                        <div class="text-center text-muted py-4">No new contacts or reviews.</div>
+                                        <div class="empty-notification-elem">
+                                            <div class="w-25 w-sm-50 pt-3 mx-auto">
+                                                <img src="{{ asset('backendtheme/assets/images/svg/bell.svg') }}" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="text-center pb-5 mt-2">
+                                                <h6 class="fs-18 fw-semibold lh-base">No new contacts or reviews.</h6>
+                                            </div>
+                                        </div>
                                     @endforelse
                                 </div>
                             </div>
@@ -183,7 +190,14 @@
                                             </div>
                                         </div>
                                     @empty
-                                        <div class="text-center text-muted py-4">No new contacts.</div>
+                                        <div class="empty-notification-elem">
+                                            <div class="w-25 w-sm-50 pt-3 mx-auto">
+                                                <img src="{{ asset('backendtheme/assets/images/svg/bell.svg') }}" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="text-center pb-5 mt-2">
+                                                <h6 class="fs-18 fw-semibold lh-base">No new contacts.</h6>
+                                            </div>
+                                        </div>
                                     @endforelse
 
                                     <div class="my-3 text-center view-all">
@@ -218,7 +232,14 @@
                                             </div>
                                         </div>
                                     @empty
-                                        <div class="text-center text-muted py-4">No pending reviews.</div>
+                                        <div class="empty-notification-elem">
+                                            <div class="w-25 w-sm-50 pt-3 mx-auto">
+                                                <img src="{{ asset('backendtheme/assets/images/svg/bell.svg') }}" class="img-fluid" alt="">
+                                            </div>
+                                            <div class="text-center pb-5 mt-2">
+                                                <h6 class="fs-18 fw-semibold lh-base">No pending reviews.</h6>
+                                            </div>
+                                        </div>
                                     @endforelse
 
                                     <div class="my-3 text-center view-all">
