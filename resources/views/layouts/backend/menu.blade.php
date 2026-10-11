@@ -43,31 +43,31 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
-                        <i class="mdi mdi-book-open"></i> <span data-key="t-services">DR. Bintou</span>
+                    <a class="nav-link menu-link" href="#">
+                        <i class="mdi mdi-book-open"></i> <span data-key="t-dr-bio">DR. Bio</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="#">
                         <i class="mdi mdi-briefcase-outline"></i> <span data-key="t-services">Services</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="#">
                         <i class="mdi mdi-newspaper"></i> <span data-key="t-articles">Articles</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="#">
                         <i class="mdi mdi-image"></i> <span data-key="t-photos">Photos</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="#">
                         <i class="mdi mdi-video"></i> <span data-key="t-videos">Videos</span>
                     </a>
                 </li>
@@ -76,32 +76,32 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="#">
                         <i class="mdi mdi-star"></i> <span data-key="t-reviews">Reviews</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="#">
                         <i class="mdi mdi-message"></i> <span data-key="t-messages">Messages</span>
                         <span class="badge badge-pill bg-success">10</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="#">
                         <i class="mdi mdi-hospital-building"></i> <span data-key="t-clinics">Clinics</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="#">
                         <i class="mdi mdi-phone"></i> <span data-key="t-contacts-data">Contacts Data</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="#">
                         <i class="mdi mdi-link"></i> <span data-key="t-social-media-data">Social Media Data</span>
                     </a>
                 </li>
@@ -110,13 +110,13 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="#">
                         <i class="mdi mdi-cog"></i> <span data-key="t-settings">Settings</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="widgets.html">
+                    <a class="nav-link menu-link" href="#">
                         <i class="mdi mdi-account-group"></i> <span data-key="t-users">Users</span>
                     </a>
                 </li>
