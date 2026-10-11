@@ -15,7 +15,7 @@
                         </span>
                     </a>
 
-                    <a href="index.html" class="logo logo-light">
+                    <a href="{{ route('backend.dashboard') }}" class="logo logo-light">
                         <span class="logo-sm">
                             <img src="{{ asset('backendtheme/assets/images/logo-sm.png') }}" alt=""
                                 height="22">
@@ -404,9 +404,13 @@
                         <a class="dropdown-item" href="auth-lockscreen-basic.html"><i
                                 class="mdi mdi-lock text-muted fs-16 align-middle me-1"></i> <span
                                 class="align-middle">Lock screen</span></a>
-                        <a class="dropdown-item" href="auth-logout-basic.html"><i
-                                class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i> <span
-                                class="align-middle" data-key="t-logout">Logout</span></a>
+                        <form method="POST" action="{{ route('backend.logout') }}">
+                            @csrf
+                            <button type="submit" class="dropdown-item">
+                                <i class="mdi mdi-logout text-muted fs-16 align-middle me-1"></i>
+                                <span class="align-middle" data-key="t-logout">Logout</span>
+                            </button>
+                        </form>
                     </div>
                 </div>
             </div>

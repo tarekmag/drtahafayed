@@ -2,7 +2,7 @@
     <!-- LOGO -->
     <div class="navbar-brand-box">
         <!-- Dark Logo-->
-        <a href="index.html" class="logo logo-dark">
+        <a href="{{ route('backend.dashboard') }}" class="logo logo-dark">
             <span class="logo-sm">
                 <img src="{{ asset('backendtheme/assets/images/logo-sm.png') }}" alt="" height="22">
             </span>
@@ -11,7 +11,7 @@
             </span>
         </a>
         <!-- Light Logo-->
-        <a href="index.html" class="logo logo-light">
+        <a href="{{ route('backend.dashboard') }}" class="logo logo-light">
             <span class="logo-sm">
                 <img src="{{ asset('backendtheme/assets/images/logo-sm.png') }}" alt="" height="22">
             </span>
@@ -34,7 +34,7 @@
                 <li class="menu-title"><span data-key="t-menu">Menu</span></li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="{{ route('dashboard') }}">
+                    <a class="nav-link menu-link" href="{{ route('backend.dashboard') }}">
                         <i class="mdi mdi-speedometer"></i> <span data-key="t-dashboard">Dashboard</span>
                     </a>
                 </li>

@@ -8,7 +8,7 @@
                 <div class="col-lg-12">
                     <div class="text-center mt-sm-5 mb-4 text-white-50">
                         <div>
-                            <a href="{{ route('login') }}" class="d-inline-block auth-logo">
+                            <a href="{{ route('backend.login') }}" class="d-inline-block auth-logo">
                                 {{-- <img src="{{ asset('assets/images/logo.png') }}" alt="" height="120"> --}}
                             </a>
                         </div>
@@ -23,7 +23,7 @@
 
                         <div class="card-body p-4">
                             <div class="text-center mt-2">
-                                <a href="{{ route('login') }}" class="d-inline-block auth-logo">
+                                <a href="{{ route('backend.login') }}" class="d-inline-block auth-logo">
                                     <img src="{{ asset('assets/images/logo.png') }}" alt="" height="120">
                                 </a>
                                 {{-- <h5 class="text-primary">Welcome Back DR.Taha!</h5> --}}
@@ -35,7 +35,7 @@
                                         {{ session('error') }}
                                     </div>
                                 @endif
-                                <form action="{{ route('login') }}" method="POST">
+                                <form action="{{ route('backend.login') }}" method="POST">
                                     @csrf
 
                                     <div class="mb-3">

@@ -16,6 +16,9 @@ return Application::configure(basePath: dirname(__DIR__))
         $middleware->alias([
             'set-locale' => SetLocale::class,
         ]);
+
+        $middleware->redirectGuestsTo(fn () => route('backend.login'));
+        $middleware->redirectUsersTo('/backend');
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

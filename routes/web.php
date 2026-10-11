@@ -1,11 +1,12 @@
 <?php
 
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Frontend\ArticleController;
 use App\Http\Controllers\Frontend\ServiceController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
+//Frontend
 Route::redirect('/', '/ar');
 
 Route::prefix('{locale}')
@@ -31,9 +32,8 @@ Route::prefix('{locale}')
     });
 
 // Backend
-Route::prefix('backend')->group(function () {
+Route::prefix('backend')->name('backend.')->group(function () {
     Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
-
     Route::get('/', [DashboardController::class, 'index'])
         ->middleware('auth')
         ->name('dashboard');
