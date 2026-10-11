@@ -149,7 +149,7 @@ class Content
         return PatientReview::query()
             ->where('is_published', true)
             ->inRandomOrder()
-            ->limit(10)
+            ->limit(20)
             ->get()
             ->map(fn (PatientReview $review) => [
                 'rating' => $review->rating,
