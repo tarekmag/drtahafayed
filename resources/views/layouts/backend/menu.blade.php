@@ -123,7 +123,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="{{ route('backend.users.index') }}">
                         <i class="mdi mdi-account-group"></i> <span data-key="t-users">Users</span>
                     </a>
                 </li>

@@ -10,6 +10,7 @@ use App\Http\Controllers\Backend\PhotoController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\SeoController;
 use App\Http\Controllers\Backend\SocialMediaController;
+use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\VideoController;
 use App\Http\Controllers\Frontend\ArticleController;
 use App\Http\Controllers\Frontend\ServiceController;
@@ -66,4 +67,7 @@ Route::prefix('backend')->name('backend.')->middleware('auth')->group(function (
     Route::get('/contacts', [ContactDataController::class, 'edit'])->name('contacts.edit');
     Route::get('/social', [SocialMediaController::class, 'edit'])->name('social.edit');
     Route::get('/seo', [SeoController::class, 'edit'])->name('seo.edit');
+    Route::get('/users', [UserController::class, 'index'])->name('users.index');
+    Route::get('/users/create', [UserController::class, 'create'])->name('users.create');
+    Route::get('/users/{user}/edit', [UserController::class, 'edit'])->name('users.edit');
 });
