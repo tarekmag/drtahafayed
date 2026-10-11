@@ -100,6 +100,9 @@
                     </tbody>
                 </table>
             </div>
+            <div class="mt-3">
+                {{ $photos->links() }}
+            </div>
         </div>
     </div>
 </div>

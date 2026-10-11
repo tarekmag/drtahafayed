@@ -5,9 +5,14 @@ namespace App\Livewire\Backend;
 use App\Models\Article;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ArticlesTable extends Component
 {
+    use WithPagination;
+
+    private const PER_PAGE = 10;
+
     public string $search = '';
 
     public string $category = 'all';
@@ -21,6 +26,26 @@ class ArticlesTable extends Component
     public ?string $noticeMessage = null;
 
     public int $noticeKey = 0;
+
+    public function updatingSearch(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatingCategory(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatingStatus(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatingSort(): void
+    {
+        $this->resetPage();
+    }
 
     public function delete(int $articleId): void
     {
@@ -46,7 +71,7 @@ class ArticlesTable extends Component
             ->when($this->status === 'hidden', fn ($query) => $query->where('is_active', false))
             ->orderBy('published_at', $this->sort === 'oldest' ? 'asc' : 'desc')
             ->orderBy('sort')
-            ->get();
+            ->paginate(self::PER_PAGE);
 
         $categories = Article::query()
             ->get(['category'])
@@ -63,6 +88,11 @@ class ArticlesTable extends Component
             'articles' => $articles,
             'categories' => $categories,
         ]);
+    }
+
+    public function paginationView(): string
+    {
+        return 'livewire::bootstrap';
     }
 
     private function notify(string $type, string $message): void

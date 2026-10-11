@@ -5,9 +5,14 @@ namespace App\Livewire\Backend;
 use App\Models\Clinic;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class ClinicsTable extends Component
 {
+    use WithPagination;
+
+    private const PER_PAGE = 10;
+
     public string $search = '';
 
     public string $noticeType = 'success';
@@ -15,6 +20,11 @@ class ClinicsTable extends Component
     public ?string $noticeMessage = null;
 
     public int $noticeKey = 0;
+
+    public function updatingSearch(): void
+    {
+        $this->resetPage();
+    }
 
     public function delete(int $clinicId): void
     {
@@ -41,11 +51,16 @@ class ClinicsTable extends Component
             })
             ->orderBy('sort')
             ->orderBy('id')
-            ->get();
+            ->paginate(self::PER_PAGE);
 
         return view('livewire.backend.clinics-table', [
             'clinics' => $clinics,
         ]);
+    }
+
+    public function paginationView(): string
+    {
+        return 'livewire::bootstrap';
     }
 
     private function notify(string $type, string $message): void

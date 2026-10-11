@@ -6,9 +6,14 @@ use App\Models\Video;
 use App\Support\Content;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class VideosTable extends Component
 {
+    use WithPagination;
+
+    private const PER_PAGE = 10;
+
     public string $search = '';
 
     public string $service = 'all';
@@ -20,6 +25,21 @@ class VideosTable extends Component
     public ?string $noticeMessage = null;
 
     public int $noticeKey = 0;
+
+    public function updatingSearch(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatingService(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatingStatus(): void
+    {
+        $this->resetPage();
+    }
 
     public function delete(int $videoId): void
     {
@@ -45,12 +65,17 @@ class VideosTable extends Component
             ->when($this->status === 'hidden', fn ($query) => $query->where('is_active', false))
             ->orderBy('sort')
             ->orderBy('id')
-            ->get();
+            ->paginate(self::PER_PAGE);
 
         return view('livewire.backend.videos-table', [
             'videos' => $videos,
             'services' => $this->services(),
         ]);
+    }
+
+    public function paginationView(): string
+    {
+        return 'livewire::bootstrap';
     }
 
     /**

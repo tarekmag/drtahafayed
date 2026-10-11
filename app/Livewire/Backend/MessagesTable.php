@@ -4,9 +4,14 @@ namespace App\Livewire\Backend;
 
 use App\Models\Contact;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class MessagesTable extends Component
 {
+    use WithPagination;
+
+    private const PER_PAGE = 10;
+
     public string $search = '';
 
     public string $sort = 'newest';
@@ -18,6 +23,21 @@ class MessagesTable extends Component
     public ?string $noticeMessage = null;
 
     public int $noticeKey = 0;
+
+    public function updatingSearch(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatingSort(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatingStatus(): void
+    {
+        $this->resetPage();
+    }
 
     public function delete(int $contactId): void
     {
@@ -39,11 +59,16 @@ class MessagesTable extends Component
             ->when($this->status === 'new', fn ($query) => $query->whereNull('read_at'))
             ->when($this->status === 'read', fn ($query) => $query->whereNotNull('read_at'))
             ->orderBy('created_at', $this->sort === 'oldest' ? 'asc' : 'desc')
-            ->get();
+            ->paginate(self::PER_PAGE);
 
         return view('livewire.backend.messages-table', [
             'messages' => $messages,
         ]);
+    }
+
+    public function paginationView(): string
+    {
+        return 'livewire::bootstrap';
     }
 
     private function notify(string $type, string $message): void

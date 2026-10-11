@@ -85,6 +85,9 @@
                     </tbody>
                 </table>
             </div>
+            <div class="mt-3">
+                {{ $clinics->links() }}
+            </div>
         </div>
     </div>
 </div>

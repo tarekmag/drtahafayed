@@ -5,9 +5,14 @@ namespace App\Livewire\Backend;
 use App\Models\Photo;
 use Illuminate\Support\Facades\Storage;
 use Livewire\Component;
+use Livewire\WithPagination;
 
 class PhotosTable extends Component
 {
+    use WithPagination;
+
+    private const PER_PAGE = 10;
+
     public string $search = '';
 
     public string $category = 'all';
@@ -19,6 +24,21 @@ class PhotosTable extends Component
     public ?string $noticeMessage = null;
 
     public int $noticeKey = 0;
+
+    public function updatingSearch(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatingCategory(): void
+    {
+        $this->resetPage();
+    }
+
+    public function updatingStatus(): void
+    {
+        $this->resetPage();
+    }
 
     public function delete(int $photoId): void
     {
@@ -44,7 +64,7 @@ class PhotosTable extends Component
             ->when($this->status === 'hidden', fn ($query) => $query->where('is_active', false))
             ->orderBy('sort')
             ->orderBy('id')
-            ->get();
+            ->paginate(self::PER_PAGE);
 
         return view('livewire.backend.photos-table', [
             'photos' => $photos,
@@ -54,6 +74,11 @@ class PhotosTable extends Component
                 'events' => 'Events',
             ],
         ]);
+    }
+
+    public function paginationView(): string
+    {
+        return 'livewire::bootstrap';
     }
 
     private function notify(string $type, string $message): void
