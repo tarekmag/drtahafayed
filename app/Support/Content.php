@@ -58,6 +58,7 @@ class Content
     {
         return array_filter([
             'facebook' => trim((string) config('clinic.facebook')),
+            'vezeeta' => trim((string) config('clinic.vezeeta')),
             'youtube' => trim((string) config('clinic.youtube')),
             'tiktok' => trim((string) config('clinic.tiktok')),
         ]);

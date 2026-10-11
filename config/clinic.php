@@ -26,6 +26,7 @@ return [
     'booking_url' => '',
 
     'facebook' => 'https://www.facebook.com/dr.taha.fayed',
+    'vezeeta' => 'https://www.vezeeta.com/ar/dr/%D8%AF%D9%83%D8%AA%D9%88%D8%B1-%D8%B7%D9%87-%D9%81%D8%A7%D9%8A%D8%AF-%D8%AC%D8%B1%D8%A7%D8%AD%D8%A9-%D8%B9%D8%A7%D9%85%D8%A9',
     'youtube' => 'http://0.0.0.0:8080/ar/contact',
     'tiktok' => 'http://0.0.0.0:8080/ar/contact',
 

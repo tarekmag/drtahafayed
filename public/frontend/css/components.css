@@ -515,6 +515,38 @@ a:hover .link-arrow .icon,
     font-weight: 700;
 }
 
+.service-conditions,
+.condition-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+}
+
+.service-conditions {
+    margin-top: 0.85rem;
+}
+
+.service-conditions span,
+.condition-list li {
+    border: 1px solid var(--line);
+    background: #f7f4ee;
+    border-radius: 999px;
+    padding: 0.28rem 0.65rem;
+    font-size: 0.78rem;
+    font-weight: 700;
+    line-height: 1.4;
+}
+
+.condition-list {
+    list-style: none;
+    margin: 0.8rem 0 0;
+    padding: 0;
+}
+
+.service-conditions-block {
+    margin-top: 1.8rem;
+}
+
 .services-grid,
 .article-grid,
 .video-grid {

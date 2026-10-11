@@ -14,6 +14,7 @@ class ServiceCard extends Component
         array $service,
         public bool $featured = false,
         public int $index = 0,
+        public bool $detailed = false,
     ) {
         $this->service = ServicePresenter::make($service);
     }

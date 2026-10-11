@@ -146,7 +146,11 @@
                 :eyebrow="__('site.home.reviews_eyebrow')"
                 :title="__('site.home.reviews_title')"
                 :text="__('site.home.reviews_text')"
-            />
+            >
+                <x-slot:actions>
+                    <x-button :href="config('clinic.vezeeta')" variant="outline" icon="vezeeta" external>{{ __('site.nav.vezeeta') }}</x-button>
+                </x-slot:actions>
+            </x-section-head>
             <x-reviews-slider />
         </div>
     </section>

@@ -14,6 +14,7 @@ class ServicePresenter
         public string $icon,
         public string $specialty,
         public string $url,
+        public array $conditions = [],
     ) {}
 
     public static function make(array $service): self
@@ -25,6 +26,11 @@ class ServicePresenter
             icon: $service['icon'] ?? 'general',
             specialty: (string) ($service['specialty'] ?? ''),
             url: route('site.service', ['service' => $service['slug']]),
+            conditions: collect($service['conditions'] ?? [])
+                ->map(fn (mixed $item) => LocaleText::get($item))
+                ->filter()
+                ->values()
+                ->all(),
         );
     }
 }

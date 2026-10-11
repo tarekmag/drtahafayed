@@ -11,6 +11,13 @@
         @if ($service->excerpt !== '')
             <span class="service-card-excerpt">{{ $service->excerpt }}</span>
         @endif
+        @if ($detailed && $service->conditions !== [])
+            <span class="service-conditions">
+                @foreach ($service->conditions as $condition)
+                    <span>{{ $condition }}</span>
+                @endforeach
+            </span>
+        @endif
         <span class="service-card-more">{{ __('site.common.learn_more') }} <x-icon name="arrow" /></span>
     </span>
 </a>

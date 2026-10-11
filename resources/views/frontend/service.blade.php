@@ -38,6 +38,17 @@
                     </div>
                 @endif
 
+                @if (! empty($service['conditions']))
+                    <div class="service-conditions-block">
+                        <h2>{{ __('site.services.conditions_title') }}</h2>
+                        <ul class="condition-list">
+                            @foreach ($service['conditions'] as $condition)
+                                <li>{{ LocaleText::get($condition) }}</li>
+                            @endforeach
+                        </ul>
+                    </div>
+                @endif
+
                 <div class="media-frame" style="margin-top:2rem">
                     @if ($video && $video['type'] === 'file')
                         <video controls playsinline preload="metadata" src="{{ $video['src'] }}"></video>
