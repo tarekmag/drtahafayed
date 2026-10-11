@@ -55,7 +55,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="{{ route('backend.articles.index') }}">
                         <i class="mdi mdi-newspaper"></i> <span data-key="t-articles">Articles</span>
                     </a>
                 </li>

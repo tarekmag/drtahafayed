@@ -2,6 +2,7 @@
 
 namespace App\Support;
 
+use App\Models\Article;
 use App\Models\Clinic;
 use App\Models\ClinicContact;
 use App\Models\Doctor;
@@ -12,7 +13,7 @@ use Illuminate\Support\Collection;
 
 /**
  * Single read model for public site content.
- * Doctor biography, contact details, social links, and clinics come from the database.
+ * Doctor biography, contact details, social links, clinics, and articles come from the database.
  * Other sections still read config until their dashboard screens replace those sources.
  */
 class Content
@@ -90,9 +91,12 @@ class Content
 
     public static function articles(): Collection
     {
-        return self::items('articles.items')
-            ->sortByDesc('published_at')
-            ->values();
+        return Article::query()
+            ->where('is_active', true)
+            ->orderByDesc('published_at')
+            ->orderBy('sort')
+            ->get()
+            ->map(fn (Article $article) => $article->toContentArray());
     }
 
     public static function article(string $slug): ?array

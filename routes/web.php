@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\ArticleController as BackendArticleController;
 use App\Http\Controllers\Backend\ClinicController;
 use App\Http\Controllers\Backend\ContactDataController;
 use App\Http\Controllers\Backend\DashboardController;
@@ -42,6 +43,9 @@ Route::prefix('backend')->name('backend.')->middleware('auth')->group(function (
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/bio', [DoctorBioController::class, 'edit'])->name('bio.edit');
+    Route::get('/articles', [BackendArticleController::class, 'index'])->name('articles.index');
+    Route::get('/articles/create', [BackendArticleController::class, 'create'])->name('articles.create');
+    Route::get('/articles/{article}/edit', [BackendArticleController::class, 'edit'])->name('articles.edit');
     Route::get('/clinics', [ClinicController::class, 'index'])->name('clinics.index');
     Route::get('/clinics/create', [ClinicController::class, 'create'])->name('clinics.create');
     Route::get('/clinics/{clinic}/edit', [ClinicController::class, 'edit'])->name('clinics.edit');
