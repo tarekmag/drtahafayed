@@ -1,11 +1,13 @@
 @props(['clinic'])
 
+@use('App\Support\Content')
 @use('App\Support\LocaleText')
 @use('App\Support\MediaEmbed')
 
 @php
     $address = LocaleText::get($clinic['address'] ?? '');
     $hours = LocaleText::get($clinic['hours'] ?? '');
+    $schedule = Content::schedule($clinic);
     $phone = trim((string) ($clinic['phone'] ?? ''));
     $map = MediaEmbed::map(($clinic['map'] ?? '') ?: $address);
 @endphp
@@ -21,6 +23,22 @@
         <li>
             <span class="clinic-fact-icon"><x-icon name="clock" /></span>
             <span><small>{{ __('site.clinics.hours') }}</small>{{ $hours }}</span>
+        </li>
+    @endif
+    @if ($schedule['days'] !== '')
+        <li>
+            <span class="clinic-fact-icon"><x-icon name="clock" /></span>
+            <span>
+                <small>{{ __('site.clinics.working_days') }}</small>{{ $schedule['days'] }}
+            </span>
+        </li>
+    @endif
+    @if ($schedule['time'] !== '')
+        <li>
+            <span class="clinic-fact-icon"><x-icon name="clock" /></span>
+            <span>
+                <small>{{ __('site.clinics.open_close') }}</small><span dir="ltr">{{ $schedule['time'] }}</span>
+            </span>
         </li>
     @endif
     @if ($phone !== '')

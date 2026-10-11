@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
             DoctorSeeder::class,
             ClinicContactSeeder::class,
             SocialProfileSeeder::class,
+            ClinicSeeder::class,
         ]);
     }
 }

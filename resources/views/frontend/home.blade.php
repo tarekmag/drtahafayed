@@ -43,7 +43,18 @@
                 <aside class="hero-card reveal">
                     <small>{{ __('site.home.next_label') }}</small>
                     <strong>{{ LocaleText::get($next['clinic']['name'] ?? '') }}</strong>
-                    <p>{{ $nextLabel }} · {{ LocaleText::get($next['clinic']['hours'] ?? '') }}</p>
+                    @php
+                        $nextHours = LocaleText::get($next['clinic']['hours'] ?? '');
+                        $nextTime = Content::schedule($next['clinic'])['time'];
+                    @endphp
+                    <p>
+                        {{ $nextLabel }}
+                        @if ($nextHours !== '')
+                            · {{ $nextHours }}
+                        @elseif ($nextTime !== '')
+                            · <span dir="ltr">{{ $nextTime }}</span>
+                        @endif
+                    </p>
                 </aside>
             @endif
         </div>

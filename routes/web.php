@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Backend\ClinicController;
 use App\Http\Controllers\Backend\ContactDataController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DoctorBioController;
@@ -37,9 +38,12 @@ Route::prefix('{locale}')
 // Backend
 Route::prefix('backend')->name('backend.')->middleware('auth')->group(function () {
     Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
-    
+
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/bio', [DoctorBioController::class, 'edit'])->name('bio.edit');
+    Route::get('/clinics', [ClinicController::class, 'index'])->name('clinics.index');
+    Route::get('/clinics/create', [ClinicController::class, 'create'])->name('clinics.create');
+    Route::get('/clinics/{clinic}/edit', [ClinicController::class, 'edit'])->name('clinics.edit');
     Route::get('/contacts', [ContactDataController::class, 'edit'])->name('contacts.edit');
     Route::get('/social', [SocialMediaController::class, 'edit'])->name('social.edit');
 });

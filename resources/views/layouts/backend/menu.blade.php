@@ -89,7 +89,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="{{ route('backend.clinics.index') }}">
                         <i class="mdi mdi-hospital-building"></i> <span data-key="t-clinics">Clinics</span>
                     </a>
                 </li>

@@ -22,7 +22,12 @@
                     <span class="clinic-tab-index">{{ str_pad($loop->iteration, 2, '0', STR_PAD_LEFT) }}</span>
                     <span class="clinic-tab-copy">
                         <strong>{{ LocaleText::get($clinic['name'] ?? '') }}</strong>
-                        <small>{{ LocaleText::get($clinic['hours'] ?? '') }}</small>
+                        @php
+                            $hoursLabel = LocaleText::get($clinic['hours'] ?? '');
+                            $schedule = Content::schedule($clinic);
+                            $daysLabel = trim($schedule['days'].($schedule['time'] !== '' ? ' '.$schedule['time'] : ''));
+                        @endphp
+                        <small>{{ $hoursLabel !== '' ? $hoursLabel : $daysLabel }}</small>
                     </span>
                     <x-icon name="chevron" />
                 </button>

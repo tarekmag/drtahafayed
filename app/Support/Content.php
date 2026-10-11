@@ -2,6 +2,7 @@
 
 namespace App\Support;
 
+use App\Models\Clinic;
 use App\Models\ClinicContact;
 use App\Models\Doctor;
 use App\Models\SocialProfile;
@@ -11,7 +12,7 @@ use Illuminate\Support\Collection;
 
 /**
  * Single read model for public site content.
- * Doctor biography, contact details, and social links come from the database.
+ * Doctor biography, contact details, social links, and clinics come from the database.
  * Other sections still read config until their dashboard screens replace those sources.
  */
 class Content
@@ -129,7 +130,56 @@ class Content
 
     public static function clinics(): Collection
     {
-        return self::items('clinic.clinics');
+        return Clinic::query()
+            ->where('is_active', true)
+            ->orderBy('sort')
+            ->orderBy('id')
+            ->get()
+            ->map(fn (Clinic $clinic) => $clinic->toContentArray());
+    }
+
+    /**
+     * Working days and opening times for a clinic content array.
+     *
+     * @param  array<string, mixed>  $clinic
+     * @return array{days: string, time: string}
+     */
+    public static function schedule(array $clinic): array
+    {
+        $labels = trans('site.clinics.weekdays');
+        $labels = is_array($labels) ? $labels : [];
+
+        $days = collect($clinic['days'] ?? [])
+            ->map(fn ($day) => $labels[(int) $day] ?? null)
+            ->filter()
+            ->implode(app()->getLocale() === 'ar' ? '، ' : ', ');
+
+        $opens = self::clockLabel($clinic['opens'] ?? '');
+        $closes = self::clockLabel($clinic['closes'] ?? '');
+        $time = match (true) {
+            $opens !== '' && $closes !== '' => $opens.' – '.$closes,
+            $opens !== '' => $opens,
+            default => $closes,
+        };
+
+        return ['days' => $days, 'time' => $time];
+    }
+
+    private static function clockLabel(mixed $value): string
+    {
+        $value = trim((string) $value);
+
+        if ($value === '') {
+            return '';
+        }
+
+        $format = strlen($value) > 5 ? 'H:i:s' : 'H:i';
+
+        try {
+            return Carbon::createFromFormat($format, $value)->format('g:i A');
+        } catch (\Throwable) {
+            return $value;
+        }
     }
 
     /**
