@@ -7,6 +7,13 @@
     $contact = Content::contact();
     $clinics = Content::clinics()->map(function (array $clinic) {
         $map = \App\Support\MediaEmbed::map($clinic['map'] ?? '');
+        $dayCodes = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
+        $days = collect($clinic['days'] ?? [])
+            ->map(fn ($day) => $dayCodes[(int) $day] ?? null)
+            ->filter()
+            ->implode(',');
+        $opens = substr(trim((string) ($clinic['opens'] ?? '')), 0, 5);
+        $closes = substr(trim((string) ($clinic['closes'] ?? '')), 0, 5);
 
         return array_filter([
             '@type' => 'MedicalClinic',
@@ -17,7 +24,7 @@
                 'streetAddress' => LocaleText::get($clinic['address'] ?? ''),
                 'addressCountry' => 'EG',
             ],
-            'openingHours' => LocaleText::get($clinic['hours'] ?? ''),
+            'openingHours' => $days !== '' && $opens !== '' && $closes !== '' ? $days.' '.$opens.'-'.$closes : null,
             'hasMap' => $map['link'] ?? null,
         ]);
     })->values()->all();

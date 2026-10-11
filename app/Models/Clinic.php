@@ -9,7 +9,6 @@ use Illuminate\Database\Eloquent\Model;
     'slug',
     'name',
     'address',
-    'hours',
     'days',
     'opens',
     'closes',
@@ -29,7 +28,6 @@ class Clinic extends Model
         return [
             'name' => 'array',
             'address' => 'array',
-            'hours' => 'array',
             'days' => 'array',
             'photos' => 'array',
             'is_active' => 'boolean',
@@ -50,7 +48,6 @@ class Clinic extends Model
             'is_active' => $this->is_active,
             'name' => $this->name ?? [],
             'address' => $this->address ?? [],
-            'hours' => $this->hours ?? [],
             'days' => array_map('intval', $this->days ?? []),
             'opens' => (string) $this->opens,
             'closes' => (string) $this->closes,

@@ -1,7 +1,6 @@
 @php
     $name = \App\Support\LocaleText::get($clinic['name'] ?? '');
     $address = \App\Support\LocaleText::get($clinic['address'] ?? '');
-    $hours = \App\Support\LocaleText::get($clinic['hours'] ?? '');
     $phone = trim((string) ($clinic['phone'] ?? ''));
     $phoneHref = $phone !== '' ? 'tel:'.preg_replace('/\s+/', '', $phone) : null;
 
@@ -32,13 +31,10 @@
         <h2>{{ $name }}</h2>
     @endif
 
-    @if ($address !== '' || $hours !== '' || $phoneHref || $mapLink)
+    @if ($address !== '' || $phoneHref || $mapLink)
         <ul class="branch-facts">
             @if ($address !== '')
                 <li>{{ $address }}</li>
-            @endif
-            @if ($hours !== '')
-                <li>{{ $hours }}</li>
             @endif
             @if ($phoneHref)
                 <li><a href="{{ $phoneHref }}">{{ $phone }}</a></li>

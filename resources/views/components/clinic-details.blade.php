@@ -6,7 +6,6 @@
 
 @php
     $address = LocaleText::get($clinic['address'] ?? '');
-    $hours = LocaleText::get($clinic['hours'] ?? '');
     $schedule = Content::schedule($clinic);
     $phone = trim((string) ($clinic['phone'] ?? ''));
     $map = MediaEmbed::map(($clinic['map'] ?? '') ?: $address);
@@ -17,12 +16,6 @@
         <li>
             <span class="clinic-fact-icon"><x-icon name="map-pin" /></span>
             <span><small>{{ __('site.clinics.address') }}</small>{{ $address }}</span>
-        </li>
-    @endif
-    @if ($hours !== '')
-        <li>
-            <span class="clinic-fact-icon"><x-icon name="clock" /></span>
-            <span><small>{{ __('site.clinics.hours') }}</small>{{ $hours }}</span>
         </li>
     @endif
     @if ($schedule['days'] !== '')

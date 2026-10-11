@@ -23,9 +23,6 @@ class ClinicForm extends Component
     /** @var array{ar: string, en: string} */
     public array $address = ['ar' => '', 'en' => ''];
 
-    /** @var array{ar: string, en: string} */
-    public array $hours = ['ar' => '', 'en' => ''];
-
     /** @var list<int|string> */
     public array $days = [];
 
@@ -62,7 +59,6 @@ class ClinicForm extends Component
             $this->slug = $clinic->slug;
             $this->name = $this->localePair($clinic->name);
             $this->address = $this->localePair($clinic->address);
-            $this->hours = $this->localePair($clinic->hours);
             $this->days = array_map('strval', $clinic->days ?? []);
             $this->opens = $clinic->opens;
             $this->closes = $clinic->closes;
@@ -108,7 +104,6 @@ class ClinicForm extends Component
         $this->closes = $this->clock($this->closes);
         $this->name = $this->localePair($this->name);
         $this->address = $this->localePair($this->address);
-        $this->hours = $this->localePair($this->hours);
 
         try {
             $this->validate();
@@ -133,7 +128,7 @@ class ClinicForm extends Component
             'slug' => $this->slug,
             'name' => $this->name,
             'address' => $this->address,
-            'hours' => $this->hours,
+            'hours' => ['ar' => '', 'en' => ''],
             'days' => collect($this->days)->map(fn ($day) => (int) $day)->unique()->sort()->values()->all(),
             'opens' => $this->opens,
             'closes' => $this->closes,
@@ -191,8 +186,6 @@ class ClinicForm extends Component
             'name.en' => ['required', 'string', 'max:255'],
             'address.ar' => ['required', 'string', 'max:500'],
             'address.en' => ['required', 'string', 'max:500'],
-            'hours.ar' => ['nullable', 'string', 'max:255'],
-            'hours.en' => ['nullable', 'string', 'max:255'],
             'days' => ['array'],
             'days.*' => ['integer', 'between:0,6'],
             'opens' => ['nullable', 'date_format:H:i'],

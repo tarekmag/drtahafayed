@@ -88,20 +88,6 @@
                             @error('address.en') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label for="hours-ar" class="form-label">Hours text (Arabic)</label>
-                            <input id="hours-ar" type="text" class="form-control @error('hours.ar') is-invalid @enderror" wire:model="hours.ar">
-                            @error('hours.ar') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                        </div>
-                    </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label for="hours-en" class="form-label">Hours text (English)</label>
-                            <input id="hours-en" type="text" class="form-control @error('hours.en') is-invalid @enderror" wire:model="hours.en">
-                            @error('hours.en') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                        </div>
-                    </div>
                     <div class="col-12">
                         <div class="mb-3">
                             <label class="form-label">Working days</label>

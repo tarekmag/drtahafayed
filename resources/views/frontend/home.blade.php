@@ -44,14 +44,11 @@
                     <small>{{ __('site.home.next_label') }}</small>
                     <strong>{{ LocaleText::get($next['clinic']['name'] ?? '') }}</strong>
                     @php
-                        $nextHours = LocaleText::get($next['clinic']['hours'] ?? '');
                         $nextTime = Content::schedule($next['clinic'])['time'];
                     @endphp
                     <p>
                         {{ $nextLabel }}
-                        @if ($nextHours !== '')
-                            · {{ $nextHours }}
-                        @elseif ($nextTime !== '')
+                        @if ($nextTime !== '')
                             · <span dir="ltr">{{ $nextTime }}</span>
                         @endif
                     </p>

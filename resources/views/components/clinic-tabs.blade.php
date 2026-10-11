@@ -23,11 +23,10 @@
                     <span class="clinic-tab-copy">
                         <strong>{{ LocaleText::get($clinic['name'] ?? '') }}</strong>
                         @php
-                            $hoursLabel = LocaleText::get($clinic['hours'] ?? '');
                             $schedule = Content::schedule($clinic);
                             $daysLabel = trim($schedule['days'].($schedule['time'] !== '' ? ' '.$schedule['time'] : ''));
                         @endphp
-                        <small>{{ $hoursLabel !== '' ? $hoursLabel : $daysLabel }}</small>
+                        <small>{{ $daysLabel }}</small>
                     </span>
                     <x-icon name="chevron" />
                 </button>

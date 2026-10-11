@@ -16,7 +16,6 @@ return new class extends Migration
             $table->string('slug')->unique();
             $table->json('name');
             $table->json('address');
-            $table->json('hours');
             $table->json('days');
             $table->string('opens', 5)->nullable();
             $table->string('closes', 5)->nullable();
