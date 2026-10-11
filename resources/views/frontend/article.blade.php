@@ -7,6 +7,8 @@
 @php
     $title = LocaleText::get($article['title'] ?? '');
     $excerpt = LocaleText::get($article['excerpt'] ?? '');
+    $metaTitle = LocaleText::get($article['meta_title'] ?? '');
+    $metaDescription = LocaleText::get($article['meta_description'] ?? '');
     $body = LocaleText::get($article['body'] ?? '');
     $cover = MediaEmbed::image($article['cover'] ?? '');
     $date = ! empty($article['published_at']) ? Carbon::parse($article['published_at'])->locale(app()->getLocale()) : null;
@@ -24,8 +26,8 @@
 
 @extends('frontend.layouts.app')
 
-@section('meta_title', $title.' | '.__('site.brand.name'))
-@section('meta_description', $excerpt)
+@section('meta_title', $metaTitle !== '' ? $metaTitle : $title.' | '.__('site.brand.name'))
+@section('meta_description', $metaDescription !== '' ? $metaDescription : $excerpt)
 @section('og_image', $cover ?: '')
 
 @section('content')

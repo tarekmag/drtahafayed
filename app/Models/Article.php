@@ -11,6 +11,8 @@ use Illuminate\Database\Eloquent\Model;
     'title',
     'excerpt',
     'body',
+    'meta_title',
+    'meta_description',
     'published_at',
     'read_minutes',
     'cover',
@@ -29,6 +31,8 @@ class Article extends Model
             'title' => 'array',
             'excerpt' => 'array',
             'body' => 'array',
+            'meta_title' => 'array',
+            'meta_description' => 'array',
             'published_at' => 'date',
             'read_minutes' => 'integer',
             'sort' => 'integer',
@@ -54,6 +58,8 @@ class Article extends Model
             'title' => $this->title ?? [],
             'excerpt' => $this->excerpt ?? [],
             'body' => $this->body ?? [],
+            'meta_title' => $this->meta_title ?? [],
+            'meta_description' => $this->meta_description ?? [],
         ];
     }
 }

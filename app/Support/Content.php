@@ -7,6 +7,7 @@ use App\Models\Clinic;
 use App\Models\ClinicContact;
 use App\Models\Doctor;
 use App\Models\Photo;
+use App\Models\SeoPage;
 use App\Models\SocialProfile;
 use App\Models\Video;
 use Carbon\CarbonInterface;
@@ -15,11 +16,16 @@ use Illuminate\Support\Collection;
 
 /**
  * Single read model for public site content.
- * Doctor biography, contact details, social links, clinics, articles, photos, and videos come from the database.
+ * Doctor biography, contact details, social links, clinics, articles, photos, videos, and page SEO come from the database.
  * Other sections still read config until their dashboard screens replace those sources.
  */
 class Content
 {
+    /**
+     * @var array<string, array{title: string, description: string}>
+     */
+    private static array $seoCache = [];
+
     public static function doctor(): array
     {
         $doctor = Doctor::query()->first();
@@ -112,6 +118,29 @@ class Content
             ->reject(fn (array $item) => $item['slug'] === $article['slug'])
             ->take($limit)
             ->values();
+    }
+
+    /**
+     * Localized title and description for a public page.
+     *
+     * @return array{title: string, description: string}
+     */
+    public static function seo(string $page): array
+    {
+        $cacheKey = app()->getLocale().':'.$page;
+
+        if (isset(self::$seoCache[$cacheKey])) {
+            return self::$seoCache[$cacheKey];
+        }
+
+        $record = SeoPage::query()->where('page', $page)->first();
+        $title = LocaleText::get($record?->meta_title ?? '');
+        $description = LocaleText::get($record?->meta_description ?? '');
+
+        return self::$seoCache[$cacheKey] = [
+            'title' => $title !== '' ? $title : (string) __('site.'.$page.'.meta_title'),
+            'description' => $description !== '' ? $description : (string) __('site.'.$page.'.meta_description'),
+        ];
     }
 
     public static function reviews(): Collection

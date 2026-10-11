@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
-@section('meta_title', __('site.videos.meta_title'))
-@section('meta_description', __('site.videos.meta_description'))
+@section('meta_title', \App\Support\Content::seo('videos')['title'])
+@section('meta_description', \App\Support\Content::seo('videos')['description'])
 
 @section('content')
     <x-page-hero

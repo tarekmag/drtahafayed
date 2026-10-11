@@ -144,6 +144,45 @@
 
         <div class="card">
             <div class="card-header">
+                <h4 class="card-title mb-0">SEO</h4>
+            </div>
+            <div class="card-body">
+                <p class="text-muted">Leave these empty to use the article title and excerpt.</p>
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="meta-title-ar" class="form-label">Meta title (Arabic)</label>
+                            <input id="meta-title-ar" type="text" class="form-control @error('metaTitle.ar') is-invalid @enderror" wire:model="metaTitle.ar">
+                            @error('metaTitle.ar') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <label for="meta-title-en" class="form-label">Meta title (English)</label>
+                            <input id="meta-title-en" type="text" class="form-control @error('metaTitle.en') is-invalid @enderror" wire:model="metaTitle.en">
+                            @error('metaTitle.en') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-0">
+                            <label for="meta-description-ar" class="form-label">Meta description (Arabic)</label>
+                            <textarea id="meta-description-ar" rows="3" class="form-control @error('metaDescription.ar') is-invalid @enderror" wire:model="metaDescription.ar"></textarea>
+                            @error('metaDescription.ar') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-0">
+                            <label for="meta-description-en" class="form-label">Meta description (English)</label>
+                            <textarea id="meta-description-en" rows="3" class="form-control @error('metaDescription.en') is-invalid @enderror" wire:model="metaDescription.en"></textarea>
+                            @error('metaDescription.en') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="card">
+            <div class="card-header">
                 <h4 class="card-title mb-0">Cover</h4>
             </div>
             <div class="card-body">

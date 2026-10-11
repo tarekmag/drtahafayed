@@ -31,6 +31,12 @@ class ArticleForm extends Component
     /** @var array{ar: string, en: string} */
     public array $body = ['ar' => '', 'en' => ''];
 
+    /** @var array{ar: string, en: string} */
+    public array $metaTitle = ['ar' => '', 'en' => ''];
+
+    /** @var array{ar: string, en: string} */
+    public array $metaDescription = ['ar' => '', 'en' => ''];
+
     public ?string $publishedAt = null;
 
     public int $readMinutes = 5;
@@ -58,6 +64,8 @@ class ArticleForm extends Component
             $this->title = $this->localePair($article->title);
             $this->excerpt = $this->localePair($article->excerpt);
             $this->body = $this->localePair($article->body);
+            $this->metaTitle = $this->localePair($article->meta_title);
+            $this->metaDescription = $this->localePair($article->meta_description);
             $this->publishedAt = $article->published_at?->toDateString();
             $this->readMinutes = $article->read_minutes;
             $this->cover = $article->cover;
@@ -87,6 +95,8 @@ class ArticleForm extends Component
         $this->title = $this->localePair($this->title);
         $this->excerpt = $this->localePair($this->excerpt);
         $this->body = $this->localePair($this->body);
+        $this->metaTitle = $this->localePair($this->metaTitle);
+        $this->metaDescription = $this->localePair($this->metaDescription);
         $this->publishedAt = trim((string) $this->publishedAt) ?: null;
 
         try {
@@ -114,6 +124,8 @@ class ArticleForm extends Component
             'title' => $this->title,
             'excerpt' => $this->excerpt,
             'body' => $this->body,
+            'meta_title' => $this->filledPair($this->metaTitle),
+            'meta_description' => $this->filledPair($this->metaDescription),
             'published_at' => $this->publishedAt,
             'read_minutes' => $this->readMinutes,
             'cover' => $this->cover,
@@ -162,6 +174,10 @@ class ArticleForm extends Component
             'excerpt.en' => ['required', 'string', 'max:500'],
             'body.ar' => ['required', 'string'],
             'body.en' => ['required', 'string'],
+            'metaTitle.ar' => ['nullable', 'string', 'max:180'],
+            'metaTitle.en' => ['nullable', 'string', 'max:180'],
+            'metaDescription.ar' => ['nullable', 'string', 'max:320'],
+            'metaDescription.en' => ['nullable', 'string', 'max:320'],
             'publishedAt' => ['required', 'date'],
             'readMinutes' => ['required', 'integer', 'min:1', 'max:120'],
             'sort' => ['required', 'integer', 'min:0'],
@@ -175,6 +191,15 @@ class ArticleForm extends Component
         $this->noticeType = $type;
         $this->noticeMessage = $message;
         $this->noticeKey++;
+    }
+
+    /**
+     * @param  array{ar: string, en: string}  $value
+     * @return array{ar: string, en: string}|null
+     */
+    private function filledPair(array $value): ?array
+    {
+        return ($value['ar'] === '' && $value['en'] === '') ? null : $value;
     }
 
     /**

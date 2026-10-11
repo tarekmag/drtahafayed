@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
-@section('meta_title', __('site.photos.meta_title'))
-@section('meta_description', __('site.photos.meta_description'))
+@section('meta_title', \App\Support\Content::seo('photos')['title'])
+@section('meta_description', \App\Support\Content::seo('photos')['description'])
 
 @section('content')
     <x-page-hero

@@ -32,6 +32,7 @@ class DatabaseSeeder extends Seeder
             ArticleSeeder::class,
             PhotoSeeder::class,
             VideoSeeder::class,
+            SeoPageSeeder::class,
         ]);
     }
 }

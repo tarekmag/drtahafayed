@@ -20,8 +20,8 @@
 
 @extends('frontend.layouts.app')
 
-@section('meta_title', __('site.home.meta_title'))
-@section('meta_description', __('site.home.meta_description'))
+@section('meta_title', \App\Support\Content::seo('home')['title'])
+@section('meta_description', \App\Support\Content::seo('home')['description'])
 
 @section('content')
     <section class="hero">

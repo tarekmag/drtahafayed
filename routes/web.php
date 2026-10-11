@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DoctorBioController;
 use App\Http\Controllers\Backend\MessageController;
 use App\Http\Controllers\Backend\PhotoController;
+use App\Http\Controllers\Backend\SeoController;
 use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Backend\VideoController;
 use App\Http\Controllers\Frontend\ArticleController;
@@ -61,4 +62,5 @@ Route::prefix('backend')->name('backend.')->middleware('auth')->group(function (
     Route::get('/messages/{contact}', [MessageController::class, 'show'])->name('messages.show');
     Route::get('/contacts', [ContactDataController::class, 'edit'])->name('contacts.edit');
     Route::get('/social', [SocialMediaController::class, 'edit'])->name('social.edit');
+    Route::get('/seo', [SeoController::class, 'edit'])->name('seo.edit');
 });

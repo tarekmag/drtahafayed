@@ -1,7 +1,7 @@
 @extends('frontend.layouts.app')
 
-@section('meta_title', __('site.clinics.meta_title'))
-@section('meta_description', __('site.clinics.meta_description'))
+@section('meta_title', \App\Support\Content::seo('clinics')['title'])
+@section('meta_description', \App\Support\Content::seo('clinics')['description'])
 
 @section('content')
     <x-page-hero
