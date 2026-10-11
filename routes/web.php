@@ -5,6 +5,7 @@ use App\Http\Controllers\Backend\ClinicController;
 use App\Http\Controllers\Backend\ContactDataController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DoctorBioController;
+use App\Http\Controllers\Backend\FaqController;
 use App\Http\Controllers\Backend\MessageController;
 use App\Http\Controllers\Backend\PhotoController;
 use App\Http\Controllers\Backend\ReviewController;
@@ -66,6 +67,9 @@ Route::prefix('backend')->name('backend.')->middleware('auth')->group(function (
     Route::get('/videos', [VideoController::class, 'index'])->name('videos.index');
     Route::get('/videos/create', [VideoController::class, 'create'])->name('videos.create');
     Route::get('/videos/{video}/edit', [VideoController::class, 'edit'])->name('videos.edit');
+    Route::get('/faqs', [FaqController::class, 'index'])->name('faqs.index');
+    Route::get('/faqs/create', [FaqController::class, 'create'])->name('faqs.create');
+    Route::get('/faqs/{faq}/edit', [FaqController::class, 'edit'])->name('faqs.edit');
     Route::get('/clinics', [ClinicController::class, 'index'])->name('clinics.index');
     Route::get('/clinics/create', [ClinicController::class, 'create'])->name('clinics.create');
     Route::get('/clinics/{clinic}/edit', [ClinicController::class, 'edit'])->name('clinics.edit');

@@ -2,7 +2,7 @@
 
 /*
 |--------------------------------------------------------------------------
-| DEMO DATA — general FAQs, to be managed from the dashboard
+| Seed source for the homepage FAQs. Edit them from the dashboard.
 |--------------------------------------------------------------------------
 | q / a: string or ['ar' => '', 'en' => '']. Answers are plain text.
 */

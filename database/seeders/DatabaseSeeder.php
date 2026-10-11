@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             ArticleSeeder::class,
             PhotoSeeder::class,
             VideoSeeder::class,
+            FaqSeeder::class,
             SeoPageSeeder::class,
             PatientReviewSeeder::class,
         ]);

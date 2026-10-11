@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Clinic;
 use App\Models\ClinicContact;
 use App\Models\Doctor;
+use App\Models\Faq;
 use App\Models\PatientReview;
 use App\Models\Photo;
 use App\Models\SeoPage;
@@ -19,7 +20,7 @@ use Illuminate\Support\Collection;
 
 /**
  * Single read model for public site content.
- * Doctor biography, contact details, social links, clinics, services, articles, photos, videos, reviews, and page SEO come from the database.
+ * Doctor biography, contact details, social links, clinics, services, articles, photos, videos, FAQs, reviews, and page SEO come from the database.
  * Other sections still read config until their dashboard screens replace those sources.
  */
 class Content
@@ -197,7 +198,12 @@ class Content
 
     public static function faqs(): Collection
     {
-        return self::items('faqs.items');
+        return Faq::query()
+            ->where('is_active', true)
+            ->orderBy('sort')
+            ->orderBy('id')
+            ->get()
+            ->map(fn (Faq $faq) => $faq->toContentArray());
     }
 
     public static function clinics(): Collection
@@ -281,13 +287,5 @@ class Content
         }
 
         return $best;
-    }
-
-    private static function items(string $key): Collection
-    {
-        return collect(config($key, []))
-            ->filter(fn (array $item) => $item['is_active'] ?? true)
-            ->sortBy(fn (array $item) => $item['sort'] ?? PHP_INT_MAX)
-            ->values();
     }
 }
