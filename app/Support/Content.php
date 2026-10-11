@@ -2,20 +2,23 @@
 
 namespace App\Support;
 
+use App\Models\Doctor;
 use Carbon\CarbonInterface;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 /**
  * Single read model for public site content.
- * Reads from config today; swap the item sources for Eloquent queries
- * when the dashboard is built, and the views stay unchanged.
+ * Doctor biography comes from the doctors table. Other sections still read config
+ * until their dashboard screens replace those sources. Views stay unchanged.
  */
 class Content
 {
     public static function doctor(): array
     {
-        return config('clinic.doctor', []);
+        $doctor = Doctor::query()->first();
+
+        return $doctor?->toContentArray() ?? [];
     }
 
     public static function contact(): array

@@ -43,7 +43,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="{{ route('backend.bio.edit') }}">
                         <i class="mdi mdi-book-open"></i> <span data-key="t-dr-bio">DR. Bio</span>
                     </a>
                 </li>

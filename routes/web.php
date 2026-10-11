@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Backend\DashboardController;
+use App\Http\Controllers\Backend\DoctorBioController;
 use App\Http\Controllers\Frontend\ArticleController;
 use App\Http\Controllers\Frontend\ServiceController;
 use Illuminate\Support\Facades\Auth;
@@ -32,9 +33,12 @@ Route::prefix('{locale}')
     });
 
 // Backend
-Route::prefix('backend')->name('backend.')->group(function () {
+Route::prefix('backend')->name('backend.')->middleware('auth')->group(function () {
     Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
     Route::get('/', [DashboardController::class, 'index'])
         ->middleware('auth')
         ->name('dashboard');
+    Route::get('/bio', [DoctorBioController::class, 'edit'])
+        ->middleware('auth')
+        ->name('bio.edit');
 });

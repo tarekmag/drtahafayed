@@ -81,6 +81,7 @@
     <!-- App js -->
     <script src="{{ asset('backendtheme/assets/js/app.js') }}"></script>
 
+    @stack('scripts')
     @livewireScripts
 </body>
 
