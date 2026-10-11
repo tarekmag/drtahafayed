@@ -49,7 +49,7 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="{{ route('backend.services.index') }}">
                         <i class="mdi mdi-briefcase-outline"></i> <span data-key="t-services">Services</span>
                     </a>
                 </li>

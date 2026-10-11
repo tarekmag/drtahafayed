@@ -9,15 +9,17 @@ use App\Models\Doctor;
 use App\Models\PatientReview;
 use App\Models\Photo;
 use App\Models\SeoPage;
+use App\Models\Service;
 use App\Models\SocialProfile;
 use App\Models\Video;
 use Carbon\CarbonInterface;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 /**
  * Single read model for public site content.
- * Doctor biography, contact details, social links, clinics, articles, photos, videos, reviews, and page SEO come from the database.
+ * Doctor biography, contact details, social links, clinics, services, articles, photos, videos, reviews, and page SEO come from the database.
  * Other sections still read config until their dashboard screens replace those sources.
  */
 class Content
@@ -77,9 +79,21 @@ class Content
         return SocialProfile::query()->first()?->toContentArray() ?? [];
     }
 
-    public static function services(): Collection
+    public static function services(?string $specialty = null, ?int $perPage = null): Collection|LengthAwarePaginator
     {
-        return self::items('medical_services.items');
+        $services = Service::query()
+            ->where('is_active', true)
+            ->when($specialty, fn ($query) => $query->where('specialty', $specialty))
+            ->orderBy('sort')
+            ->orderBy('id');
+
+        if ($perPage === null) {
+            return $services->get()->map(fn (Service $service) => $service->toContentArray());
+        }
+
+        return $services
+            ->paginate($perPage)
+            ->through(fn (Service $service) => $service->toContentArray());
     }
 
     public static function service(string $slug): ?array

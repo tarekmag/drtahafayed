@@ -5,6 +5,8 @@
 @php
     $title = LocaleText::get($service['title'] ?? '');
     $excerpt = LocaleText::get($service['excerpt'] ?? '');
+    $metaTitle = LocaleText::get($service['meta_title'] ?? '');
+    $metaDescription = LocaleText::get($service['meta_description'] ?? '');
     $body = LocaleText::get($service['body'] ?? '');
     $image = MediaEmbed::image($service['image'] ?? '');
     $video = MediaEmbed::video($service['video'] ?? '');
@@ -14,8 +16,8 @@
 
 @extends('frontend.layouts.app')
 
-@section('meta_title', $title.' | '.__('site.brand.name'))
-@section('meta_description', $excerpt)
+@section('meta_title', $metaTitle !== '' ? $metaTitle : $title.' | '.__('site.brand.name'))
+@section('meta_description', $metaDescription !== '' ? $metaDescription : $excerpt)
 
 @section('content')
     <x-page-hero

@@ -29,6 +29,7 @@ class DatabaseSeeder extends Seeder
             ClinicContactSeeder::class,
             SocialProfileSeeder::class,
             ClinicSeeder::class,
+            ServiceSeeder::class,
             ArticleSeeder::class,
             PhotoSeeder::class,
             VideoSeeder::class,

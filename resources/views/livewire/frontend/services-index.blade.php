@@ -15,8 +15,9 @@
     @else
         <div class="services-grid">
             @foreach ($services as $service)
-                <x-service-card :service="$service" :featured="$loop->first && $active === ''" :index="$loop->index" detailed />
+                <x-service-card :service="$service" :featured="$loop->first && $services->currentPage() === 1 && $active === ''" :index="$loop->index" detailed />
             @endforeach
         </div>
+        {{ $services->links() }}
     @endif
 </div>

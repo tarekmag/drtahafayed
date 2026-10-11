@@ -9,6 +9,7 @@ use App\Http\Controllers\Backend\MessageController;
 use App\Http\Controllers\Backend\PhotoController;
 use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\SeoController;
+use App\Http\Controllers\Backend\ServiceController as BackendServiceController;
 use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\VideoController;
@@ -48,6 +49,9 @@ Route::prefix('backend')->name('backend.')->middleware('auth')->group(function (
 
     Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
     Route::get('/bio', [DoctorBioController::class, 'edit'])->name('bio.edit');
+    Route::get('/services', [BackendServiceController::class, 'index'])->name('services.index');
+    Route::get('/services/create', [BackendServiceController::class, 'create'])->name('services.create');
+    Route::get('/services/{service}/edit', [BackendServiceController::class, 'edit'])->name('services.edit');
     Route::get('/articles', [BackendArticleController::class, 'index'])->name('articles.index');
     Route::get('/articles/create', [BackendArticleController::class, 'create'])->name('articles.create');
     Route::get('/articles/{article}/edit', [BackendArticleController::class, 'edit'])->name('articles.edit');

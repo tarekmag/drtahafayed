@@ -2,30 +2,30 @@
 
 namespace App\Livewire\Frontend;
 
+use App\Enums\Pagination;
 use App\Support\Content;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 
 class ServicesIndex extends Component
 {
+    use PaginatesContent;
+
     #[Url(except: '')]
     public string $category = '';
+
+    public function updatedCategory(): void
+    {
+        $this->resetPage();
+    }
 
     public function render()
     {
         $specialties = __('site.services.specialties');
-        $services = Content::services();
-
         $active = isset($specialties[$this->category]) ? $this->category : '';
 
-        if ($active !== '') {
-            $services = $services->filter(
-                fn (array $service) => ($service['specialty'] ?? '') === $active
-            )->values();
-        }
-
         return view('livewire.frontend.services-index', [
-            'services' => $services,
+            'services' => Content::services($active !== '' ? $active : null, Pagination::PER_PAGE),
             'specialties' => $specialties,
             'active' => $active,
         ]);
