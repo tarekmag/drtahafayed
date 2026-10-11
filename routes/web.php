@@ -27,6 +27,7 @@ Route::prefix('{locale}')
         Route::view('/photos', 'frontend.photos')->name('photos');
         Route::view('/videos', 'frontend.videos')->name('videos');
         Route::view('/contact', 'frontend.contact')->name('contact');
+        Route::view('/review', 'frontend.review')->name('review');
     });
 
 // Backend

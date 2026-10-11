@@ -24,6 +24,7 @@
             <a href="{{ route('site.articles') }}">{{ __('site.nav.articles') }}</a>
             <a href="{{ route('site.photos') }}">{{ __('site.nav.photos') }}</a>
             <a href="{{ route('site.videos') }}">{{ __('site.nav.videos') }}</a>
+            <a href="{{ route('site.review') }}">{{ __('site.nav.review') }}</a>
             <a href="{{ route('site.contact') }}">{{ __('site.nav.contact') }}</a>
         </nav>
 

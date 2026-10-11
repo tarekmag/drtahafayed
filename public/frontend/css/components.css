@@ -28,9 +28,18 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    gap: 1.2rem 2rem;
+    align-items: center;
+    gap: 1rem 1.5rem;
     max-width: 44rem;
     margin-bottom: 2.2rem;
+}
+
+.section-head.has-actions {
+    max-width: none;
+}
+
+.section-head-copy {
+    max-width: 40rem;
 }
 
 .section-head-center {
@@ -38,6 +47,20 @@
     text-align: center;
     flex-direction: column;
     align-items: center;
+}
+
+.section-head-actions {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.5rem;
+    flex: none;
+}
+
+.section-head-actions .btn {
+    min-height: 2.35rem;
+    padding: 0.3rem 0.9rem;
+    font-size: 0.92rem;
 }
 
 .section-text,
@@ -598,6 +621,106 @@ a:hover .link-arrow .icon,
 .stars .is-off {
     opacity: 0.25;
 }
+
+.review-form {
+    width: min(40rem, 100%);
+    margin-inline: auto;
+    padding: 1.5rem 1.4rem 1.4rem;
+    background: var(--surface);
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.review-form h2 {
+    margin-bottom: 0.35rem;
+}
+
+.review-wall {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+    gap: 1rem;
+    margin-bottom: 1.4rem;
+}
+
+.hp-field {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+}
+
+.star-picker {
+    border: 0;
+    margin: 0 0 0.95rem;
+    padding: 0;
+    display: grid;
+    gap: 0.45rem;
+}
+
+.star-picker legend {
+    font-weight: 700;
+    padding: 0;
+}
+
+.star-picker-stars {
+    display: flex;
+    flex-direction: row-reverse;
+    justify-content: flex-end;
+    direction: ltr;
+    gap: 0.2rem;
+}
+
+.star-picker-star {
+    position: relative;
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    cursor: pointer;
+    color: #d9d3c7;
+    border-radius: 0.45rem;
+}
+
+.star-picker-star input {
+    position: absolute;
+    inset: 0;
+    margin: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.star-picker-star .icon {
+    width: 1.7rem;
+    height: 1.7rem;
+    max-width: none;
+    pointer-events: none;
+}
+
+.star-picker-star:has(input:checked) .icon,
+.star-picker-star:has(input:checked) ~ .star-picker-star .icon {
+    color: var(--gold);
+}
+
+.star-picker-stars:hover .icon {
+    color: #d9d3c7;
+}
+
+.star-picker-stars:hover .star-picker-star:hover .icon,
+.star-picker-stars:hover .star-picker-star:hover ~ .star-picker-star .icon {
+    color: var(--gold);
+}
+
+.star-picker-star:focus-within {
+    outline: 2px solid rgba(46, 143, 158, 0.45);
+}
+
+.star-picker.is-invalid .star-picker-stars {
+    outline: 1px solid #b4534a;
+    outline-offset: 4px;
+    border-radius: 0.45rem;
+}
+
 
 .review-card blockquote {
     margin: 0;
