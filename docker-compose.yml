@@ -1,0 +1,109 @@
+services:
+    #PHP Service
+    app:
+        build:
+            context: .
+            dockerfile: docker/php/Dockerfile
+        restart: unless-stopped
+        tty: true
+        working_dir: /var/www
+        volumes:
+            - ./:/var/www
+            - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
+        networks:
+            - dr_taha_fayed_network
+
+    #Nginx Service
+    webserver:
+        image: nginx:alpine
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "8080:80"
+            - "4439:443"
+        volumes:
+            - ./:/var/www
+            - ./docker/nginx/conf.d/:/etc/nginx/conf.d/
+        networks:
+            - dr_taha_fayed_network
+
+    #MySQL Service
+    db:
+        image: mysql:latest
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "33069:3306"
+        environment:
+            MYSQL_DATABASE: dr_taha_fayed_db
+            MYSQL_ROOT_PASSWORD: root
+        volumes:
+            - ./docker/mysql/my.cnf:/etc/mysql/my.cnf
+        networks:
+            - dr_taha_fayed_network
+
+    #phpMyAdmin Service
+    phpmyadmin:
+        image: phpmyadmin/phpmyadmin
+        ports:
+            - "8081:80"
+        environment:
+            - PMA_HOST=db
+            - PMA_USER=root
+            - PMA_PASSWORD=root
+            - UPLOAD_LIMIT=600M
+        networks:
+            - dr_taha_fayed_network
+
+    #Redis Service
+    redis:
+        image: redis:alpine
+        restart: unless-stopped
+        tty: true
+        ports:
+            - "6379:6379"
+        networks:
+            - dr_taha_fayed_network
+
+    #mailhog Service
+    mailpit:
+        image: "axllent/mailpit:latest"
+        restart: unless-stopped
+        ports:
+            - "1025:1025"
+            - "8025:8025"
+        networks:
+            - dr_taha_fayed_network
+
+    #Elasticsearch Service
+    elasticsearch:
+        image: docker.elastic.co/elasticsearch/elasticsearch:9.0.0
+        restart: unless-stopped
+        environment:
+            - discovery.type=single-node
+            - xpack.security.enabled=false
+            - network.host=0.0.0.0
+            - "ES_JAVA_OPTS=-Xms512m -Xmx512m"
+            - bootstrap.memory_lock=false
+        ulimits:
+            memlock:
+                soft: -1
+                hard: -1
+            nofile:
+                soft: 65536
+                hard: 65536
+        ports:
+            - "9200:9200"
+            - "9300:9300"
+        volumes:
+            - elasticsearch_data:/usr/share/elasticsearch/data
+        networks:
+            - dr_taha_fayed_network
+
+#Networks
+networks:
+    dr_taha_fayed_network:
+
+#Volumes
+volumes:
+    elasticsearch_data:
