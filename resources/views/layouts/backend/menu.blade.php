@@ -61,13 +61,13 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="{{ route('backend.photos.index') }}">
                         <i class="mdi mdi-image"></i> <span data-key="t-photos">Photos</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="{{ route('backend.videos.index') }}">
                         <i class="mdi mdi-video"></i> <span data-key="t-videos">Videos</span>
                     </a>
                 </li>
@@ -114,7 +114,7 @@
 
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="#">
-                        <i class="mdi mdi-cog"></i> <span data-key="t-settings">Settings</span>
+                        <i class="mdi mdi-file-chart"></i> <span data-key="t-seo">SEO</span>
                     </a>
                 </li>
 

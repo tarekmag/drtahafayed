@@ -30,6 +30,8 @@ class DatabaseSeeder extends Seeder
             SocialProfileSeeder::class,
             ClinicSeeder::class,
             ArticleSeeder::class,
+            PhotoSeeder::class,
+            VideoSeeder::class,
         ]);
     }
 }

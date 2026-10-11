@@ -6,14 +6,16 @@ use App\Models\Article;
 use App\Models\Clinic;
 use App\Models\ClinicContact;
 use App\Models\Doctor;
+use App\Models\Photo;
 use App\Models\SocialProfile;
+use App\Models\Video;
 use Carbon\CarbonInterface;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 /**
  * Single read model for public site content.
- * Doctor biography, contact details, social links, clinics, and articles come from the database.
+ * Doctor biography, contact details, social links, clinics, articles, photos, and videos come from the database.
  * Other sections still read config until their dashboard screens replace those sources.
  */
 class Content
@@ -119,12 +121,22 @@ class Content
 
     public static function videos(): Collection
     {
-        return self::items('videos.items');
+        return Video::query()
+            ->where('is_active', true)
+            ->orderBy('sort')
+            ->orderBy('id')
+            ->get()
+            ->map(fn (Video $video) => $video->toContentArray());
     }
 
     public static function gallery(): Collection
     {
-        return self::items('gallery.items');
+        return Photo::query()
+            ->where('is_active', true)
+            ->orderBy('sort')
+            ->orderBy('id')
+            ->get()
+            ->map(fn (Photo $photo) => $photo->toContentArray());
     }
 
     public static function faqs(): Collection
