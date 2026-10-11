@@ -1,0 +1,387 @@
+.hero {
+    position: relative;
+    min-height: 100svh;
+    display: grid;
+    align-items: end;
+    color: white;
+    background: #10282e;
+    overflow: hidden;
+}
+
+.hero-media {
+    position: absolute;
+    inset: 0;
+}
+
+.hero-media img,
+.hero-media picture,
+.hero-media picture img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 18%;
+}
+
+.hero-media::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        linear-gradient(180deg, rgba(16, 40, 46, 0.2) 0%, rgba(16, 40, 46, 0.55) 48%, rgba(16, 40, 46, 0.92) 100%),
+        linear-gradient(90deg, rgba(16, 40, 46, 0.55), transparent 58%);
+}
+
+.hero-grid {
+    position: relative;
+    z-index: 1;
+    display: grid;
+    gap: 1.6rem;
+    padding-block: calc(var(--header) + 4.5rem) 3.4rem;
+}
+
+.hero-copy .lede {
+    max-width: 38rem;
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 1.12rem;
+}
+
+.hero-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    margin-top: 1.4rem;
+}
+
+.hero-card {
+    background: rgba(255, 255, 255, 0.96);
+    color: var(--ink);
+    border-radius: 1.2rem;
+    padding: 1.15rem 1.2rem;
+    box-shadow: var(--shadow-deep);
+    max-width: 22rem;
+}
+
+.hero-card small {
+    display: block;
+    color: var(--gold);
+    font-weight: 700;
+    letter-spacing: 0.06em;
+}
+
+.hero-card strong {
+    display: block;
+    font-family: var(--display);
+    font-size: 1.25rem;
+    margin: 0.25rem 0 0.15rem;
+}
+
+.hero-card p {
+    margin: 0;
+    color: var(--muted);
+}
+
+.scroll-hint {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.45rem;
+    margin-top: 1.6rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    font-size: 0.9rem;
+}
+
+.specialties {
+    display: grid;
+    gap: 1rem;
+}
+
+.specialty {
+    display: grid;
+    gap: 0.45rem;
+    padding: 1.2rem 1.15rem;
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+}
+
+.specialty-icon {
+    display: grid;
+    place-items: center;
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 0.85rem;
+    background: #e7f4f3;
+    color: var(--accent-deep);
+}
+
+.journey {
+    display: grid;
+    gap: 1rem;
+    counter-reset: step;
+}
+
+.journey-step {
+    position: relative;
+    padding: 1.15rem 1.15rem 1.15rem 1.2rem;
+    background: white;
+    border-radius: var(--radius);
+    border: 1px solid var(--line);
+}
+
+.journey-step::before {
+    counter-increment: step;
+    content: counter(step, decimal-leading-zero);
+    display: block;
+    font-family: var(--display);
+    color: var(--gold);
+    font-size: 1.4rem;
+    margin-bottom: 0.3rem;
+}
+
+.split {
+    display: grid;
+    gap: 2rem;
+    align-items: center;
+}
+
+.split-media {
+    position: relative;
+}
+
+.split-media::before {
+    content: "";
+    position: absolute;
+    inset-inline-start: -0.8rem;
+    inset-block-end: -0.8rem;
+    width: 48%;
+    height: 42%;
+    background: var(--gold-soft);
+    border-radius: 1.3rem;
+}
+
+.split-media img,
+.split-media picture img {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 4 / 5;
+    object-fit: cover;
+    object-position: center 16%;
+    border-radius: 1.5rem;
+}
+
+.credentials {
+    list-style: none;
+    margin: 1.2rem 0 0;
+    padding: 0;
+    display: grid;
+    gap: 0.55rem;
+}
+
+.credentials li {
+    display: flex;
+    gap: 0.6rem;
+    align-items: start;
+}
+
+.credentials .icon {
+    color: var(--gold);
+    margin-top: 0.2rem;
+}
+
+.page-hero {
+    position: relative;
+    background: var(--deep);
+    color: white;
+    padding-block: 3.2rem 3.2rem;
+    overflow: hidden;
+}
+
+.page-home .page-hero {
+    padding-block-start: 0;
+}
+
+.page-hero-glow {
+    position: absolute;
+    inset-inline-end: -8rem;
+    top: -6rem;
+    width: 22rem;
+    height: 22rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(201, 169, 110, 0.18), transparent 68%);
+}
+
+.page-hero-inner {
+    position: relative;
+}
+
+.page-hero-lede {
+    max-width: 40rem;
+    color: rgba(255, 255, 255, 0.78);
+}
+
+.service-layout,
+.article-layout,
+.contact-grid {
+    display: grid;
+    gap: 1.6rem;
+}
+
+.booking-card,
+.contact-card,
+.contact-form,
+.toc-card {
+    padding: 1.3rem 1.25rem;
+}
+
+.channel {
+    margin-bottom: 1rem;
+}
+
+.channel h3 {
+    margin-bottom: 0.25rem;
+}
+
+.booking-card {
+    position: sticky;
+    top: 6.4rem;
+}
+
+.rich-text > * + * {
+    margin-top: 0.9rem;
+}
+
+.rich-text h2,
+.rich-text h3 {
+    margin-top: 1.6rem;
+}
+
+.rich-text ul,
+.rich-text ol {
+    padding-inline-start: 1.2rem;
+}
+
+.rich-text a {
+    color: var(--accent-deep);
+}
+
+.rich-text img,
+.rich-text iframe {
+    border-radius: 1rem;
+}
+
+.rich-text blockquote {
+    margin: 1.2rem 0;
+    padding: 0.2rem 1rem;
+    border-inline-start: 3px solid var(--gold);
+    color: var(--muted);
+    font-family: var(--display);
+    font-size: 1.2rem;
+}
+
+.media-frame {
+    position: relative;
+    overflow: hidden;
+    border-radius: 1.15rem;
+    background: #10282e;
+    aspect-ratio: 16 / 9;
+}
+
+.media-frame iframe,
+.media-frame video,
+.media-frame img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border: 0;
+}
+
+.article-toolbar {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.7rem;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 1.2rem;
+}
+
+.share-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+}
+
+.toc-card a {
+    display: block;
+    text-decoration: none;
+    padding-block: 0.35rem;
+    color: var(--muted);
+}
+
+.toc-card a:hover,
+.toc-card a.is-active {
+    color: var(--accent-deep);
+}
+
+.values,
+.pillars {
+    display: grid;
+    gap: 1rem;
+}
+
+.value-card,
+.pillar-card {
+    background: white;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 1.2rem;
+}
+
+.article-hero-card {
+    display: grid;
+}
+
+@media (min-width: 860px) {
+    .hero-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: end;
+    }
+
+    .hero-card {
+        justify-self: end;
+    }
+
+    .specialties,
+    .values,
+    .pillars {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .journey {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .split,
+    .service-layout,
+    .contact-grid {
+        grid-template-columns: 1.2fr 0.8fr;
+        align-items: start;
+    }
+
+    .article-layout {
+        grid-template-columns: 0.34fr 0.66fr;
+    }
+
+    .split.is-reverse {
+        grid-template-columns: 0.9fr 1.1fr;
+    }
+}
+
+@media (max-width: 699px) {
+    .hero {
+        min-height: 92svh;
+    }
+
+    .journey {
+        grid-template-columns: 1fr;
+    }
+}

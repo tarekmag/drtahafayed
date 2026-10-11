@@ -1,9 +1,15 @@
+@use('App\Support\Content')
+@use('App\Support\LocaleText')
+@use('App\Support\MediaEmbed')
+
 @php
-    $title = \App\Support\LocaleText::get($service['title'] ?? '');
-    $excerpt = \App\Support\LocaleText::get($service['excerpt'] ?? '');
-    $body = \App\Support\LocaleText::get($service['body'] ?? '');
-    $image = \App\Support\MediaEmbed::image($service['image'] ?? '');
-    $video = \App\Support\MediaEmbed::video($service['video'] ?? '');
+    $title = LocaleText::get($service['title'] ?? '');
+    $excerpt = LocaleText::get($service['excerpt'] ?? '');
+    $body = LocaleText::get($service['body'] ?? '');
+    $image = MediaEmbed::image($service['image'] ?? '');
+    $video = MediaEmbed::video($service['video'] ?? '');
+    $faqs = $service['faqs'] ?? [];
+    $whatsapp = Content::whatsappUrl(__('site.contact.wa_intro').' — '.$title);
 @endphp
 
 @extends('frontend.layouts.app')
@@ -12,43 +18,69 @@
 @section('meta_description', $excerpt)
 
 @section('content')
+    <x-page-hero
+        :eyebrow="__('site.nav.services')"
+        :title="$title"
+        :lede="$excerpt"
+        :crumbs="[__('site.nav.services') => route('site.services'), $title => null]"
+    />
+
     <article class="section">
-        <div class="container service-detail">
-            <p class="service-back">
-                <a class="text-link" href="{{ route('site.services') }}">{{ __('site.services.back') }}</a>
-            </p>
-
-            @if ($image)
-                <img class="service-cover" src="{{ $image }}" alt="{{ $title }}" width="800" height="500">
-            @endif
-
-            <header class="service-heading">
-                <h1>{{ $title }}</h1>
-                @if ($excerpt !== '')
-                    <p class="lede">{{ $excerpt }}</p>
+        <div class="container service-layout">
+            <div>
+                @if ($image)
+                    <img class="service-cover" src="{{ $image }}" alt="{{ $title }}" style="width:100%;border-radius:1.2rem;margin-bottom:1.4rem">
                 @endif
-            </header>
-
-            <div class="service-explain">
-                <div class="service-video">
-                    @if ($video && $video['type'] === 'file')
-                        <video class="service-player" controls playsinline preload="metadata" src="{{ $video['src'] }}"></video>
-                    @elseif ($video)
-                        <iframe class="service-player" src="{{ $video['src'] }}" title="{{ $title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
-                    @else
-                        <div class="service-video-empty">
-                            <span class="play-mark" aria-hidden="true"></span>
-                            <p>{{ __('site.services.video_pending') }}</p>
-                        </div>
-                    @endif
-                </div>
 
                 @if ($body !== '')
                     <div class="rich-text">
                         {!! $body !!}
                     </div>
                 @endif
+
+                <div class="media-frame" style="margin-top:2rem">
+                    @if ($video && $video['type'] === 'file')
+                        <video controls playsinline preload="metadata" src="{{ $video['src'] }}"></video>
+                    @elseif ($video)
+                        <iframe src="{{ $video['src'] }}" title="{{ $title }}" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+                    @else
+                        <div class="empty-panel" style="height:100%;border:0;background:transparent;color:white">
+                            <p>{{ __('site.services.video_pending') }}</p>
+                        </div>
+                    @endif
+                </div>
+
+                @if ($faqs)
+                    <div style="margin-top:2.4rem">
+                        <h2>{{ __('site.services.faq_title') }}</h2>
+                        <x-faq-list :items="$faqs" group="service-faq" />
+                    </div>
+                @endif
             </div>
+
+            <aside class="booking-card">
+                <h2>{{ __('site.services.booking_title') }}</h2>
+                <p>{{ __('site.services.booking_text') }}</p>
+                <div class="clinic-actions">
+                    <x-button :href="Content::bookingUrl()" variant="gold" icon="calendar">{{ __('site.nav.book') }}</x-button>
+                    @if ($whatsapp)
+                        <x-button :href="$whatsapp" variant="outline" icon="whatsapp" external>{{ __('site.common.whatsapp') }}</x-button>
+                    @endif
+                </div>
+            </aside>
         </div>
     </article>
+
+    @if ($related->isNotEmpty())
+        <section class="section section-sand">
+            <div class="container">
+                <x-section-head :title="__('site.common.related_services')" />
+                <div class="services-grid">
+                    @foreach ($related as $item)
+                        <x-service-card :service="$item" :index="$loop->index" />
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
 @endsection

@@ -1,0 +1,33 @@
+:root {
+    --bg: #f5f2ec;
+    --sand: #ebe4d6;
+    --surface: #ffffff;
+    --ink: #1c3338;
+    --muted: #5c7278;
+    --line: #ddd4c6;
+    --accent: #2e8f9e;
+    --accent-deep: #1f6f7c;
+    --deep: #14343c;
+    --gold: #c9a96e;
+    --gold-soft: #e8d7b0;
+    --shadow: 0 18px 50px rgba(20, 52, 60, 0.08);
+    --shadow-deep: 0 28px 70px rgba(20, 52, 60, 0.16);
+    --radius: 1.25rem;
+    --radius-sm: 0.85rem;
+    --font: "Cairo", "Segoe UI", Tahoma, sans-serif;
+    --display-ar: "Alexandria", "Cairo", sans-serif;
+    --display-en: "Cormorant Garamond", "Times New Roman", serif;
+    --ease: cubic-bezier(0.22, 1, 0.36, 1);
+    --dur: 0.65s;
+    --stagger: 80ms;
+    --header: 5.6rem;
+    --dock: 4.4rem;
+}
+
+html[lang="ar"] {
+    --display: var(--display-ar);
+}
+
+html[lang="en"] {
+    --display: var(--display-en);
+}

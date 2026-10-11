@@ -4,21 +4,16 @@
 @section('meta_description', __('site.articles.meta_description'))
 
 @section('content')
-    <header class="page-hero">
-        <div class="container">
-            <p class="eyebrow">{{ __('site.articles.eyebrow') }}</p>
-            <h1>{{ __('site.articles.title') }}</h1>
-            <p class="lede">{{ __('site.articles.lede') }}</p>
-        </div>
-    </header>
+    <x-page-hero
+        :eyebrow="__('site.articles.eyebrow')"
+        :title="__('site.articles.title')"
+        :lede="__('site.articles.lede')"
+        :crumbs="[__('site.nav.articles') => null]"
+    />
 
     <section class="section">
         <div class="container">
-            <div class="article-grid">
-                @foreach (__('site.articles.items') as $article)
-                    @include('frontend.partials.article-card', ['article' => $article, 'index' => $loop->index])
-                @endforeach
-            </div>
+            <livewire:frontend.articles-index />
         </div>
     </section>
 @endsection

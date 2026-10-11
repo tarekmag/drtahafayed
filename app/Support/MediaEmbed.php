@@ -19,6 +19,13 @@ class MediaEmbed
         return asset(ltrim($value, '/'));
     }
 
+    public static function thumbnail(?string $value): ?string
+    {
+        $id = self::youtubeId((string) $value);
+
+        return $id ? 'https://i.ytimg.com/vi/'.$id.'/hqdefault.jpg' : null;
+    }
+
     /**
      * @return array{type: string, src: string}|null
      */
@@ -30,10 +37,10 @@ class MediaEmbed
             return null;
         }
 
-        if (preg_match('/(?:youtube\.com\/(?:watch\?v=|embed\/)|youtu\.be\/)([\w-]{6,})/i', $value, $matches)) {
+        if ($id = self::youtubeId($value)) {
             return [
                 'type' => 'iframe',
-                'src' => 'https://www.youtube.com/embed/'.$matches[1],
+                'src' => 'https://www.youtube-nocookie.com/embed/'.$id,
             ];
         }
 
@@ -59,5 +66,37 @@ class MediaEmbed
         }
 
         return null;
+    }
+
+    /**
+     * Google Maps link and embed source for a search query, "lat,lng", or a full https URL.
+     *
+     * @return array{link: string, src: string}|null
+     */
+    public static function map(?string $value): ?array
+    {
+        $value = trim((string) $value);
+
+        if ($value === '') {
+            return null;
+        }
+
+        if (preg_match('#^https?://#i', $value)) {
+            return ['link' => $value, 'src' => $value];
+        }
+
+        $query = rawurlencode($value);
+
+        return [
+            'link' => 'https://www.google.com/maps/search/?api=1&query='.$query,
+            'src' => 'https://maps.google.com/maps?q='.$query.'&z=15&output=embed',
+        ];
+    }
+
+    private static function youtubeId(string $value): ?string
+    {
+        return preg_match('/(?:youtube\.com\/(?:watch\?v=|embed\/|shorts\/)|youtu\.be\/)([\w-]{6,})/i', $value, $matches)
+            ? $matches[1]
+            : null;
     }
 }

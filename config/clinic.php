@@ -1,64 +1,155 @@
 <?php
 
+/*
+|--------------------------------------------------------------------------
+| DEMO DATA — replace from the dashboard before launch
+|--------------------------------------------------------------------------
+| Everything below (credentials, stats, phones, addresses, hours) is sample
+| content so the doctor can review the design. None of it is verified.
+|
+| Text fields: a string, or ['ar' => '', 'en' => ''].
+| HTML fields (doctor.bio): trusted editor HTML, printed unescaped.
+| whatsapp: digits with the country code.
+| booking_url: empty sends visitors to the contact page.
+|
+| clinics.*.days: working weekdays, 0 = Sunday … 6 = Saturday.
+| clinics.*.opens / closes: 24h "HH:MM", used for the "next session" card.
+| clinics.*.map: search query, "lat,lng", or a full https URL.
+| clinics.*.photos: public paths or https URLs.
+*/
+
 return [
 
-    /*
-    | Public contact details for the clinic website.
-    | Leave a value empty until it is confirmed. Empty phone, email,
-    | and WhatsApp are hidden on the site.
-    | WhatsApp, when added, should be digits with the country code.
-    |
-    | Clinics are added from the dashboard later. Each clinic is independent:
-    | name, address, and hours as a string, or ['ar' => '', 'en' => ''].
-    | phone is that clinic's number, not the general site phone.
-    | map is a search query (address or "latitude,longitude")
-    | or a full https URL. It becomes the Google Maps link.
-    | photos is a list of public paths or https URLs for that branch.
-    */
+    'phone' => '01000000000',
+    'whatsapp' => '201000000000',
+    'email' => 'clinic@drtahafayed.com',
+    'booking_url' => '',
 
-    'phone' => '',
-    'email' => '',
-    'whatsapp' => '',
     'facebook' => 'https://www.facebook.com/dr.taha.fayed',
     'youtube' => 'http://0.0.0.0:8080/ar/contact',
     'tiktok' => 'http://0.0.0.0:8080/ar/contact',
+
+    'doctor' => [
+        'name' => ['ar' => 'د. طه فايد', 'en' => 'Dr. Taha Fayed'],
+        'title' => [
+            'ar' => 'استشاري الجراحة العامة وجراحة الأورام والغدد الصماء',
+            'en' => 'Consultant in General, Oncologic and Endocrine Surgery',
+        ],
+        'summary' => [
+            'ar' => 'رعاية جراحية دقيقة تبدأ بالاستماع، وتشرح كل خطوة بوضوح قبل أي قرار.',
+            'en' => 'Precise surgical care that starts with listening and explains every step before any decision.',
+        ],
+        'bio' => [
+            'ar' => '<p>د. طه فايد استشاري الجراحة العامة وجراحة الأورام والغدد الصماء، ويعمل في تشخيص وعلاج حالات الغدة الدرقية والجار درقية، وأورام الثدي والجهاز الهضمي، وجراحات البطن بالمنظار.</p><p>يؤمن بأن المريض شريك في القرار. لذلك تبدأ الزيارة بشرح هادئ للتشخيص، ثم عرض الخيارات المتاحة بمزاياها وحدودها، قبل الاتفاق على خطة العلاج.</p><p>يتابع المريض بعد العملية خطوة بخطوة حتى التعافي الكامل، بالتنسيق مع فريق متعدد التخصصات عند الحاجة.</p>',
+            'en' => '<p>Dr. Taha Fayed is a consultant in general, oncologic and endocrine surgery. His work covers thyroid and parathyroid disease, breast and digestive tract tumours, and laparoscopic abdominal surgery.</p><p>He treats the patient as a partner in every decision. A visit starts with a calm explanation of the diagnosis and the available options, with their benefits and limits, before a treatment plan is agreed.</p><p>Follow-up continues step by step after surgery until full recovery, in coordination with a multidisciplinary team when needed.</p>',
+        ],
+        'credentials' => [
+            ['ar' => 'دكتوراه الجراحة العامة، كلية الطب، جامعة عين شمس', 'en' => 'MD in General Surgery, Faculty of Medicine, Ain Shams University'],
+            ['ar' => 'ماجستير الجراحة العامة، جامعة عين شمس', 'en' => 'MSc in General Surgery, Ain Shams University'],
+            ['ar' => 'زمالة جراحة الغدد الصماء والأورام', 'en' => 'Fellowship in Endocrine and Oncologic Surgery'],
+            ['ar' => 'عضو الجمعية المصرية للجراحين', 'en' => 'Member of the Egyptian Society of Surgeons'],
+            ['ar' => 'عضو الجمعية الأوروبية لجراحة الغدد الصماء', 'en' => 'Member of the European Society of Endocrine Surgeons'],
+        ],
+        'stats' => [
+            ['value' => 15, 'suffix' => '+', 'label' => ['ar' => 'سنة خبرة', 'en' => 'Years of experience']],
+            ['value' => 4000, 'suffix' => '+', 'label' => ['ar' => 'عملية جراحية', 'en' => 'Operations performed']],
+            ['value' => 5, 'suffix' => '', 'label' => ['ar' => 'فروع', 'en' => 'Clinics']],
+            ['value' => 98, 'suffix' => '%', 'label' => ['ar' => 'رضا المرضى', 'en' => 'Patient satisfaction']],
+        ],
+        'hero_image' => 'assets/images/dr-1.jpeg',
+        'portrait' => 'assets/images/dr-2.jpeg',
+    ],
+
     'clinics' => [
         [
-            'id' => 'maadi',
-            'name' => ['ar' => 'عيادة المعادي', 'en' => 'Maadi clinic'],
-            'address' => ['ar' => '١٢ شارع النيل، المعادي، الدور الثاني', 'en' => '12 Nile Street, Maadi, 2nd floor'],
-            'hours' => ['ar' => 'الأحد والأربعاء: من 7 إلى 10 مساءً', 'en' => 'Sunday and Wednesday, 7 to 10 pm'],
-            'phone' => '01000000001',
-            'map' => 'Nile Street, Maadi, Cairo',
-            'photos' => [
-                'assets/images/dr-1.jpeg',
-                'assets/images/dr-2.jpeg',
-                'assets/images/dr-3.jpeg',
+            'id' => 'heliopolis',
+            'sort' => 1,
+            'is_active' => true,
+            'name' => ['ar' => 'عيادة مصر الجديدة', 'en' => 'Heliopolis clinic'],
+            'address' => [
+                'ar' => '160 شارع الحجاز، بجوار بي تك وبنك CIB',
+                'en' => '160 Hegaz Street, next to B.TECH and CIB Bank',
             ],
-        ],
-        [
-            'id' => 'mohandessin',
-            'name' => ['ar' => 'عيادة المهندسين', 'en' => 'Mohandessin clinic'],
-            'address' => ['ar' => '٨ شارع جامعة الدول العربية، المهندسين، الدور الثالث', 'en' => '8 Gamet El Dewal Street, Mohandessin, 3rd floor'],
-            'hours' => ['ar' => 'الاثنين والخميس: من 7 إلى 10 مساءً', 'en' => 'Monday and Thursday, 7 to 10 pm'],
-            'phone' => '01000000002',
-            'map' => 'Gamet El Dewal Al Arabeya, Mohandessin, Giza',
+            'hours' => ['ar' => '', 'en' => ''],
+            'days' => [],
+            'opens' => '',
+            'closes' => '',
+            'phone' => '',
+            'map' => '160 Hegaz Street, Heliopolis, Cairo',
             'photos' => [
-                'assets/images/dr-2.jpeg',
-                'assets/images/dr-4.jpeg',
+                'assets/images/clinic-1.jpeg',
+                'assets/images/clinic-2.jpeg',
             ],
         ],
         [
             'id' => 'tagamoa',
-            'name' => ['ar' => 'عيادة التجمع', 'en' => 'New Cairo clinic'],
-            'address' => ['ar' => 'التجمع الخامس، شارع التسعين الشمالي، عمارة ١٢، الدور الثالث', 'en' => 'Fifth Settlement, North 90th Street, building 12, 3rd floor'],
-            'hours' => ['ar' => 'السبت: من 5 إلى 7 مساءً', 'en' => 'Saturday, 5 to 7 pm'],
-            'phone' => '01000000003',
-            'map' => 'North 90th Street, Fifth Settlement, New Cairo',
-            'photos' => [
-                'assets/images/dr-3.jpeg',
-                'assets/images/dr-1.jpeg',
+            'sort' => 2,
+            'is_active' => true,
+            'name' => ['ar' => 'عيادة التجمع الخامس', 'en' => 'Fifth Settlement clinic'],
+            'address' => [
+                'ar' => 'مول CMC، التسعين الشمالي، بجوار مستشفى شفا',
+                'en' => 'CMC Mall, North 90th Street, next to Shifa Hospital',
             ],
+            'hours' => ['ar' => '', 'en' => ''],
+            'days' => [],
+            'opens' => '',
+            'closes' => '',
+            'phone' => '',
+            'map' => 'CMC Cairo Medical Center, North 90th Street, Fifth Settlement, New Cairo',
+            'photos' => [
+                'assets/images/clinic-3.jpeg',
+            ],
+        ],
+        [
+            'id' => 'obour',
+            'sort' => 3,
+            'is_active' => true,
+            'name' => ['ar' => 'عيادة العبور', 'en' => 'Obour clinic'],
+            'address' => [
+                'ar' => 'سنتر الشريف، الحي الأول، خلف سنتر العبور',
+                'en' => 'Al Sherif Centre, First District, behind Obour Centre',
+            ],
+            'hours' => ['ar' => '', 'en' => ''],
+            'days' => [],
+            'opens' => '',
+            'closes' => '',
+            'phone' => '',
+            'map' => 'Al Sherif Center, First District, Obour City',
+            'photos' => [],
+        ],
+        [
+            'id' => 'marg',
+            'sort' => 4,
+            'is_active' => true,
+            'name' => ['ar' => 'عيادة المرج', 'en' => 'El Marg clinic'],
+            'address' => [
+                'ar' => 'أمام مستشفى اليوم الواحد، شارع مؤسسة الزكاة',
+                'en' => 'Opposite the One Day Hospital, Moassaset Al Zakah Street',
+            ],
+            'hours' => ['ar' => '', 'en' => ''],
+            'days' => [],
+            'opens' => '',
+            'closes' => '',
+            'phone' => '',
+            'map' => 'One Day Hospital, Moassaset Al Zakah Street, El Marg, Cairo',
+            'photos' => [],
+        ],
+        [
+            'id' => 'khosous',
+            'sort' => 5,
+            'is_active' => true,
+            'name' => ['ar' => 'عيادة الخصوص', 'en' => 'El Khosous clinic'],
+            'address' => [
+                'ar' => 'أمام مدرسة الخلفاء، خلف قسم شرطة الخصوص',
+                'en' => 'Opposite Al Khulafa School, behind El Khosous Police Station',
+            ],
+            'hours' => ['ar' => '', 'en' => ''],
+            'days' => [],
+            'opens' => '',
+            'closes' => '',
+            'phone' => '',
+            'map' => 'Al Khulafa School, El Khosous, Qalyubia',
+            'photos' => [],
         ],
     ],
 

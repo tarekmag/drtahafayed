@@ -1,3 +1,23 @@
+@use('App\Support\Content')
+@use('App\Support\LocaleText')
+
+@php
+    $doctor = Content::doctor();
+    $next = Content::nextClinic();
+    $services = Content::services();
+    $articles = Content::articles()->take(3);
+    $photos = Content::gallery()->take(6);
+    $faqs = Content::faqs();
+    $nextLabel = null;
+
+    if ($next) {
+        $date = $next['date'];
+        $nextLabel = $date->isToday()
+            ? __('site.home.today')
+            : ($date->isTomorrow() ? __('site.home.tomorrow') : $date->locale(app()->getLocale())->translatedFormat('l'));
+    }
+@endphp
+
 @extends('frontend.layouts.app')
 
 @section('meta_title', __('site.home.meta_title'))
@@ -5,119 +25,181 @@
 
 @section('content')
     <section class="hero">
+        <div class="hero-media">
+            <x-picture :src="$doctor['hero_image'] ?? 'assets/images/dr-1.jpeg'" :alt="__('site.about.portrait_alt')" sizes="100vw" priority />
+        </div>
         <div class="container hero-grid">
             <div class="hero-copy">
-                <p class="eyebrow">{{ __('site.brand.specialty') }}</p>
-                <h1>{{ __('site.brand.name') }}</h1>
-                <p class="lede">{{ __('site.home.lede') }}</p>
+                <p class="eyebrow eyebrow-light">{{ LocaleText::get($doctor['title'] ?? __('site.brand.specialty')) }}</p>
+                <h1>{{ LocaleText::get($doctor['name'] ?? __('site.brand.name')) }}</h1>
+                <p class="lede">{{ __('site.home.hero_lede') }}</p>
                 <div class="hero-actions">
-                    <a class="btn btn-accent" href="{{ route('site.contact') }}">{{ __('site.nav.book') }}</a>
-                    <a class="btn btn-ghost" href="{{ route('site.about') }}">{{ __('site.nav.about') }}</a>
+                    <x-button :href="Content::bookingUrl()" variant="gold" icon="calendar">{{ __('site.nav.book') }}</x-button>
+                    <x-button :href="route('site.services')" variant="light-outline">{{ __('site.home.hero_services') }}</x-button>
                 </div>
+                <a class="scroll-hint" href="#specialties">{{ __('site.common.scroll') }} <x-icon name="chevron-down" /></a>
             </div>
-            <div class="hero-media">
-                <img src="{{ asset('assets/images/dr-1.jpeg') }}" alt="{{ __('site.photos.alt.dr1') }}" fetchpriority="high">
+            @if ($next)
+                <aside class="hero-card reveal">
+                    <small>{{ __('site.home.next_label') }}</small>
+                    <strong>{{ LocaleText::get($next['clinic']['name'] ?? '') }}</strong>
+                    <p>{{ $nextLabel }} · {{ LocaleText::get($next['clinic']['hours'] ?? '') }}</p>
+                </aside>
+            @endif
+        </div>
+    </section>
+
+    <section class="section" id="specialties">
+        <div class="container">
+            <div class="specialties">
+                @foreach (__('site.home.specialties') as $item)
+                    <article class="specialty reveal" style="--i: {{ $loop->index }}">
+                        <span class="specialty-icon"><x-icon :name="$item['icon']" /></span>
+                        <h3>{{ $item['title'] }}</h3>
+                        <p>{{ $item['text'] }}</p>
+                    </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-sand">
+        <div class="container">
+            <x-section-head
+                :eyebrow="__('site.home.services_eyebrow')"
+                :title="__('site.home.services_title')"
+                :text="__('site.home.services_text')"
+            >
+                <x-slot:actions>
+                    <x-button :href="route('site.services')" variant="outline">{{ __('site.common.all_services') }}</x-button>
+                </x-slot:actions>
+            </x-section-head>
+            <div class="services-grid">
+                @foreach ($services as $service)
+                    <x-service-card :service="$service" :featured="$loop->first" :index="$loop->index" />
+                @endforeach
             </div>
         </div>
     </section>
 
     <section class="section">
         <div class="container">
-            <div class="section-head reveal">
-                <p class="eyebrow">{{ __('site.home.services_eyebrow') }}</p>
-                <h2>{{ __('site.home.services_title') }}</h2>
-                <p>{{ __('site.home.services_text') }}</p>
-            </div>
-            <div class="services-grid">
-                @foreach (config('medical_services.items') as $service)
-                    @include('frontend.partials.service-card', ['service' => $service, 'index' => $loop->index])
+            <x-section-head
+                align="center"
+                :eyebrow="__('site.home.journey_eyebrow')"
+                :title="__('site.home.journey_title')"
+                :text="__('site.home.journey_text')"
+            />
+            <div class="journey">
+                @foreach (__('site.home.journey') as $step)
+                    <article class="journey-step reveal" style="--i: {{ $loop->index }}">
+                        <h3>{{ $step['title'] }}</h3>
+                        <p>{{ $step['text'] }}</p>
+                    </article>
                 @endforeach
             </div>
-            <p class="section-more">
-                <a class="text-link" href="{{ route('site.services') }}">{{ __('site.common.all_services') }}</a>
-            </p>
         </div>
     </section>
 
     <section class="section section-sand">
         <div class="container split">
             <div class="split-media reveal">
-                <img src="{{ asset('assets/images/dr-2.jpeg') }}" alt="{{ __('site.about.portrait_alt') }}" loading="lazy">
+                <x-picture :src="$doctor['portrait'] ?? 'assets/images/dr-2.jpeg'" :alt="__('site.about.portrait_alt')" sizes="(min-width: 860px) 42vw, 100vw" />
             </div>
-            <div class="split-copy reveal" style="--delay: 80ms">
+            <div class="split-copy reveal" style="--i: 1">
                 <p class="eyebrow">{{ __('site.home.about_eyebrow') }}</p>
                 <h2>{{ __('site.home.about_title') }}</h2>
-                <p>{{ __('site.home.about_text') }}</p>
-                <a class="btn btn-accent" href="{{ route('site.about') }}">{{ __('site.home.about_cta') }}</a>
+                <div class="rich-text">{!! LocaleText::get($doctor['summary'] ?? '') !!}</div>
+                @if (! empty($doctor['credentials']))
+                    <h3>{{ __('site.home.credentials_title') }}</h3>
+                    <ul class="credentials">
+                        @foreach (array_slice($doctor['credentials'], 0, 4) as $item)
+                            <li><x-icon name="check" /> <span>{{ LocaleText::get($item) }}</span></li>
+                        @endforeach
+                    </ul>
+                @endif
+                <x-stats />
+                <x-button :href="route('site.about')" variant="primary">{{ __('site.home.about_cta') }}</x-button>
             </div>
-        </div>
-    </section>
-
-    <section class="band">
-        <div class="container band-row reveal">
-            <div>
-                <p class="eyebrow eyebrow-light">{{ __('site.home.visit_eyebrow') }}</p>
-                <h2>{{ __('site.home.visit_title') }}</h2>
-                <p>{{ __('site.home.visit_text') }}</p>
-            </div>
-            <div class="band-actions">
-                <a class="btn btn-light" href="{{ route('site.contact') }}">{{ __('site.nav.contact') }}</a>
-                @include('frontend.partials.social-links', ['linkClass' => 'btn btn-line'])
-            </div>
-        </div>
-    </section>
-
-    <section class="section">
-        <div class="container">
-            <div class="section-head reveal">
-                <p class="eyebrow">{{ __('site.home.articles_eyebrow') }}</p>
-                <h2>{{ __('site.home.articles_title') }}</h2>
-                <p>{{ __('site.home.articles_text') }}</p>
-            </div>
-            <div class="article-grid">
-                @foreach (__('site.articles.items') as $article)
-                    @include('frontend.partials.article-card', ['article' => $article, 'index' => $loop->index])
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <section class="section section-sand" id="reviews">
-        <div class="container">
-            <div class="section-head reveal">
-                <p class="eyebrow">{{ __('site.home.reviews_eyebrow') }}</p>
-                <h2>{{ __('site.home.reviews_title') }}</h2>
-                <p>{{ __('site.home.reviews_text') }}</p>
-            </div>
-            @include('frontend.partials.reviews')
         </div>
     </section>
 
     <section class="section" id="clinics">
         <div class="container">
-            <div class="section-head reveal">
-                <p class="eyebrow">{{ __('site.contact.clinics_eyebrow') }}</p>
-                <h2>{{ __('site.contact.clinics_title') }}</h2>
-                <p>{{ __('site.contact.clinics_text') }}</p>
-            </div>
-            @include('frontend.partials.clinics')
-            <p class="section-more">
-                <a class="text-link" href="{{ route('site.clinics') }}">{{ __('site.nav.clinics') }}</a>
-            </p>
+            <x-section-head
+                :eyebrow="__('site.home.clinics_eyebrow')"
+                :title="__('site.home.clinics_title')"
+                :text="__('site.home.clinics_text')"
+            >
+                <x-slot:actions>
+                    <x-button :href="route('site.clinics')" variant="outline">{{ __('site.nav.clinics') }}</x-button>
+                </x-slot:actions>
+            </x-section-head>
+            <x-clinic-tabs />
         </div>
     </section>
 
-    <section class="section section-tight">
+    <section class="section section-sand" id="reviews">
         <div class="container">
-            <div class="section-head reveal">
-                <p class="eyebrow">{{ __('site.home.gallery_eyebrow') }}</p>
-                <h2>{{ __('site.home.gallery_title') }}</h2>
-                <p>{{ __('site.home.gallery_text') }}</p>
-            </div>
-            @include('frontend.partials.photos')
-            <p class="section-more">
-                <a class="text-link" href="{{ route('site.photos') }}">{{ __('site.common.all_photos') }}</a>
-            </p>
+            <x-section-head
+                align="center"
+                :eyebrow="__('site.home.reviews_eyebrow')"
+                :title="__('site.home.reviews_title')"
+                :text="__('site.home.reviews_text')"
+            />
+            <x-reviews-slider />
         </div>
     </section>
+
+    <section class="section">
+        <div class="container">
+            <x-section-head
+                :eyebrow="__('site.home.articles_eyebrow')"
+                :title="__('site.home.articles_title')"
+                :text="__('site.home.articles_text')"
+            >
+                <x-slot:actions>
+                    <x-button :href="route('site.articles')" variant="outline">{{ __('site.common.all_articles') }}</x-button>
+                </x-slot:actions>
+            </x-section-head>
+            <div class="article-grid">
+                @foreach ($articles as $article)
+                    <x-article-card :article="$article" :index="$loop->index" />
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <section class="section section-sand">
+        <div class="container">
+            <x-section-head
+                :eyebrow="__('site.home.faq_eyebrow')"
+                :title="__('site.home.faq_title')"
+                :text="__('site.home.faq_text')"
+            />
+            <x-faq-list :items="$faqs" />
+        </div>
+    </section>
+
+    @if ($photos->isNotEmpty())
+        <section class="section section-tight">
+            <div class="container">
+                <x-section-head
+                    :eyebrow="__('site.home.gallery_eyebrow')"
+                    :title="__('site.home.gallery_title')"
+                >
+                    <x-slot:actions>
+                        <x-button :href="route('site.photos')" variant="outline">{{ __('site.common.all_photos') }}</x-button>
+                    </x-slot:actions>
+                </x-section-head>
+                <div class="photo-masonry">
+                    @foreach ($photos as $photo)
+                        <x-photo-card :photo="$photo" :index="$loop->index" />
+                    @endforeach
+                </div>
+            </div>
+        </section>
+    @endif
+
+    <x-cta-band />
 @endsection

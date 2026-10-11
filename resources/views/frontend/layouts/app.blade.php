@@ -1,4 +1,8 @@
 @php
+    use App\Support\Asset;
+    use App\Support\Content;
+    use App\Support\MediaEmbed;
+
     $locale = app()->getLocale();
     $direction = $locale === 'ar' ? 'rtl' : 'ltr';
     $otherLocale = $locale === 'ar' ? 'en' : 'ar';
@@ -10,25 +14,55 @@
     $switchUrl = route($currentRoute->getName(), array_merge($routeParameters, ['locale' => $otherLocale]));
     $alternateAr = route($currentRoute->getName(), array_merge($routeParameters, ['locale' => 'ar']));
     $alternateEn = route($currentRoute->getName(), array_merge($routeParameters, ['locale' => 'en']));
+    $canonical = url()->current();
+    $title = trim($__env->yieldContent('meta_title', __('site.brand.name')));
+    $description = trim($__env->yieldContent('meta_description', __('site.brand.description')));
+    $ogImage = trim($__env->yieldContent('og_image', MediaEmbed::image(Content::doctor()['hero_image'] ?? 'assets/images/dr-1.jpeg')));
+    $isHome = request()->routeIs('site.home');
+    $contact = Content::contact();
+    $hasDock = $contact['phone'] !== '' || $contact['whatsapp'] !== '';
 @endphp
 <!DOCTYPE html>
 <html lang="{{ $locale }}" dir="{{ $direction }}">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>@yield('meta_title', __('site.brand.name'))</title>
-    <meta name="description" content="@yield('meta_description', __('site.brand.description'))">
+    <title>{{ $title }}</title>
+    <meta name="description" content="{{ $description }}">
     <meta name="theme-color" content="#14343C">
+    <link rel="canonical" href="{{ $canonical }}">
     <link rel="alternate" hreflang="ar" href="{{ $alternateAr }}">
     <link rel="alternate" hreflang="en" href="{{ $alternateEn }}">
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32.png') }}">
+    <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="{{ $locale === 'ar' ? 'ar_EG' : 'en_US' }}">
+    <meta property="og:title" content="{{ $title }}">
+    <meta property="og:description" content="{{ $description }}">
+    <meta property="og:url" content="{{ $canonical }}">
+    <meta property="og:image" content="{{ $ogImage }}">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ $title }}">
+    <meta name="twitter:description" content="{{ $description }}">
+    <meta name="twitter:image" content="{{ $ogImage }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700&family=Cairo:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+    @if ($isHome)
+        <link rel="preload" as="image" type="image/webp" href="{{ asset('assets/images/dr-1-1200.webp') }}" imagesizes="100vw">
+    @endif
     <script>document.documentElement.classList.add('js');</script>
-    <link rel="stylesheet" href="{{ asset('frontend/css/site.css') }}?v={{ filemtime(public_path('frontend/css/site.css')) }}">
+    <link rel="stylesheet" href="{{ Asset::versioned('frontend/css/tokens.css') }}">
+    <link rel="stylesheet" href="{{ Asset::versioned('frontend/css/base.css') }}">
+    <link rel="stylesheet" href="{{ Asset::versioned('frontend/css/components.css') }}">
+    <link rel="stylesheet" href="{{ Asset::versioned('frontend/css/sections.css') }}">
+    @stack('styles')
+    @livewireStyles
+    <x-json-ld />
 </head>
-<body>
+<body @class(['page-home' => $isHome, 'has-dock' => $hasDock])>
     <a class="skip-link" href="#content">{{ __('site.common.skip') }}</a>
+    <div class="read-progress" hidden data-progress><span></span></div>
 
     @include('frontend.partials.header', ['switchUrl' => $switchUrl])
 
@@ -37,30 +71,28 @@
     </main>
 
     @include('frontend.partials.footer')
-
-    @if (config('clinic.whatsapp'))
-        <a class="whatsapp-float" href="https://wa.me/{{ config('clinic.whatsapp') }}" target="_blank" rel="noopener noreferrer">
-            {{ __('site.common.whatsapp') }}
-        </a>
-    @endif
+    <x-dock />
 
     <div class="lightbox" data-lightbox-root hidden>
         <button class="lightbox-backdrop" type="button" data-lightbox-close aria-label="{{ __('site.photos.close') }}"></button>
         <figure class="lightbox-figure">
-            <img src="" alt="" data-lightbox-image>
+            <img src="" alt="" data-lightbox-image hidden>
+            <div data-lightbox-embed hidden></div>
             <figcaption data-lightbox-caption></figcaption>
         </figure>
         <button class="lightbox-nav lightbox-prev" type="button" data-lightbox-prev aria-label="{{ __('site.photos.prev') }}">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14.5 6.5 9 12l5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <x-icon name="arrow" />
         </button>
         <button class="lightbox-nav lightbox-next" type="button" data-lightbox-next aria-label="{{ __('site.photos.next') }}">
-            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.5 6.5 15 12l-5.5 5.5" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <x-icon name="arrow" />
         </button>
         <button class="lightbox-close" type="button" data-lightbox-close aria-label="{{ __('site.photos.close') }}">
-            <span aria-hidden="true"></span>
+            <x-icon name="close" />
         </button>
     </div>
 
-    <script src="{{ asset('frontend/js/site.js') }}?v={{ filemtime(public_path('frontend/js/site.js')) }}" defer></script>
+    @stack('scripts')
+    @livewireScripts
+    <script src="{{ Asset::versioned('frontend/js/site.js') }}" defer></script>
 </body>
 </html>

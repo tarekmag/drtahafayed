@@ -12,7 +12,7 @@
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <!-- App favicon -->
-    <link rel="shortcut icon" href="{{ asset('backendtheme/assets/images/favicon.ico') }}">
+    <link rel="shortcut icon" href="{{ asset('favicon-32.png') }}">
 
     <!-- Layout config Js -->
     <script src="{{ asset('backendtheme/assets/js/layout.js') }}"></script>

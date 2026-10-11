@@ -1,6 +1,8 @@
 <?php
 
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Frontend\ArticleController;
+use App\Http\Controllers\Frontend\ServiceController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
@@ -15,14 +17,13 @@ Route::prefix('{locale}')
         Route::view('/about', 'frontend.about')->name('about');
         Route::view('/services', 'frontend.services')->name('services');
         Route::view('/clinics', 'frontend.clinics')->name('clinics');
-        Route::get('/services/{service}', function () {
-            $item = collect(config('medical_services.items'))->firstWhere('id', request()->route('service'));
-            abort_unless($item, 404);
-
-            return view('frontend.service', ['service' => $item]);
-        })->where('service', '[a-z0-9\-]+')->name('service');
+        Route::get('/services/{service}', [ServiceController::class, 'show'])
+            ->where('service', '[a-z0-9\-]+')
+            ->name('service');
         Route::view('/articles', 'frontend.articles')->name('articles');
-        Route::view('/articles/thyroid-overview', 'frontend.article')->name('article');
+        Route::get('/articles/{article}', [ArticleController::class, 'show'])
+            ->where('article', '[a-z0-9\-]+')
+            ->name('article');
         Route::view('/photos', 'frontend.photos')->name('photos');
         Route::view('/videos', 'frontend.videos')->name('videos');
         Route::view('/contact', 'frontend.contact')->name('contact');

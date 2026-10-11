@@ -1,64 +1,81 @@
+@use('App\Support\Content')
+@use('App\Support\LocaleText')
+
+@php
+    $doctor = Content::doctor();
+@endphp
+
 @extends('frontend.layouts.app')
 
 @section('meta_title', __('site.about.meta_title'))
 @section('meta_description', __('site.about.meta_description'))
 
 @section('content')
-    <header class="page-hero">
-        <div class="container">
-            <p class="eyebrow">{{ __('site.about.eyebrow') }}</p>
-            <h1>{{ __('site.about.title') }}</h1>
-            <p class="lede">{{ __('site.about.lede') }}</p>
-        </div>
-    </header>
+    <x-page-hero
+        :eyebrow="__('site.about.eyebrow')"
+        :title="LocaleText::get($doctor['name'] ?? __('site.brand.name'))"
+        :lede="__('site.about.lede')"
+        :crumbs="[__('site.nav.about') => null]"
+    />
 
     <section class="section">
         <div class="container split">
             <div class="split-media reveal">
-                <img src="{{ asset('assets/images/dr-2.jpeg') }}" alt="{{ __('site.about.portrait_alt') }}">
+                <x-picture :src="$doctor['portrait'] ?? 'assets/images/dr-2.jpeg'" :alt="__('site.about.portrait_alt')" sizes="(min-width: 860px) 42vw, 100vw" />
             </div>
-            <div class="split-copy reveal" style="--delay: 80ms">
-                @foreach (__('site.about.intro') as $paragraph)
-                    <p>{{ $paragraph }}</p>
-                @endforeach
-                <a class="btn btn-accent" href="{{ route('site.contact') }}">{{ __('site.nav.book') }}</a>
+            <div class="rich-text reveal">
+                {!! LocaleText::get($doctor['bio'] ?? '') !!}
             </div>
         </div>
     </section>
 
     <section class="section section-sand">
         <div class="container">
-            <div class="section-head reveal">
-                <h2>{{ __('site.about.pillars_title') }}</h2>
-            </div>
-            <div class="services-grid services-grid-3">
-                @foreach (__('site.about.pillars') as $pillar)
-                    <article class="plain-card reveal" style="--delay: {{ $loop->index * 70 }}ms">
-                        <h3>{{ $pillar['title'] }}</h3>
-                        <p>{{ $pillar['text'] }}</p>
+            <x-section-head :title="__('site.about.credentials_title')" />
+            <ul class="credentials">
+                @foreach ($doctor['credentials'] ?? [] as $item)
+                    <li class="reveal" style="--i: {{ $loop->index }}"><x-icon name="check" /> <span>{{ LocaleText::get($item) }}</span></li>
+                @endforeach
+            </ul>
+            <x-stats />
+        </div>
+    </section>
+
+    <section class="section">
+        <div class="container">
+            <x-section-head
+                :eyebrow="__('site.about.pillars_eyebrow')"
+                :title="__('site.about.pillars_title')"
+            />
+            <div class="pillars">
+                @foreach (__('site.home.specialties') as $item)
+                    <article class="pillar-card reveal" style="--i: {{ $loop->index }}">
+                        <span class="specialty-icon"><x-icon :name="$item['icon']" /></span>
+                        <h3>{{ $item['title'] }}</h3>
+                        <p>{{ $item['text'] }}</p>
                     </article>
                 @endforeach
             </div>
         </div>
     </section>
 
-    <section class="section">
-        <div class="container empty-grid">
-            <article class="empty-panel reveal">
-                <h2>{{ __('site.about.awards_title') }}</h2>
-                <p>{{ __('site.about.awards_text') }}</p>
-                <span class="soon">{{ __('site.common.coming_soon') }}</span>
-            </article>
-            <article class="empty-panel reveal" style="--delay: 80ms">
-                <h2>{{ __('site.about.reviews_title') }}</h2>
-                @if (empty(config('reviews.items')))
-                    <p>{{ __('site.about.reviews_text') }}</p>
-                    <span class="soon">{{ __('site.common.coming_soon') }}</span>
-                @else
-                    <p>{{ __('site.home.reviews_text') }}</p>
-                    <a class="text-link" href="{{ route('site.home') }}#reviews">{{ __('site.home.reviews_title') }}</a>
-                @endif
-            </article>
+    <section class="section section-sand">
+        <div class="container">
+            <x-section-head
+                :eyebrow="__('site.about.values_eyebrow')"
+                :title="__('site.about.values_title')"
+            />
+            <div class="values">
+                @foreach (__('site.about.values') as $value)
+                    <article class="value-card reveal" style="--i: {{ $loop->index }}">
+                        <span class="specialty-icon"><x-icon :name="$value['icon']" /></span>
+                        <h3>{{ $value['title'] }}</h3>
+                        <p>{{ $value['text'] }}</p>
+                    </article>
+                @endforeach
+            </div>
         </div>
     </section>
+
+    <x-cta-band />
 @endsection

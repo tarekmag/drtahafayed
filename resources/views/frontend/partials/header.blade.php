@@ -1,16 +1,19 @@
+@use('App\Support\Asset')
+@use('App\Support\Content')
+
 @php
-    $clinic = config('clinic');
-    $phoneHref = $clinic['phone'] ? 'tel:'.preg_replace('/\s+/', '', $clinic['phone']) : null;
+    $phone = Content::phoneUrl();
 @endphp
+
 <header class="site-header" data-header>
     <div class="topbar">
         <div class="container topbar-row">
             <p class="topbar-note">{{ __('site.brand.specialty') }}</p>
             <div class="topbar-actions">
-                @if ($phoneHref)
-                    <a href="{{ $phoneHref }}">{{ $clinic['phone'] }}</a>
+                @if ($phone)
+                    <a href="{{ $phone }}" dir="ltr">{{ Content::contact()['phone'] }}</a>
                 @endif
-                @include('frontend.partials.social-links')
+                <x-social-links />
                 <a class="lang-switch" href="{{ $switchUrl }}">{{ __('site.nav.switch') }}</a>
             </div>
         </div>
@@ -19,7 +22,7 @@
     <div class="nav-bar">
         <div class="container nav-row">
             <a class="brand" href="{{ route('site.home') }}">
-                <img src="{{ asset('assets/images/logo.png') }}?v={{ filemtime(public_path('assets/images/logo.png')) }}" alt="{{ __('site.brand.logo_alt') }}">
+                <img src="{{ Asset::versioned('assets/images/logo.png') }}" alt="{{ __('site.brand.logo_alt') }}">
             </a>
 
             <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">
@@ -29,7 +32,7 @@
                 <span></span>
             </button>
 
-            <nav class="site-nav" id="site-nav" data-nav>
+            <nav class="site-nav" id="site-nav" data-nav aria-label="{{ __('site.nav.main') }}">
                 <a class="nav-link {{ request()->routeIs('site.home') ? 'is-active' : '' }}" href="{{ route('site.home') }}" @if (request()->routeIs('site.home')) aria-current="page" @endif>{{ __('site.nav.home') }}</a>
                 <a class="nav-link {{ request()->routeIs('site.about') ? 'is-active' : '' }}" href="{{ route('site.about') }}" @if (request()->routeIs('site.about')) aria-current="page" @endif>{{ __('site.nav.about') }}</a>
                 <a class="nav-link {{ request()->routeIs('site.services', 'site.service') ? 'is-active' : '' }}" href="{{ route('site.services') }}" @if (request()->routeIs('site.services', 'site.service')) aria-current="page" @endif>{{ __('site.nav.services') }}</a>
@@ -37,10 +40,9 @@
                 <a class="nav-link {{ request()->routeIs('site.articles', 'site.article') ? 'is-active' : '' }}" href="{{ route('site.articles') }}" @if (request()->routeIs('site.articles', 'site.article')) aria-current="page" @endif>{{ __('site.nav.articles') }}</a>
 
                 <div class="nav-drop">
-                    <p class="nav-drop-label">{{ __('site.nav.media') }}</p>
                     <button class="nav-link nav-drop-btn" type="button" aria-expanded="false" data-drop-toggle>
                         {{ __('site.nav.media') }}
-                        <span class="chevron" aria-hidden="true"></span>
+                        <x-icon name="chevron-down" />
                     </button>
                     <div class="nav-drop-menu">
                         <a class="{{ request()->routeIs('site.photos') ? 'is-active' : '' }}" href="{{ route('site.photos') }}" @if (request()->routeIs('site.photos')) aria-current="page" @endif>{{ __('site.nav.photos') }}</a>
@@ -49,7 +51,7 @@
                 </div>
 
                 <a class="nav-link {{ request()->routeIs('site.contact') ? 'is-active' : '' }}" href="{{ route('site.contact') }}" @if (request()->routeIs('site.contact')) aria-current="page" @endif>{{ __('site.nav.contact') }}</a>
-                <a class="btn btn-accent nav-cta" href="{{ route('site.contact') }}">{{ __('site.nav.book') }}</a>
+                <x-button class="nav-cta" :href="Content::bookingUrl()" variant="gold" icon="calendar">{{ __('site.nav.book') }}</x-button>
             </nav>
         </div>
     </div>
