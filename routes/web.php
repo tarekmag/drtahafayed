@@ -1,13 +1,15 @@
 <?php
 
+use App\Http\Controllers\Backend\ContactDataController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DoctorBioController;
+use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Frontend\ArticleController;
 use App\Http\Controllers\Frontend\ServiceController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
-//Frontend
+// Frontend
 Route::redirect('/', '/ar');
 
 Route::prefix('{locale}')
@@ -41,4 +43,10 @@ Route::prefix('backend')->name('backend.')->middleware('auth')->group(function (
     Route::get('/bio', [DoctorBioController::class, 'edit'])
         ->middleware('auth')
         ->name('bio.edit');
+    Route::get('/contacts', [ContactDataController::class, 'edit'])
+        ->middleware('auth')
+        ->name('contacts.edit');
+    Route::get('/social', [SocialMediaController::class, 'edit'])
+        ->middleware('auth')
+        ->name('social.edit');
 });

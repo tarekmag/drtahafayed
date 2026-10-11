@@ -95,13 +95,13 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="{{ route('backend.contacts.edit') }}">
                         <i class="mdi mdi-phone"></i> <span data-key="t-contacts-data">Contacts Data</span>
                     </a>
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="{{ route('backend.social.edit') }}">
                         <i class="mdi mdi-link"></i> <span data-key="t-social-media-data">Social Media Data</span>
                     </a>
                 </li>

@@ -2,15 +2,17 @@
 
 namespace App\Support;
 
+use App\Models\ClinicContact;
 use App\Models\Doctor;
+use App\Models\SocialProfile;
 use Carbon\CarbonInterface;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
 /**
  * Single read model for public site content.
- * Doctor biography comes from the doctors table. Other sections still read config
- * until their dashboard screens replace those sources. Views stay unchanged.
+ * Doctor biography, contact details, and social links come from the database.
+ * Other sections still read config until their dashboard screens replace those sources.
  */
 class Content
 {
@@ -23,11 +25,13 @@ class Content
 
     public static function contact(): array
     {
-        return [
-            'phone' => trim((string) config('clinic.phone')),
-            'whatsapp' => preg_replace('/\D+/', '', (string) config('clinic.whatsapp')),
-            'email' => trim((string) config('clinic.email')),
-            'booking_url' => trim((string) config('clinic.booking_url')),
+        $contact = ClinicContact::query()->first();
+
+        return $contact?->toContentArray() ?? [
+            'phone' => '',
+            'whatsapp' => '',
+            'email' => '',
+            'booking_url' => '',
         ];
     }
 
@@ -59,12 +63,7 @@ class Content
      */
     public static function socials(): array
     {
-        return array_filter([
-            'facebook' => trim((string) config('clinic.facebook')),
-            'vezeeta' => trim((string) config('clinic.vezeeta')),
-            'youtube' => trim((string) config('clinic.youtube')),
-            'tiktok' => trim((string) config('clinic.tiktok')),
-        ]);
+        return SocialProfile::query()->first()?->toContentArray() ?? [];
     }
 
     public static function services(): Collection

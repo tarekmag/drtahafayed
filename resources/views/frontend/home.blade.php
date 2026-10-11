@@ -149,7 +149,9 @@
             >
                 <x-slot:actions>
                     <x-button :href="route('site.review')" variant="gold" icon="star">{{ __('site.nav.review') }}</x-button>
-                    <x-button :href="config('clinic.vezeeta')" variant="outline" icon="vezeeta" external>{{ __('site.nav.vezeeta') }}</x-button>
+                    @if ($vezeeta = (Content::socials()['vezeeta'] ?? null))
+                        <x-button :href="$vezeeta" variant="outline" icon="vezeeta" external>{{ __('site.nav.vezeeta') }}</x-button>
+                    @endif
                 </x-slot:actions>
             </x-section-head>
             <x-reviews-slider />
