@@ -37,16 +37,9 @@ Route::prefix('{locale}')
 // Backend
 Route::prefix('backend')->name('backend.')->middleware('auth')->group(function () {
     Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
-    Route::get('/', [DashboardController::class, 'index'])
-        ->middleware('auth')
-        ->name('dashboard');
-    Route::get('/bio', [DoctorBioController::class, 'edit'])
-        ->middleware('auth')
-        ->name('bio.edit');
-    Route::get('/contacts', [ContactDataController::class, 'edit'])
-        ->middleware('auth')
-        ->name('contacts.edit');
-    Route::get('/social', [SocialMediaController::class, 'edit'])
-        ->middleware('auth')
-        ->name('social.edit');
+    
+    Route::get('/', [DashboardController::class, 'index'])->name('dashboard');
+    Route::get('/bio', [DoctorBioController::class, 'edit'])->name('bio.edit');
+    Route::get('/contacts', [ContactDataController::class, 'edit'])->name('contacts.edit');
+    Route::get('/social', [SocialMediaController::class, 'edit'])->name('social.edit');
 });
