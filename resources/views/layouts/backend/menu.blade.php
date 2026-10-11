@@ -113,13 +113,13 @@
                     </a>
                 </li>
 
-                <li class="menu-title"><i class="ri-settings-2-line"></i> <span data-key="t-settings">Settings</span>
-                </li>
-
                 <li class="nav-item">
                     <a class="nav-link menu-link" href="{{ route('backend.seo.edit') }}">
                         <i class="mdi mdi-file-chart"></i> <span data-key="t-seo">SEO</span>
                     </a>
+                </li>
+
+                <li class="menu-title"><i class="ri-settings-2-line"></i> <span data-key="t-settings">Settings</span>
                 </li>
 
                 <li class="nav-item">

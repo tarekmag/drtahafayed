@@ -14,6 +14,7 @@ use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\VideoController;
 use App\Http\Controllers\Frontend\ArticleController;
+use App\Http\Controllers\Frontend\PageViewDurationController;
 use App\Http\Controllers\Frontend\ServiceController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
@@ -21,9 +22,13 @@ use Illuminate\Support\Facades\Route;
 // Frontend
 Route::redirect('/', '/ar');
 
+Route::post('/page-views/{pageView}/duration', PageViewDurationController::class)
+    ->middleware('throttle:60,1')
+    ->name('site.page-views.duration');
+
 Route::prefix('{locale}')
     ->where(['locale' => 'ar|en'])
-    ->middleware('set-locale')
+    ->middleware(['set-locale', 'record-page-view'])
     ->name('site.')
     ->group(function () {
         Route::view('/', 'frontend.home')->name('home');

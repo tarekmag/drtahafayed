@@ -3,17 +3,12 @@
 namespace App\Http\Controllers\Backend;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Support\SiteAnalytics;
 
 class DashboardController extends Controller
 {
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    public function index()
+    public function index(SiteAnalytics $analytics)
     {
-        return view('backend.dashboard');
+        return view('backend.dashboard', $analytics->dashboard());
     }
 }

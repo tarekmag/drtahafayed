@@ -26,6 +26,7 @@
 <html lang="{{ $locale }}" dir="{{ $direction }}">
 <head>
     <meta charset="utf-8">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title }}</title>
     <meta name="description" content="{{ $description }}">
@@ -91,6 +92,46 @@
         </button>
     </div>
 
+    @isset($pageViewId)
+        <script>
+            (() => {
+                const started = performance.now();
+                let sent = false;
+                const send = () => {
+                    if (sent) {
+                        return;
+                    }
+
+                    const seconds = Math.min(1800, Math.round((performance.now() - started) / 1000));
+
+                    if (seconds < 1) {
+                        return;
+                    }
+
+                    sent = true;
+                    const token = document.querySelector('meta[name="csrf-token"]')?.content;
+
+                    fetch(@json(route('site.page-views.duration', $pageViewId)), {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Accept': 'application/json',
+                            'X-CSRF-TOKEN': token,
+                        },
+                        body: JSON.stringify({ seconds }),
+                        keepalive: true,
+                    }).catch(() => {});
+                };
+
+                document.addEventListener('visibilitychange', () => {
+                    if (document.visibilityState === 'hidden') {
+                        send();
+                    }
+                });
+                window.addEventListener('pagehide', send);
+            })();
+        </script>
+    @endisset
     @stack('scripts')
     @livewireScripts
     <script src="{{ Asset::versioned('frontend/js/site.js') }}" defer></script>
