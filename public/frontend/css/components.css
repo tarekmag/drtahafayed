@@ -633,9 +633,10 @@ a:hover .link-arrow .icon,
 }
 
 .slider-controls {
-    display: flex;
+    display: grid;
+    grid-template-columns: 2.7rem minmax(0, 1fr) 2.7rem;
     align-items: center;
-    justify-content: center;
+    justify-items: center;
     gap: 0.8rem;
     margin-top: 1.3rem;
 }
@@ -646,9 +647,22 @@ a:hover .link-arrow .icon,
     border-radius: 50%;
     border: 1px solid var(--line);
     background: white;
+    color: var(--ink);
     display: grid;
     place-items: center;
+    padding: 0;
     cursor: pointer;
+}
+
+.slider-btn .icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    max-width: none;
+}
+
+.slider-btn.swiper-button-disabled {
+    opacity: 0.4;
+    cursor: default;
 }
 
 .slider-prev .icon {
@@ -661,6 +675,27 @@ a:hover .link-arrow .icon,
 
 [dir="rtl"] .slider-next .icon {
     transform: scaleX(-1);
+}
+
+.slider-controls .slider-pagination,
+.slider-controls .swiper-pagination-horizontal {
+    position: static;
+    inset: auto;
+    width: auto;
+    max-width: 100%;
+    min-width: 0;
+    justify-self: stretch;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: center;
+    gap: 0.35rem;
+    margin: 0;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+
+.slider-controls .slider-pagination::-webkit-scrollbar {
+    display: none;
 }
 
 .slider-pagination {
@@ -1087,18 +1122,47 @@ a:hover .link-arrow .icon,
 .lightbox-close {
     position: absolute;
     z-index: 2;
+    display: grid;
+    place-items: center;
     width: 2.8rem;
     height: 2.8rem;
+    padding: 0;
     border: 0;
     border-radius: 50%;
-    background: rgba(255, 255, 255, 0.12);
-    color: white;
+    background: white;
+    color: var(--deep);
     cursor: pointer;
+    box-shadow: 0 8px 24px rgba(12, 28, 32, 0.28);
 }
 
-.lightbox-prev { inset-inline-start: 0.8rem; top: 50%; }
-.lightbox-next { inset-inline-end: 0.8rem; top: 50%; }
-.lightbox-close { inset-inline-end: 0.8rem; top: 0.8rem; }
+.lightbox-nav .icon,
+.lightbox-close .icon {
+    width: 1.15rem;
+    height: 1.15rem;
+    max-width: none;
+}
+
+.lightbox-prev,
+.lightbox-next {
+    top: 50%;
+    translate: 0 -50%;
+}
+
+.lightbox-prev { inset-inline-start: 1rem; }
+.lightbox-next { inset-inline-end: 1rem; }
+.lightbox-close { inset-inline-end: 1rem; top: 1rem; }
+
+.lightbox-prev .icon {
+    transform: scaleX(-1);
+}
+
+[dir="rtl"] .lightbox-prev .icon {
+    transform: none;
+}
+
+[dir="rtl"] .lightbox-next .icon {
+    transform: scaleX(-1);
+}
 
 body.lightbox-open {
     overflow: hidden;
