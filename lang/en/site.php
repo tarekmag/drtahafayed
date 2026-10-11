@@ -1,0 +1,238 @@
+<?php
+
+return [
+    'brand' => [
+        'name' => 'Dr. Taha Fayed',
+        'specialty' => 'General surgery, oncosurgery, and endocrine surgery',
+        'description' => 'An introduction to Dr. Taha Fayed and the fields of general surgery, oncosurgery, and endocrine surgery.',
+        'logo_alt' => 'Dr. Taha Fayed logo',
+    ],
+
+    'nav' => [
+        'home' => 'Home',
+        'about' => 'About',
+        'services' => 'Services',
+        'clinics' => 'Branches and hours',
+        'articles' => 'Articles',
+        'media' => 'Media',
+        'photos' => 'Photos',
+        'videos' => 'Videos',
+        'contact' => 'Contact',
+        'book' => 'Book a visit',
+        'menu' => 'Menu',
+        'close' => 'Close',
+        'facebook' => 'Facebook',
+        'youtube' => 'YouTube',
+        'tiktok' => 'TikTok',
+        'switch' => 'العربية',
+    ],
+
+    'common' => [
+        'skip' => 'Skip to content',
+        'read_more' => 'Read more',
+        'coming_soon' => 'Coming soon',
+        'educational' => 'Educational note',
+        'all_services' => 'All services',
+        'all_photos' => 'All photos',
+        'whatsapp' => 'WhatsApp',
+    ],
+
+    'home' => [
+        'meta_title' => 'Dr. Taha Fayed | General, Oncologic, and Endocrine Surgery',
+        'meta_description' => 'An introduction to Dr. Taha Fayed: general surgery, oncosurgery, and endocrine surgery, with educational articles and a contact page.',
+        'lede' => 'A calm introduction to general surgery, oncosurgery, and endocrine surgery. The pages are here to explain the field. Decisions about care are made after a consultation.',
+        'services_eyebrow' => 'Fields of practice',
+        'services_title' => 'What these pages cover',
+        'services_text' => 'A short guide to the specialty. The details of any one person are decided after an examination, not from the website.',
+        'about_eyebrow' => 'About',
+        'about_title' => 'Dr. Taha Fayed',
+        'about_text' => 'The practice focuses on general surgery, oncosurgery, and endocrine surgery. This page describes that scope. Documented credentials will be published when they are added.',
+        'about_cta' => 'A fuller introduction',
+        'visit_eyebrow' => 'A visit',
+        'visit_title' => 'Arranging an appointment',
+        'visit_text' => 'There is more than one clinic. Addresses and maps are added once they are confirmed. Until then, the Facebook page is available. The contact form is a preview and does not send a message.',
+        'reviews_eyebrow' => 'Patient reviews',
+        'reviews_title' => 'What patients say',
+        'reviews_text' => 'Patient experiences appear here after they agree to share them, and once they are added from the dashboard.',
+        'articles_eyebrow' => 'Reading',
+        'articles_title' => 'Notes for general understanding',
+        'articles_text' => 'Short articles that explain common ideas. They are not a diagnosis or a treatment plan.',
+        'gallery_eyebrow' => 'Photos',
+        'gallery_title' => 'Portraits',
+        'gallery_text' => 'Portraits of Dr. Taha Fayed. Clinic and operative photographs are not available yet.',
+    ],
+
+    'about' => [
+        'meta_title' => 'About | Dr. Taha Fayed',
+        'meta_description' => 'An introduction to Dr. Taha Fayed and the fields of general surgery, oncosurgery, and endocrine surgery.',
+        'eyebrow' => 'About',
+        'title' => 'Dr. Taha Fayed',
+        'lede' => 'The general scope of the practice. Credentials and awards are listed only after they are documented.',
+        'portrait_alt' => 'Portrait of Dr. Taha Fayed',
+        'intro' => [
+            'Dr. Taha Fayed works across three connected fields: general surgery, oncosurgery, and endocrine surgery. This website is meant to give a clear, unhurried account of those fields before a visit.',
+            'Fellowships, awards, and operation counts are not published here, because they have not yet been documented on the site. When they are confirmed, they will appear in the section set aside for them.',
+        ],
+        'pillars_title' => 'Three fields',
+        'pillars' => [
+            [
+                'title' => 'General surgery',
+                'text' => 'Assessment and surgical care for conditions of the abdomen and soft tissues, after an examination shows that surgery is the right course.',
+            ],
+            [
+                'title' => 'Oncosurgery',
+                'text' => 'Taking part in the diagnosis of a tumor and in planning surgery when it belongs in the treatment, alongside other specialties when needed.',
+            ],
+            [
+                'title' => 'Endocrine surgery',
+                'text' => 'Conditions of hormone-producing glands, especially the thyroid and parathyroid glands, when surgery is considered after the work-up is complete.',
+            ],
+        ],
+        'awards_title' => 'Credentials and awards',
+        'awards_text' => 'Scientific credentials and awards will be published here after they are documented. This section stays empty until then.',
+        'reviews_title' => 'Patient notes',
+        'reviews_text' => 'Patient comments will appear here when they are available and shared with permission. Nothing is attributed to a person without a clear source.',
+    ],
+
+    'services' => [
+        'meta_title' => 'Services | Dr. Taha Fayed',
+        'meta_description' => 'An introduction to general surgery, oncosurgery, and endocrine surgery with Dr. Taha Fayed.',
+        'eyebrow' => 'Services',
+        'title' => 'The fields, explained plainly',
+        'lede' => 'The descriptions below are educational. A topic listed here does not mean every case is treated the same way, and it does not replace a consultation.',
+        'back' => 'All services',
+        'video_pending' => 'The explanation video is added from the dashboard with the content.',
+    ],
+
+    'articles' => [
+        'meta_title' => 'Articles | Dr. Taha Fayed',
+        'meta_description' => 'Educational articles on general surgery, oncosurgery, and endocrine surgery.',
+        'eyebrow' => 'Articles',
+        'title' => 'For understanding, not for diagnosis',
+        'lede' => 'General notes that help name what a person may hear in a clinic. The medical decision stays outside the page.',
+        'items' => [
+            [
+                'slug' => 'thyroid-overview',
+                'category' => 'Thyroid',
+                'title' => 'The thyroid: what a surgical opinion means',
+                'excerpt' => 'A nodule or a swelling in the neck is the start of an assessment, not a final verdict. This note explains where the gland sits and when a surgeon is asked.',
+            ],
+            [
+                'slug' => null,
+                'category' => 'Endocrine',
+                'title' => 'What to expect at a visit about the glands',
+                'excerpt' => 'The examination, the tests, and the questions worth asking before any operation is discussed. The full note will be published later.',
+            ],
+            [
+                'slug' => null,
+                'category' => 'Before surgery',
+                'title' => 'Useful questions before an operation',
+                'excerpt' => 'Why this operation, what the alternatives are, and which risks are usually explained. The full note will be published later.',
+            ],
+        ],
+    ],
+
+    'article' => [
+        'meta_title' => 'The thyroid: what a surgical opinion means | Dr. Taha Fayed',
+        'meta_description' => 'An educational note on the thyroid and when a surgical opinion is discussed. It is not a diagnosis or a treatment recommendation.',
+        'back' => 'All articles',
+        'title' => 'The thyroid: what a surgical opinion means',
+        'lede' => 'People often reach a thyroid surgeon after noticing a swelling in the neck, or after a scan report that uses the word nodule. This note puts that step in context. It does not decide in place of an examination.',
+        'sections' => [
+            [
+                'heading' => 'Where the gland is, and what it does',
+                'paragraphs' => [
+                    'The thyroid is a small gland low in the front of the neck, in front of the windpipe. Its hormones affect energy, weight, heart rate, and body temperature.',
+                    'An increase in size, or a nodule inside the gland, is common, and a substantial share of these findings are benign. That does not remove the need for assessment. It does argue against jumping to the worst reading before any tests.',
+                ],
+            ],
+            [
+                'heading' => 'When a surgical opinion is requested',
+                'paragraphs' => [
+                    'A surgical opinion usually follows an examination, blood tests, and sometimes an ultrasound or a needle sample. A surgeon may be asked about a gland that is pressing or causing tightness, a nodule that needs a decision, or a tumor for which surgery is part of treatment.',
+                    'Asking for an opinion does not mean an operation is already decided. The result may be follow-up, medication, a referral elsewhere, or surgery at a time that is agreed.',
+                ],
+            ],
+            [
+                'heading' => 'What should be explained before a decision',
+                'paragraphs' => [
+                    'Before an operation, a person should understand why surgery is proposed, whether part of the gland or all of it would be removed, and what that means for hormones and follow-up.',
+                    'Possible complications are also explained in general terms, such as a change in the voice or a disturbance of calcium after some neck operations. How likely they are, and how serious, differs from one case to another and cannot be taken from an article.',
+                ],
+            ],
+            [
+                'heading' => 'This page does not replace a visit',
+                'paragraphs' => [
+                    'The information here is general education. It does not describe the reader’s own condition, and it should not be used to choose an operation or to delay medical care.',
+                    'A swelling in the neck, or a persistent change in the voice or in swallowing, belongs in a conversation with the treating doctor, and with a surgeon if that is requested.',
+                ],
+            ],
+        ],
+    ],
+
+    'photos' => [
+        'meta_title' => 'Photos | Dr. Taha Fayed',
+        'meta_description' => 'Photographs of Dr. Taha Fayed.',
+        'eyebrow' => 'Media',
+        'title' => 'Photos',
+        'lede' => 'Portraits of the doctor. Open any image for a closer view. Clinic and operative photographs will be added later if they become available.',
+        'close' => 'Close photo',
+        'prev' => 'Previous photo',
+        'next' => 'Next photo',
+        'alt' => [
+            'dr1' => 'Dr. Taha Fayed seated, facing the camera',
+            'dr2' => 'Formal portrait of Dr. Taha Fayed',
+            'dr3' => 'Dr. Taha Fayed standing with his hands clasped',
+            'dr4' => 'Another standing portrait of Dr. Taha Fayed',
+        ],
+    ],
+
+    'videos' => [
+        'meta_title' => 'Videos | Dr. Taha Fayed',
+        'meta_description' => 'Videos from Dr. Taha Fayed. None have been added yet.',
+        'eyebrow' => 'Media',
+        'title' => 'Videos',
+        'lede' => 'Filmed explanations will be shown here when they are available. No video is placed without a clear source.',
+        'empty' => 'No videos are published yet.',
+    ],
+
+    'contact' => [
+        'meta_title' => 'Contact | Dr. Taha Fayed',
+        'meta_description' => 'Contact Dr. Taha Fayed. Clinics and their maps will be added once they are confirmed.',
+        'eyebrow' => 'Contact',
+        'title' => 'Contact and appointments',
+        'lede' => 'The form shows how the page will work. Sending it now does not store the message or deliver it to the clinic.',
+        'channels_title' => 'Ways to reach the clinic',
+        'name' => 'Name',
+        'phone' => 'Phone number',
+        'email' => 'Email',
+        'message' => 'Message',
+        'submit' => 'Send',
+        'notice' => 'This is a layout preview. Your message was not sent to the clinic. The Facebook page can be used until booking is connected.',
+        'phone_label' => 'Phone',
+        'email_label' => 'Email',
+        'missing_phone' => 'The phone number will be added once it is confirmed.',
+        'missing_email' => 'The email address will be added once it is confirmed.',
+        'clinics_meta_title' => 'Clinic branches and hours | Dr. Taha Fayed',
+        'clinics_meta_description' => 'Dr. Taha Fayed clinic branches: address, hours, phone number, and map location for each branch.',
+        'clinics_eyebrow' => 'Branches',
+        'clinics_title' => 'Clinic branches and hours',
+        'clinics_text' => 'Each branch is listed with its address, clinic hours, phone number, and map location. A branch is published only after its details are confirmed.',
+        'missing_clinics' => 'Branch addresses, hours, and phone numbers will appear here after they are added. Unconfirmed locations are not published.',
+        'map_link' => 'Location on Google Maps',
+        'photos_label' => 'Clinic photos',
+        'book_title' => 'For booking and questions',
+        'book_text' => 'Each branch lists its own hours with its address. Booking is through the contact page, or Facebook, until an appointment channel is connected.',
+        'address_label' => 'Address',
+        'map_label' => 'Clinic map',
+        'map_pending' => 'The map is added with the clinic details',
+        'open_map' => 'Open the map',
+        'facebook_cta' => 'Facebook page',
+    ],
+
+    'footer' => [
+        'branches' => 'Our branches',
+        'disclaimer' => 'The information on this website is for general medical education. It helps a visitor understand some conditions in broad terms, and it is not a substitute for a consultation or for the advice of the treating physician.',
+        'rights' => 'All rights reserved.',
+    ],
+];
