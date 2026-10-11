@@ -14,6 +14,17 @@
     <link rel="shortcut icon" href="{{ asset('favicon-32.png') }}">
 
     <!-- Layout config Js -->
+    <script>
+        (function () {
+            try {
+                var mode = localStorage.getItem('data-layout-mode');
+
+                if ((mode === 'dark' || mode === 'light') && sessionStorage.getItem('defaultAttribute')) {
+                    sessionStorage.setItem('data-layout-mode', mode);
+                }
+            } catch (e) {}
+        })();
+    </script>
     <script src="{{ asset('backendtheme/assets/js/layout.js') }}"></script>
     <!-- Bootstrap Css -->
     <link href="{{ asset('backendtheme/assets/css/bootstrap.min.css') }}" rel="stylesheet" type="text/css" />
@@ -80,6 +91,18 @@
 
     <!-- App js -->
     <script src="{{ asset('backendtheme/assets/js/app.js') }}"></script>
+    <script>
+        document.querySelectorAll('.light-dark-mode').forEach(function (button) {
+            button.addEventListener('click', function () {
+                var mode = document.documentElement.getAttribute('data-layout-mode') === 'dark' ? 'dark' : 'light';
+
+                try {
+                    localStorage.setItem('data-layout-mode', mode);
+                    sessionStorage.setItem('data-layout-mode', mode);
+                } catch (e) {}
+            });
+        });
+    </script>
 
     @stack('scripts')
     @livewireScripts
