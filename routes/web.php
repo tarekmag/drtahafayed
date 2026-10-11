@@ -7,6 +7,7 @@ use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DoctorBioController;
 use App\Http\Controllers\Backend\MessageController;
 use App\Http\Controllers\Backend\PhotoController;
+use App\Http\Controllers\Backend\ReviewController;
 use App\Http\Controllers\Backend\SeoController;
 use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Backend\VideoController;
@@ -58,6 +59,8 @@ Route::prefix('backend')->name('backend.')->middleware('auth')->group(function (
     Route::get('/clinics', [ClinicController::class, 'index'])->name('clinics.index');
     Route::get('/clinics/create', [ClinicController::class, 'create'])->name('clinics.create');
     Route::get('/clinics/{clinic}/edit', [ClinicController::class, 'edit'])->name('clinics.edit');
+    Route::get('/reviews', [ReviewController::class, 'index'])->name('reviews.index');
+    Route::get('/reviews/{patientReview}', [ReviewController::class, 'show'])->name('reviews.show');
     Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
     Route::get('/messages/{contact}', [MessageController::class, 'show'])->name('messages.show');
     Route::get('/contacts', [ContactDataController::class, 'edit'])->name('contacts.edit');

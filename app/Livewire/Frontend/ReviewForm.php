@@ -61,6 +61,7 @@ class ReviewForm extends Component
             'rating' => $this->rating,
             'body' => trim($this->body),
             'locale' => app()->getLocale(),
+            'source' => 'website',
             'is_published' => false,
         ]);
 
@@ -75,6 +76,7 @@ class ReviewForm extends Component
         return view('livewire.frontend.review-form', [
             'published' => PatientReview::query()
                 ->where('is_published', true)
+                ->where('source', 'website')
                 ->latest()
                 ->get()
                 ->map(fn (PatientReview $review) => [

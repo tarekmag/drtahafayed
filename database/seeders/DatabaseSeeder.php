@@ -33,6 +33,7 @@ class DatabaseSeeder extends Seeder
             PhotoSeeder::class,
             VideoSeeder::class,
             SeoPageSeeder::class,
+            PatientReviewSeeder::class,
         ]);
     }
 }

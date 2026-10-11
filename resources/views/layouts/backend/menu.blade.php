@@ -76,8 +76,12 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="{{ route('backend.reviews.index') }}">
                         <i class="mdi mdi-star"></i> <span data-key="t-reviews">Reviews</span>
+                        @php $pendingReviews = \App\Models\PatientReview::query()->where('is_published', false)->count(); @endphp
+                        @if ($pendingReviews > 0)
+                            <span class="badge badge-pill bg-success">{{ $pendingReviews }}</span>
+                        @endif
                     </a>
                 </li>
 

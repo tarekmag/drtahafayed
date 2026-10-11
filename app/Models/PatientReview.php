@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable(['name', 'rating', 'body', 'locale', 'is_published'])]
+#[Fillable(['name', 'rating', 'body', 'locale', 'source', 'is_published'])]
 class PatientReview extends Model
 {
     protected function casts(): array

@@ -6,6 +6,7 @@ use App\Models\Article;
 use App\Models\Clinic;
 use App\Models\ClinicContact;
 use App\Models\Doctor;
+use App\Models\PatientReview;
 use App\Models\Photo;
 use App\Models\SeoPage;
 use App\Models\SocialProfile;
@@ -16,7 +17,7 @@ use Illuminate\Support\Collection;
 
 /**
  * Single read model for public site content.
- * Doctor biography, contact details, social links, clinics, articles, photos, videos, and page SEO come from the database.
+ * Doctor biography, contact details, social links, clinics, articles, photos, videos, reviews, and page SEO come from the database.
  * Other sections still read config until their dashboard screens replace those sources.
  */
 class Content
@@ -145,7 +146,19 @@ class Content
 
     public static function reviews(): Collection
     {
-        return self::items('reviews.items');
+        return PatientReview::query()
+            ->where('is_published', true)
+            ->inRandomOrder()
+            ->limit(10)
+            ->get()
+            ->map(fn (PatientReview $review) => [
+                'rating' => $review->rating,
+                'name' => $review->name,
+                'place' => $review->source === 'vezeeta'
+                    ? ['ar' => 'فيزيتا', 'en' => 'Vezeeta']
+                    : ['ar' => 'الموقع', 'en' => 'Website'],
+                'text' => $review->body,
+            ]);
     }
 
     public static function videos(): Collection
