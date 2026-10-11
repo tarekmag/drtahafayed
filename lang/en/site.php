@@ -236,7 +236,7 @@ return [
         'message_hint' => 'Briefly describe the reason for your visit',
         'submit' => 'Send request',
         'whatsapp_submit' => 'Send via WhatsApp',
-        'notice' => 'This is a design preview and the request was not sent. Use the WhatsApp button or call the clinic directly.',
+        'notice' => 'We received your request. The clinic team will contact you to confirm the appointment.',
         'required' => 'This field is required.',
         'invalid_phone' => 'Enter a valid mobile number.',
         'wa_intro' => 'Hello, I would like to book an appointment.',

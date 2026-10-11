@@ -4,6 +4,7 @@ use App\Http\Controllers\Backend\ClinicController;
 use App\Http\Controllers\Backend\ContactDataController;
 use App\Http\Controllers\Backend\DashboardController;
 use App\Http\Controllers\Backend\DoctorBioController;
+use App\Http\Controllers\Backend\MessageController;
 use App\Http\Controllers\Backend\SocialMediaController;
 use App\Http\Controllers\Frontend\ArticleController;
 use App\Http\Controllers\Frontend\ServiceController;
@@ -44,6 +45,8 @@ Route::prefix('backend')->name('backend.')->middleware('auth')->group(function (
     Route::get('/clinics', [ClinicController::class, 'index'])->name('clinics.index');
     Route::get('/clinics/create', [ClinicController::class, 'create'])->name('clinics.create');
     Route::get('/clinics/{clinic}/edit', [ClinicController::class, 'edit'])->name('clinics.edit');
+    Route::get('/messages', [MessageController::class, 'index'])->name('messages.index');
+    Route::get('/messages/{contact}', [MessageController::class, 'show'])->name('messages.show');
     Route::get('/contacts', [ContactDataController::class, 'edit'])->name('contacts.edit');
     Route::get('/social', [SocialMediaController::class, 'edit'])->name('social.edit');
 });

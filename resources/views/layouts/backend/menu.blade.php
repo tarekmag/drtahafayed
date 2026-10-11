@@ -82,9 +82,12 @@
                 </li>
 
                 <li class="nav-item">
-                    <a class="nav-link menu-link" href="#">
+                    <a class="nav-link menu-link" href="{{ route('backend.messages.index') }}">
                         <i class="mdi mdi-message"></i> <span data-key="t-messages">Messages</span>
-                        <span class="badge badge-pill bg-success">10</span>
+                        @php $unreadMessages = \App\Models\Contact::query()->whereNull('read_at')->count(); @endphp
+                        @if ($unreadMessages > 0)
+                            <span class="badge badge-pill bg-success">{{ $unreadMessages }}</span>
+                        @endif
                     </a>
                 </li>
 

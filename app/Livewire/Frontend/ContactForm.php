@@ -2,9 +2,12 @@
 
 namespace App\Livewire\Frontend;
 
+use App\Mail\ContactInquiryMail;
+use App\Models\Contact;
 use App\Support\Content;
 use App\Support\LocaleText;
 use App\View\Presenters\ServicePresenter;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Validation\ValidationException;
 use Livewire\Component;
 
@@ -48,6 +51,22 @@ class ContactForm extends Component
     public function submit(): void
     {
         $this->validate();
+
+        $contact = Contact::query()->create([
+            'name' => $this->name,
+            'phone' => $this->phone,
+            'branch' => $this->branch !== '' ? $this->branch : null,
+            'service' => $this->service !== '' ? $this->service : null,
+            'message' => $this->message !== '' ? $this->message : null,
+        ]);
+
+        $inbox = Content::contact()['email'];
+
+        if ($inbox !== '') {
+            Mail::to($inbox)->send(new ContactInquiryMail($contact));
+        }
+
+        $this->reset('name', 'phone', 'branch', 'service', 'message');
         $this->sent = true;
     }
 
