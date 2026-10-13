@@ -27,7 +27,7 @@ class Service extends Model
     public const SPECIALTIES = [
         'general' => 'General surgery',
         'oncology' => 'Surgical oncology',
-        'endocrine' => 'Endocrine surgery',
+        'endocrine' => 'Gland surgery',
     ];
 
     public const ICONS = [

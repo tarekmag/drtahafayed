@@ -3,8 +3,8 @@
 return [
     'brand' => [
         'name' => 'Dr. Taha Fayed',
-        'specialty' => 'General, oncologic and endocrine surgery',
-        'description' => 'Dr. Taha Fayed, consultant in general, oncologic and endocrine surgery. Precise surgical care in Cairo and Giza.',
+        'specialty' => 'General, oncologic and gland surgery',
+        'description' => 'Dr. Taha Fayed, consultant in general, oncologic and gland surgery. Precise surgical care in Cairo and Giza.',
         'logo_alt' => 'Dr. Taha Fayed logo',
     ],
 
@@ -67,8 +67,8 @@ return [
     ],
 
     'home' => [
-        'meta_title' => 'Dr. Taha Fayed | Consultant in General, Oncologic and Endocrine Surgery',
-        'meta_description' => 'Dr. Taha Fayed, consultant in general, oncologic and endocrine surgery. Thyroid, laparoscopic and cancer surgery in Cairo and Giza.',
+        'meta_title' => 'Dr. Taha Fayed | Consultant in General, Oncologic and Gland Surgery',
+        'meta_description' => 'Dr. Taha Fayed, consultant in general, oncologic and gland surgery. Thyroid, laparoscopic and cancer surgery in Cairo and Giza.',
         'hero_lede' => 'Precise surgical care that starts with listening and explains every step before any decision. Five clinics across Cairo and Qalyubia.',
         'hero_services' => 'Explore services',
         'next_label' => 'Next clinic session',
@@ -77,7 +77,7 @@ return [
         'specialties' => [
             ['icon' => 'general', 'title' => 'General surgery', 'text' => 'Hernia, gallbladder, appendix and abdominal surgery.'],
             ['icon' => 'oncology', 'title' => 'Surgical oncology', 'text' => 'Precise tumour removal within an integrated plan.'],
-            ['icon' => 'thyroid', 'title' => 'Endocrine surgery', 'text' => 'Thyroid, parathyroid and adrenal glands.'],
+            ['icon' => 'thyroid', 'title' => 'Gland surgery', 'text' => 'Thyroid, parathyroid, salivary and adrenal glands.'],
         ],
         'about_eyebrow' => 'About the doctor',
         'about_title' => 'Surgical expertise that starts with listening',
@@ -114,7 +114,7 @@ return [
 
     'about' => [
         'meta_title' => 'About | Dr. Taha Fayed',
-        'meta_description' => 'Professional biography of Dr. Taha Fayed, consultant in general, oncologic and endocrine surgery.',
+        'meta_description' => 'Professional biography of Dr. Taha Fayed, consultant in general, oncologic and gland surgery.',
         'eyebrow' => 'About the doctor',
         'lede' => 'A surgeon who believes a clear explanation is part of treatment, and that the patient is a partner in every decision.',
         'portrait_alt' => 'Portrait of Dr. Taha Fayed',
@@ -132,14 +132,14 @@ return [
 
     'services' => [
         'meta_title' => 'Services | Dr. Taha Fayed',
-        'meta_description' => 'Dr. Taha Fayed services in general, oncologic, endocrine and laparoscopic surgery.',
+        'meta_description' => 'Dr. Taha Fayed services in general, oncologic, gland and laparoscopic surgery.',
         'eyebrow' => 'Services',
         'title' => 'Complete surgical care',
-        'lede' => 'Focused specialties in general, oncologic and endocrine surgery, with a clear path from diagnosis to recovery.',
+        'lede' => 'Focused specialties in general, oncologic and gland surgery, with a clear path from diagnosis to recovery.',
         'specialties' => [
             'general' => 'General surgery',
             'oncology' => 'Surgical oncology',
-            'endocrine' => 'Endocrine surgery',
+            'endocrine' => 'Gland surgery',
         ],
         'video_title' => 'Video explanation',
         'conditions_title' => 'Conditions within this service',
@@ -270,7 +270,7 @@ return [
     ],
 
     'footer' => [
-        'tagline' => 'Precise surgical care that starts with listening, in general, oncologic and endocrine surgery.',
+        'tagline' => 'Precise surgical care that starts with listening, in general, oncologic and gland surgery.',
         'links' => 'Quick links',
         'branches' => 'Our clinics',
         'contact' => 'Contact',

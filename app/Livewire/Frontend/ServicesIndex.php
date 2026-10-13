@@ -25,7 +25,7 @@ class ServicesIndex extends Component
         $active = isset($specialties[$this->category]) ? $this->category : '';
 
         return view('livewire.frontend.services-index', [
-            'services' => Content::services($active !== '' ? $active : null, Pagination::PER_PAGE),
+            'services' => Content::services($active !== '' ? $active : null, 11),
             'specialties' => $specialties,
             'active' => $active,
         ]);

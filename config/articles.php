@@ -74,7 +74,7 @@ return [
             'published_at' => '2026-08-12',
             'read_minutes' => 4,
             'cover' => 'frontend/images/services/parathyroid.svg',
-            'category' => ['ar' => 'الغدد الصماء', 'en' => 'Endocrine'],
+            'category' => ['ar' => 'الغدد', 'en' => 'Glands'],
             'title' => ['ar' => 'ارتفاع الكالسيوم: هل السبب الغدد الجار درقية؟', 'en' => 'High calcium: are the parathyroid glands to blame?'],
             'excerpt' => [
                 'ar' => 'تحليل روتيني قد يكشف ارتفاع الكالسيوم. متى نشك في الغدد الجار درقية، وكيف يتم التشخيص والعلاج؟',

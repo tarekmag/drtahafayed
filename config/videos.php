@@ -37,7 +37,7 @@ return [
             'cover' => 'assets/images/dr-2.jpeg',
             'duration' => '5:48',
             'service' => 'endocrine',
-            'title' => ['ar' => 'ماذا تتوقع بعد جراحة الغدد؟', 'en' => 'What to expect after endocrine surgery'],
+            'title' => ['ar' => 'ماذا تتوقع بعد جراحة الغدد؟', 'en' => 'What to expect after gland surgery'],
         ],
         [
             'sort' => 4,

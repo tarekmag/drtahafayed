@@ -120,14 +120,14 @@ return [
             'icon' => 'endocrine',
             'image' => 'frontend/images/services/endocrine.svg',
             'video' => 'https://www.youtube.com/watch?v=USoQMLuo1P8',
-            'title' => ['ar' => 'جراحات الغدد الصماء', 'en' => 'Endocrine surgery'],
+            'title' => ['ar' => 'جراحات الغدد', 'en' => 'Gland surgery'],
             'excerpt' => [
-                'ar' => 'جراحات الغدة الدرقية والجار درقية والكظرية بعد تقييم هرموني وتصويري دقيق.',
-                'en' => 'Thyroid, parathyroid and adrenal surgery after careful hormonal and imaging assessment.',
+                'ar' => 'جراحات الغدة الدرقية والجار درقية واللعابية والكظرية بعد تقييم هرموني وتصويري دقيق.',
+                'en' => 'Thyroid, parathyroid, salivary and adrenal surgery after careful hormonal and imaging assessment.',
             ],
             'body' => [
-                'ar' => '<h2>متى تكون الجراحة هي الحل؟</h2><p>ليس كل اضطراب هرموني حالة جراحية. تُطرح الجراحة عندما يشير التقييم إلى غدة يمكن لاستئصالها، أو لجزء منها، أن يعالج المشكلة بشكل نهائي.</p><h2>أشهر الحالات</h2><ul><li>عقد وتضخم الغدة الدرقية.</li><li>فرط نشاط الغدد الجار درقية.</li><li>أورام الغدة الكظرية.</li></ul><h2>العمل مع طبيب الغدد</h2><p>يتم التنسيق مع طبيب الغدد الصماء قبل العملية وبعدها لضبط الهرمونات ومتابعة التحاليل حتى استقرار الحالة.</p>',
-                'en' => '<h2>When is surgery the answer?</h2><p>Not every hormone problem is a surgical one. Surgery is considered when assessment points to a gland whose removal, in whole or in part, can treat the problem definitively.</p><h2>Common conditions</h2><ul><li>Thyroid nodules and goitre.</li><li>Overactive parathyroid glands.</li><li>Adrenal tumours.</li></ul><h2>Working with the endocrinologist</h2><p>Care is coordinated with the endocrinologist before and after surgery to balance hormones and follow blood tests until the condition is stable.</p>',
+                'ar' => '<h2>متى تكون الجراحة هي الحل؟</h2><p>ليس كل اضطراب هرموني حالة جراحية. تُطرح الجراحة عندما يشير التقييم إلى غدة يمكن لاستئصالها، أو لجزء منها، أن يعالج المشكلة بشكل نهائي.</p><h2>أشهر الحالات</h2><ul><li>عقد وتضخم الغدة الدرقية.</li><li>فرط نشاط الغدد الجار درقية.</li><li>الغدد اللعابية والنكافية.</li><li>أورام الغدة الكظرية.</li></ul><h2>العمل مع طبيب الغدد</h2><p>يتم التنسيق مع طبيب الغدد قبل العملية وبعدها لضبط الهرمونات ومتابعة التحاليل حتى استقرار الحالة.</p>',
+                'en' => '<h2>When is surgery the answer?</h2><p>Not every hormone problem is a surgical one. Surgery is considered when assessment points to a gland whose removal, in whole or in part, can treat the problem definitively.</p><h2>Common conditions</h2><ul><li>Thyroid nodules and goitre.</li><li>Overactive parathyroid glands.</li><li>Salivary and parotid glands.</li><li>Adrenal tumours.</li></ul><h2>Working with the glands specialist</h2><p>Care is coordinated with the glands specialist before and after surgery to balance hormones and follow blood tests until the condition is stable.</p>',
             ],
             'faqs' => [
                 [
@@ -250,6 +250,303 @@ return [
                 ['ar' => 'استئصال المرارة', 'en' => 'Gallbladder removal'],
                 ['ar' => 'التهاب الزائدة', 'en' => 'Appendicitis'],
             ],
+        ],
+        [
+            'slug' => 'breast-tumours',
+            'sort' => 7,
+            'is_active' => true,
+            'specialty' => 'oncology',
+            'icon' => 'oncology',
+            'image' => 'frontend/images/services/oncology.svg',
+            'video' => '',
+            'title' => ['ar' => 'جراحات أورام الثدي', 'en' => 'Breast tumour surgery'],
+            'excerpt' => [
+                'ar' => 'تقييم أورام الثدي الحميدة والخبيثة، واختيار الاستئصال المناسب مع شرح إمكانية الحفاظ على الثدي.',
+                'en' => 'Assessment of benign and malignant breast tumours, and the operation that best fits the case, including breast-conserving surgery when suitable.',
+            ],
+            'body' => [
+                'ar' => '<h2>التقييم قبل أي قرار</h2><p>يبدأ التعامل مع ورم الثدي بالفحص والأشعة والعينة عند الحاجة، لتحديد طبيعة الورم وحجمه ومكانه قبل الحديث عن الجراحة.</p><h2>الخيارات الجراحية</h2><ul><li>استئصال الورم مع الحفاظ على الثدي عندما يسمح الحجم والمكان.</li><li>استئصال الثدي عندما يكون ذلك أكثر أمانًا.</li><li>تقييم الغدد الليمفاوية تحت الإبط عند الحاجة.</li></ul><h2>الخطة مع فريق العلاج</h2><p>تُناقش الجراحة ضمن خطة قد تشمل علاجًا قبل العملية أو بعدها، ويُشرح ما تحققه العملية وما تحتاج إليه المتابعة.</p>',
+                'en' => '<h2>Assessment before any decision</h2><p>Care starts with examination, imaging and a biopsy when needed, so the nature, size and position of the tumour are clear before surgery is discussed.</p><h2>Surgical options</h2><ul><li>Removing the tumour while conserving the breast when size and position allow.</li><li>Mastectomy when that is the safer choice.</li><li>Assessment of the underarm lymph nodes when needed.</li></ul><h2>A plan with the treatment team</h2><p>Surgery is discussed as part of a plan that may include treatment before or after the operation, with a clear explanation of what surgery achieves and what follow-up is required.</p>',
+            ],
+            'faqs' => [
+                [
+                    'q' => ['ar' => 'هل كل ورم في الثدي خبيث؟', 'en' => 'Is every breast lump cancer?'],
+                    'a' => ['ar' => 'لا. كثير من الأورام حميدة، والفحوصات هي التي تحدد الطبيعة وخطة العلاج.', 'en' => 'No. Many lumps are benign, and tests determine the nature of the lump and the treatment plan.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل يمكن الحفاظ على الثدي؟', 'en' => 'Can the breast be preserved?'],
+                    'a' => ['ar' => 'في حالات كثيرة نعم، حسب حجم الورم ومكانه ومرحلة المرض. يُشرح ذلك بعد اكتمال الفحوصات.', 'en' => 'In many cases yes, depending on tumour size, position and stage. This is explained once tests are complete.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل أحتاج علاجًا بعد العملية؟', 'en' => 'Will I need treatment after surgery?'],
+                    'a' => ['ar' => 'يعتمد على نتيجة العينة والمرحلة. تُناقش الخطوة التالية في زيارة المتابعة.', 'en' => 'It depends on the pathology result and the stage. The next step is discussed at follow-up.'],
+                ],
+            ],
+            'related' => ['oncology', 'lymph-nodes', 'reconstructive-tumours'],
+        ],
+        [
+            'slug' => 'reconstructive-tumours',
+            'sort' => 8,
+            'is_active' => true,
+            'specialty' => 'oncology',
+            'icon' => 'oncology',
+            'image' => 'frontend/images/services/oncology.svg',
+            'video' => '',
+            'title' => ['ar' => 'جراحات الأورام التجميلية', 'en' => 'Reconstructive tumour surgery'],
+            'excerpt' => [
+                'ar' => 'استئصال الورم مع ترميم الشكل والوظيفة قدر الإمكان، بخطة تُشرح قبل العملية.',
+                'en' => 'Tumour removal with reconstruction of form and function as far as possible, planned and explained before surgery.',
+            ],
+            'body' => [
+                'ar' => '<h2>الاستئصال والترميم معًا</h2><p>الهدف إزالة الورم بالكامل، ثم ترميم المكان بطريقة تناسب حجم الاستئصال ومكانه، سواء في الثدي أو الجلد أو الوجه.</p><h2>متى تُطرح؟</h2><ul><li>عندما يؤثر الاستئصال على شكل العضو أو وظيفته.</li><li>عندما يمكن إغلاق الجرح أو ترميمه في نفس العملية.</li><li>عندما تحتاج الحالة تنسيقًا مع تخصص آخر.</li></ul><h2>ما يُشرح قبل القرار</h2><p>يُوضح شكل الترميم المتوقع، وعدد المراحل إن وُجدت، وما الذي يعود طبيعيًا وما الذي يحتاج وقتًا.</p>',
+                'en' => '<h2>Removal and reconstruction together</h2><p>The aim is complete tumour removal, then reconstruction suited to the size and site of the excision, whether in the breast, skin or face.</p><h2>When is it considered?</h2><ul><li>When removal would affect the shape or function of the area.</li><li>When the wound can be closed or reconstructed in the same operation.</li><li>When another specialty needs to be involved.</li></ul><h2>What is explained beforehand</h2><p>The expected reconstruction, the number of stages if any, and what returns to normal and what needs time are all explained before a decision.</p>',
+            ],
+            'faqs' => [
+                [
+                    'q' => ['ar' => 'هل الترميم يتم في نفس العملية؟', 'en' => 'Is reconstruction done in the same operation?'],
+                    'a' => ['ar' => 'في كثير من الحالات نعم. وأحيانًا يُؤجَّل لمرحلة ثانية حسب حجم الاستئصال والعلاج المصاحب.', 'en' => 'Often yes. Sometimes it is deferred to a second stage, depending on the excision and any other treatment.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل الترميم يؤخر علاج الورم؟', 'en' => 'Does reconstruction delay cancer treatment?'],
+                    'a' => ['ar' => 'الخطة تُرتَّب بحيث لا يؤخر الترميم العلاج اللازم. يُشرح ذلك قبل العملية.', 'en' => 'The plan is arranged so reconstruction does not delay necessary treatment. This is explained before surgery.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل النتيجة تظهر فورًا؟', 'en' => 'Is the result immediate?'],
+                    'a' => ['ar' => 'الشكل يتحسن تدريجيًا مع التئام الجرح وهدوء التورم، وتُراجع النتيجة في المتابعة.', 'en' => 'The shape settles gradually as the wound heals and swelling eases, and it is reviewed at follow-up.'],
+                ],
+            ],
+            'related' => ['breast-tumours', 'skin-tumours', 'oncology'],
+        ],
+        [
+            'slug' => 'uterine-ovarian-tumours',
+            'sort' => 9,
+            'is_active' => true,
+            'specialty' => 'oncology',
+            'icon' => 'oncology',
+            'image' => 'frontend/images/services/oncology.svg',
+            'video' => '',
+            'title' => ['ar' => 'جراحات أورام الرحم والمبيض', 'en' => 'Uterine and ovarian tumour surgery'],
+            'excerpt' => [
+                'ar' => 'تقييم أورام الرحم والمبيض جراحيًا ضمن خطة تُحدد مدى الاستئصال حسب نوع الورم ومرحلته.',
+                'en' => 'Surgical assessment of uterine and ovarian tumours, with the extent of removal set by tumour type and stage.',
+            ],
+            'body' => [
+                'ar' => '<h2>قبل العملية</h2><p>تُراجع الأشعة والتحاليل ونتائج العينات لمعرفة نوع الورم ومدى انتشاره، ثم تُشرح حدود الجراحة المتوقعة.</p><h2>ما قد تشمل العملية</h2><ul><li>استئصال الورم أو العضو المصاب حسب التشخيص.</li><li>تقييم الغدد الليمفاوية عند الحاجة.</li><li>إمكانية إجراء جزء من الجراحة بالمنظار في الحالات المناسبة.</li></ul><h2>بعد العملية</h2><p>تُناقش نتيجة العينة وخطة المتابعة أو العلاج المكمل في زيارة محددة، مع تعليمات واضحة للتعافي.</p>',
+                'en' => '<h2>Before the operation</h2><p>Scans, blood tests and biopsy results are reviewed to understand the tumour type and extent, and the expected limits of surgery are explained.</p><h2>What the operation may include</h2><ul><li>Removal of the tumour or the affected organ, depending on the diagnosis.</li><li>Assessment of lymph nodes when needed.</li><li>A laparoscopic approach for part of the operation in suitable cases.</li></ul><h2>After the operation</h2><p>The pathology result and the follow-up or further treatment plan are discussed at a set visit, with clear recovery instructions.</p>',
+            ],
+            'faqs' => [
+                [
+                    'q' => ['ar' => 'هل كل ورم في المبيض يحتاج استئصالًا كاملًا؟', 'en' => 'Does every ovarian tumour need complete removal?'],
+                    'a' => ['ar' => 'لا. مدى الاستئصال يعتمد على نوع الورم وعمر المريضة ومرحلة المرض.', 'en' => 'No. The extent of removal depends on the tumour type, the patient’s age and the stage.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل العملية دائمًا مفتوحة؟', 'en' => 'Is the operation always open?'],
+                    'a' => ['ar' => 'ليست دائمًا. بعض الحالات تناسب المنظار، ويُحسم ذلك بعد التقييم.', 'en' => 'Not always. Some cases suit laparoscopy, and that is decided after assessment.'],
+                ],
+                [
+                    'q' => ['ar' => 'متى أعرف نتيجة العينة؟', 'en' => 'When is the pathology result ready?'],
+                    'a' => ['ar' => 'عادة خلال أسبوع إلى أسبوعين، وتُناقش في المتابعة.', 'en' => 'Usually within one to two weeks, and it is discussed at follow-up.'],
+                ],
+            ],
+            'related' => ['oncology', 'lymph-nodes', 'laparoscopy'],
+        ],
+        [
+            'slug' => 'salivary-glands',
+            'sort' => 10,
+            'is_active' => true,
+            'specialty' => 'endocrine',
+            'icon' => 'endocrine',
+            'image' => 'frontend/images/services/endocrine.svg',
+            'video' => '',
+            'title' => ['ar' => 'جراحات الغدد اللعابية', 'en' => 'Salivary gland surgery'],
+            'excerpt' => [
+                'ar' => 'تقييم أورام وتضخمات الغدد اللعابية، واستئصال الغدة المسببة مع الحفاظ على أعصاب الوجه ما أمكن.',
+                'en' => 'Assessment of salivary gland tumours and enlargement, and removal of the affected gland while protecting the facial nerves when possible.',
+            ],
+            'body' => [
+                'ar' => '<h2>أين تقع هذه الغدد؟</h2><p>تشمل الغدة النكافية تحت الأذن، والغدد تحت الفك وتحت اللسان. ظهور كتلة أو تورم لا يعني بالضرورة ورمًا خبيثًا.</p><h2>خطوات التقييم</h2><ul><li>فحص السريري للكتلة وحركة الوجه.</li><li>أشعة موجات صوتية أو مقطعية.</li><li>عينة بالإبرة عند الحاجة.</li></ul><h2>أثناء الجراحة</h2><p>يُستأصل الجزء المصاب أو الغدة، مع متابعة مسار عصب الوجه في جراحات النكافية، ويُشرح احتمال التأثير على الحركة أو جفاف الفم قبل العملية.</p>',
+                'en' => '<h2>Where are these glands?</h2><p>They include the parotid gland in front of the ear, and the glands under the jaw and tongue. A lump or swelling is not automatically cancer.</p><h2>How a case is assessed</h2><ul><li>Examination of the lump and facial movement.</li><li>Ultrasound or CT.</li><li>Needle biopsy when needed.</li></ul><h2>During surgery</h2><p>The affected part or the gland is removed. In parotid surgery the facial nerve is traced and protected, and any effect on movement or mouth dryness is explained beforehand.</p>',
+            ],
+            'faqs' => [
+                [
+                    'q' => ['ar' => 'هل تورم الغدة اللعابية ورم دائمًا؟', 'en' => 'Is a salivary swelling always a tumour?'],
+                    'a' => ['ar' => 'لا. قد يكون التهابًا أو حصوة أو ورمًا حميدًا. الفحص والأشعة يحددان السبب.', 'en' => 'No. It may be inflammation, a stone or a benign tumour. Examination and scans identify the cause.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل تتأثر حركة الوجه؟', 'en' => 'Can facial movement be affected?'],
+                    'a' => ['ar' => 'عصب الوجه يمر داخل الغدة النكافية، ويُحافَظ عليه أثناء الجراحة. يُشرح احتمال التأثر المؤقت أو الدائم قبل العملية.', 'en' => 'The facial nerve runs through the parotid gland and is protected during surgery. The chance of a temporary or lasting effect is explained beforehand.'],
+                ],
+                [
+                    'q' => ['ar' => 'كم تستغرق العودة للأكل؟', 'en' => 'When can I eat again?'],
+                    'a' => ['ar' => 'يبدأ أغلب المرضى بالسوائل والأطعمة اللينة في نفس اليوم أو اليوم التالي.', 'en' => 'Most patients start with fluids and soft food the same day or the next day.'],
+                ],
+            ],
+            'related' => ['parotid', 'oral-tumours', 'endocrine'],
+        ],
+        [
+            'slug' => 'parotid',
+            'sort' => 11,
+            'is_active' => true,
+            'specialty' => 'endocrine',
+            'icon' => 'endocrine',
+            'image' => 'frontend/images/services/endocrine.svg',
+            'video' => '',
+            'title' => ['ar' => 'جراحات الغدة النكافية', 'en' => 'Parotid gland surgery'],
+            'excerpt' => [
+                'ar' => 'استئصال أورام الغدة النكافية أمام الأذن، مع تتبع عصب الوجه والحفاظ عليه.',
+                'en' => 'Removal of parotid tumours in front of the ear, while tracing and protecting the facial nerve.',
+            ],
+            'body' => [
+                'ar' => '<h2>عن الغدة النكافية</h2><p>أكبر الغدد اللعابية، وتقع أمام الأذن وأسفلها. أغلب أورامها حميدة، لكن بعضها يحتاج استئصالًا كاملًا للفص أو للغدة.</p><h2>أنواع الاستئصال</h2><ul><li>استئصال الفص السطحي للغدة.</li><li>استئصال الغدة كاملة عندما يمتد الورم أعمق.</li><li>عينة قبل العملية عندما تساعد في التخطيط.</li></ul><h2>عصب الوجه</h2><p>يمر العصب داخل الغدة، لذلك تُجرى الجراحة بتتبع فروعه. قد يحدث ضعف مؤقت في حركة الوجه يتحسن عند أغلب المرضى، ويُشرح ذلك بوضوح قبل الموعد.</p>',
+                'en' => '<h2>About the parotid</h2><p>The largest salivary gland, sitting in front of and below the ear. Most of its tumours are benign, but some need removal of a lobe or of the whole gland.</p><h2>Types of operation</h2><ul><li>Removal of the superficial lobe.</li><li>Removal of the whole gland when the tumour extends deeper.</li><li>A biopsy beforehand when it helps planning.</li></ul><h2>The facial nerve</h2><p>The nerve runs through the gland, so surgery follows its branches. Temporary facial weakness can occur and improves in most patients. This is explained clearly before the operation.</p>',
+            ],
+            'faqs' => [
+                [
+                    'q' => ['ar' => 'هل الجرح يظهر أمام الأذن؟', 'en' => 'Will the scar show in front of the ear?'],
+                    'a' => ['ar' => 'يُوضع الجرح عادة في ثنية أمام الأذن ويمتد إلى الرقبة، ويبهت مع الوقت.', 'en' => 'The incision is usually placed in the crease in front of the ear and down into the neck, and it fades with time.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل كل أورام النكافية خبيثة؟', 'en' => 'Are all parotid tumours malignant?'],
+                    'a' => ['ar' => 'لا. النسبة الأكبر حميدة، والنوع يتحدد بالأشعة والعينة ونتيجة التحليل بعد الاستئصال.', 'en' => 'No. Most are benign. The type is confirmed by scans, biopsy and the pathology result after removal.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل ضعف الوجه دائم؟', 'en' => 'Is facial weakness permanent?'],
+                    'a' => ['ar' => 'الضعف المؤقت شائع ويتحسن خلال أسابيع إلى أشهر. الضعف الدائم أقل حدوثًا ويُشرح احتماله قبل الجراحة.', 'en' => 'Temporary weakness is common and improves over weeks to months. Lasting weakness is less common, and its risk is explained before surgery.'],
+                ],
+            ],
+            'related' => ['salivary-glands', 'oral-tumours', 'endocrine'],
+        ],
+        [
+            'slug' => 'lymph-nodes',
+            'sort' => 12,
+            'is_active' => true,
+            'specialty' => 'oncology',
+            'icon' => 'oncology',
+            'image' => 'frontend/images/services/oncology.svg',
+            'video' => '',
+            'title' => ['ar' => 'جراحات الغدد الليمفاوية', 'en' => 'Lymph node surgery'],
+            'excerpt' => [
+                'ar' => 'أخذ عينة من غدة ليمفاوية متضخمة أو استئصال الغدد المصاحبة للورم لتحديد المرحلة وخطة العلاج.',
+                'en' => 'Biopsy of an enlarged lymph node, or removal of nodes related to a tumour, to set the stage and the treatment plan.',
+            ],
+            'body' => [
+                'ar' => '<h2>لماذا تُجرى؟</h2><p>قد تكون الغدة المتضخمة التهابًا، أو تحتاج عينة لمعرفة السبب. وفي جراحات الأورام تُقيَّم الغدد القريبة لمعرفة إن كان الورم وصل إليها.</p><h2>أشكال الجراحة</h2><ul><li>عينة من غدة واحدة للتشخيص.</li><li>استئصال الغدة الحارسة في بعض أورام الثدي والجلد.</li><li>تفريغ مجموعة من الغدد عندما يثبت إصابتها.</li></ul><h2>بعد العملية</h2><p>تُشرح العناية بالجرح، وعلامات التورم في الطرف، وموعد نتيجة العينة التي تحدد الخطوة التالية.</p>',
+                'en' => '<h2>Why is it done?</h2><p>An enlarged node may be inflammation, or it may need a biopsy to find the cause. In cancer surgery the nearby nodes are assessed to see whether the tumour has reached them.</p><h2>Forms of surgery</h2><ul><li>Biopsy of a single node for diagnosis.</li><li>Sentinel-node removal in some breast and skin tumours.</li><li>Clearance of a group of nodes when they are involved.</li></ul><h2>After the operation</h2><p>Wound care, signs of limb swelling, and the date of the pathology result that sets the next step are all explained.</p>',
+            ],
+            'faqs' => [
+                [
+                    'q' => ['ar' => 'هل تضخم الغدة يعني ورمًا؟', 'en' => 'Does an enlarged node mean cancer?'],
+                    'a' => ['ar' => 'ليس دائمًا. الالتهابات سبب شائع، والعينة تُطلب عندما لا يتراجع التضخم أو يكون الشك قائمًا.', 'en' => 'Not always. Infection is a common cause. A biopsy is requested when the node does not settle or concern remains.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل استئصال الغدد يسبب تورم الذراع؟', 'en' => 'Can node removal cause arm swelling?'],
+                    'a' => ['ar' => 'ممكن بعد تفريغ غدد الإبط، ويقل الاحتمال عند الاكتفاء بالغدة الحارسة. تُعطى تعليمات للوقاية والمتابعة.', 'en' => 'It can after an axillary clearance, and the risk is lower when only the sentinel node is removed. Prevention and follow-up advice is given.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل العينة تكفي أم يلزم استئصال أوسع؟', 'en' => 'Is a biopsy enough, or is a wider removal needed?'],
+                    'a' => ['ar' => 'العينة للتشخيص. الاستئصال الأوسع يُقرر حسب النتيجة ومكان الغدد وارتباطها بورم معروف.', 'en' => 'A biopsy is for diagnosis. A wider removal is decided from the result, the site of the nodes and any known tumour.'],
+                ],
+            ],
+            'related' => ['breast-tumours', 'skin-tumours', 'oncology'],
+        ],
+        [
+            'slug' => 'adrenal',
+            'sort' => 13,
+            'is_active' => true,
+            'specialty' => 'endocrine',
+            'icon' => 'endocrine',
+            'image' => 'frontend/images/services/endocrine.svg',
+            'video' => '',
+            'title' => ['ar' => 'جراحات الغدة الكظرية', 'en' => 'Adrenal gland surgery'],
+            'excerpt' => [
+                'ar' => 'استئصال أورام الغدة الكظرية بعد ضبط الهرمونات، وغالبًا بالمنظار في الحالات المناسبة.',
+                'en' => 'Removal of adrenal tumours after hormones are controlled, often laparoscopically in suitable cases.',
+            ],
+            'body' => [
+                'ar' => '<h2>متى تُستأصل الغدة الكظرية؟</h2><p>عندما يفرز الورم هرمونات زائدة، أو يكبر حجمه، أو تثير صورته شكًا يحتاج إلى استئصال. ليست كل عقدة صغيرة حالة جراحية.</p><h2>التحضير</h2><ul><li>تحاليل هرمونات يحددها التقييم.</li><li>أشعة مقطعية أو رنين لتحديد جهة الورم وحجمه.</li><li>ضبط ضغط الدم والهرمونات قبل الدخول للعملية عند الحاجة.</li></ul><h2>طريقة الجراحة</h2><p>يُجرى الاستئصال بالمنظار في كثير من الحالات، ويُحوَّل إلى جراحة مفتوحة إذا كان ذلك أكثر أمانًا. تُتابع الهرمونات بعد العملية حتى استقرارها.</p>',
+                'en' => '<h2>When is the adrenal gland removed?</h2><p>When a tumour releases excess hormones, grows, or has an appearance that needs removal. Not every small nodule is a surgical case.</p><h2>Preparation</h2><ul><li>Hormone tests chosen for the case.</li><li>CT or MRI to locate the tumour and measure it.</li><li>Blood pressure and hormone control before surgery when needed.</li></ul><h2>How the operation is done</h2><p>Removal is laparoscopic in many cases, and converted to open surgery if that is safer. Hormones are followed after the operation until they are stable.</p>',
+            ],
+            'faqs' => [
+                [
+                    'q' => ['ar' => 'هل أحتاج أدوية قبل العملية؟', 'en' => 'Will I need medication before surgery?'],
+                    'a' => ['ar' => 'في الأورام المفرزة للهرمونات نعم، لضبط الضغط والهرمونات قبل التخدير.', 'en' => 'Yes for hormone-producing tumours, to control blood pressure and hormones before anaesthesia.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل يمكن إجراء العملية بالمنظار؟', 'en' => 'Can the operation be laparoscopic?'],
+                    'a' => ['ar' => 'في أغلب الأورام محدودة الحجم نعم. الحجم والشك في الطبيعة يحددان الأسلوب.', 'en' => 'For most limited-size tumours, yes. Size and any concern about the nature of the tumour decide the approach.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل أحتاج كورتيزون بعد الاستئصال؟', 'en' => 'Will I need cortisone afterwards?'],
+                    'a' => ['ar' => 'أحيانًا لفترة مؤقتة إذا كان الورم يفرز الكورتيزول، حتى تستعيد الغدة الأخرى نشاطها.', 'en' => 'Sometimes for a short period if the tumour was producing cortisol, until the other gland recovers.'],
+                ],
+            ],
+            'related' => ['endocrine', 'laparoscopy', 'thyroid'],
+        ],
+        [
+            'slug' => 'skin-tumours',
+            'sort' => 14,
+            'is_active' => true,
+            'specialty' => 'oncology',
+            'icon' => 'oncology',
+            'image' => 'frontend/images/services/oncology.svg',
+            'video' => '',
+            'title' => ['ar' => 'جراحات أورام الجلد', 'en' => 'Skin tumour surgery'],
+            'excerpt' => [
+                'ar' => 'استئصال أورام الجلد الحميدة والخبيثة بهامش آمن، مع إغلاق الجرح أو ترميمه حسب المكان.',
+                'en' => 'Removal of benign and malignant skin tumours with a safe margin, and closure or reconstruction according to the site.',
+            ],
+            'body' => [
+                'ar' => '<h2>ما الذي يُفحص؟</h2><p>أي شامة أو قرحة أو كتلة جلدية يتغير لونها أو حجمها أو تنزف تُقيَّم سريريًا، وقد تُستأصل كاملة للتحليل.</p><h2>أسلوب الاستئصال</h2><ul><li>استئصال بهامش من الجلد السليم حول الورم.</li><li>إغلاق مباشر أو ترقيع أو شريحة عندما يكون الجرح واسعًا.</li><li>تقييم الغدد الليمفاوية القريبة في بعض الأورام.</li></ul><h2>النتيجة</h2><p>تحليل الأنسجة يؤكد نوع الورم وكفاية الهامش، ويحدد إن كانت هناك حاجة لتوسيع الاستئصال أو لعلاج إضافي.</p>',
+                'en' => '<h2>What is assessed?</h2><p>A mole, ulcer or skin lump that changes colour or size, or that bleeds, is examined and may be removed completely for pathology.</p><h2>How it is removed</h2><ul><li>Excision with a margin of healthy skin around the tumour.</li><li>Direct closure, a graft or a flap when the wound is wide.</li><li>Assessment of nearby lymph nodes in some tumours.</li></ul><h2>The result</h2><p>Pathology confirms the tumour type and whether the margin is clear, and whether a wider excision or further treatment is needed.</p>',
+            ],
+            'faqs' => [
+                [
+                    'q' => ['ar' => 'هل كل شامة تحتاج استئصالًا؟', 'en' => 'Does every mole need removal?'],
+                    'a' => ['ar' => 'لا. الاستئصال للشامة التي تتغير أو تنزف أو يثير شكلها الشك.', 'en' => 'No. Removal is for a mole that is changing, bleeding or looks concerning.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل يبقى أثر للجرح؟', 'en' => 'Will there be a scar?'],
+                    'a' => ['ar' => 'نعم، ويُخطط مكانه واتجاهه ليكون أقل وضوحًا. الأثر يبهت خلال شهور.', 'en' => 'Yes. Its position and direction are planned to be less noticeable, and it fades over months.'],
+                ],
+                [
+                    'q' => ['ar' => 'متى تظهر نتيجة التحليل؟', 'en' => 'When is the pathology result ready?'],
+                    'a' => ['ar' => 'غالبًا خلال أسبوع إلى أسبوعين، ومنها يُقرر إن كان الهامش كافيًا.', 'en' => 'Usually within one to two weeks, and that decides whether the margin is enough.'],
+                ],
+            ],
+            'related' => ['reconstructive-tumours', 'lymph-nodes', 'oncology'],
+        ],
+        [
+            'slug' => 'oral-tumours',
+            'sort' => 15,
+            'is_active' => true,
+            'specialty' => 'oncology',
+            'icon' => 'oncology',
+            'image' => 'frontend/images/services/oncology.svg',
+            'video' => '',
+            'title' => ['ar' => 'جراحات أورام الفم', 'en' => 'Oral tumour surgery'],
+            'excerpt' => [
+                'ar' => 'تقييم واستئصال أورام الفم واللسان وباطن الخد، مع التخطيط للحفاظ على الكلام والبلع.',
+                'en' => 'Assessment and removal of tumours of the mouth, tongue and inner cheek, planned to protect speech and swallowing.',
+            ],
+            'body' => [
+                'ar' => '<h2>متى تُراجع؟</h2><p>قرحة في الفم لا تلتئم، أو كتلة في اللسان أو باطن الخد، أو بقعة بيضاء أو حمراء مستمرة، تحتاج فحصًا ولا يُكتفى بعلاج موضعي متكرر.</p><h2>التقييم والجراحة</h2><ul><li>فحص الفم والرقبة وأخذ عينة.</li><li>أشعة لتحديد عمق الورم.</li><li>استئصال الورم بهامش آمن، وتقييم الغدد الليمفاوية في الرقبة عند الحاجة.</li></ul><h2>الكلام والبلع</h2><p>يُشرح أثر الجراحة على الكلام والأكل قبل القرار، ويُرتب الترميم والمتابعة عندما يكون الاستئصال واسعًا.</p>',
+                'en' => '<h2>When to be assessed</h2><p>A mouth ulcer that does not heal, a lump in the tongue or inner cheek, or a persistent white or red patch needs examination rather than repeated local treatment alone.</p><h2>Assessment and surgery</h2><ul><li>Examination of the mouth and neck, and a biopsy.</li><li>Scans to judge the depth of the tumour.</li><li>Removal with a safe margin, and assessment of neck lymph nodes when needed.</li></ul><h2>Speech and swallowing</h2><p>The effect of surgery on speech and eating is explained before a decision, and reconstruction and follow-up are arranged when the excision is wide.</p>',
+            ],
+            'faqs' => [
+                [
+                    'q' => ['ar' => 'هل قرحة الفم الطويلة تستدعي عينة؟', 'en' => 'Does a long-lasting mouth ulcer need a biopsy?'],
+                    'a' => ['ar' => 'القرحة التي لا تلتئم خلال أسبوعين تحتاج فحصًا، وقد تُؤخذ منها عينة.', 'en' => 'An ulcer that has not healed within two weeks needs examination, and a biopsy may be taken.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل سأقدر أتكلم وآكل بعد العملية؟', 'en' => 'Will I be able to speak and eat afterwards?'],
+                    'a' => ['ar' => 'في الاستئصال المحدود غالبًا نعم بعد أيام. الاستئصال الأوسع يحتاج خطة ترميم وتأهيل تُشرح مسبقًا.', 'en' => 'After a limited excision, usually yes within days. A wider excision needs a reconstruction and rehabilitation plan explained in advance.'],
+                ],
+                [
+                    'q' => ['ar' => 'هل تُستأصل غدد الرقبة دائمًا؟', 'en' => 'Are the neck nodes always removed?'],
+                    'a' => ['ar' => 'لا. ذلك يعتمد على نوع الورم وعمقه ومكانه، ويُحسم بعد الفحوصات.', 'en' => 'No. It depends on the tumour type, depth and site, and is decided after the tests.'],
+                ],
+            ],
+            'related' => ['salivary-glands', 'lymph-nodes', 'oncology'],
         ],
     ],
 ];

@@ -42,7 +42,7 @@
                 'telephone' => $contact['phone'] ?: null,
                 'email' => $contact['email'] ?: null,
                 'sameAs' => array_values(Content::socials()),
-                'medicalSpecialty' => ['General Surgery', 'Surgical Oncology', 'Endocrine Surgery'],
+                'medicalSpecialty' => ['General Surgery', 'Surgical Oncology', 'Gland Surgery'],
             ],
             [
                 '@type' => 'MedicalOrganization',

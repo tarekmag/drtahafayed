@@ -141,7 +141,7 @@ class ArticleSeeder extends Seeder
                 'published_at' => '2026-07-18',
                 'read_minutes' => 5,
                 'cover' => 'frontend/images/services/endocrine.svg',
-                'category' => ['ar' => 'الغدد الصماء', 'en' => 'Endocrine'],
+                'category' => ['ar' => 'الغدد', 'en' => 'Glands'],
                 'title' => ['ar' => 'ورم في الغدة الكظرية ظهر بالصدفة: ماذا بعد؟', 'en' => 'An adrenal mass found by chance: what happens next'],
                 'excerpt' => [
                     'ar' => 'كثير من أورام الكظر تُكتشف في أشعة عُملت لسبب آخر. الحجم والهرمونات هما ما يحددان المتابعة أو الجراحة.',
