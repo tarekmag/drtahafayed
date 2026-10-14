@@ -33,8 +33,8 @@ return [
     'doctor' => [
         'name' => ['ar' => 'د. طه فايد', 'en' => 'Dr. Taha Fayed'],
         'title' => [
-            'ar' => 'استشاري الجراحة العامة وجراحة الأورام والغدد',
-            'en' => 'Consultant in General, Oncologic and Gland Surgery',
+            'ar' => 'استشاري الجراحة العامة جراحات الأورام والغدد',
+            'en' => 'Consultant in General, Oncologic and Glandular Surgery',
         ],
         'summary' => [
             'ar' => 'رعاية جراحية دقيقة تبدأ بالاستماع، وتشرح كل خطوة بوضوح قبل أي قرار.',
