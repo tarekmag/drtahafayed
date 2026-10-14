@@ -40,7 +40,7 @@ class DoctorSeeder extends Seeder
                 ['ar' => 'ماجستير الجراحة العامة، جامعة عين شمس', 'en' => 'MSc in General Surgery, Ain Shams University'],
                 ['ar' => 'زمالة جراحة الغدد والأورام', 'en' => 'Fellowship in Endocrine and Oncologic Surgery'],
                 ['ar' => 'عضو الجمعية المصرية للجراحين', 'en' => 'Member of the Egyptian Society of Surgeons'],
-                ['ar' => 'عضو الجمعية الأوروبية لجراحة الغدد', 'en' => 'Member of the European Society of Endocrine Surgeons'],
+                ['ar' => 'عضو الجمعية الامريكية لجراحات الثدي والغدد الدرقية', 'en' => 'Member of the American Society of Endocrine and Glandular Surgeons'],
             ]),
             'stats' => $this->json([
                 ['value' => 15, 'suffix' => '+', 'label' => ['ar' => 'سنة خبرة', 'en' => 'Years of experience']],
