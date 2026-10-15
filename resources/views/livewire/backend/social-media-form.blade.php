@@ -36,6 +36,11 @@
                     @error('facebook') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
                 <div class="mb-3">
+                    <label for="instagram" class="form-label">Instagram</label>
+                    <input id="instagram" type="url" class="form-control @error('instagram') is-invalid @enderror" wire:model="instagram">
+                    @error('instagram') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+                <div class="mb-3">
                     <label for="vezeeta" class="form-label">Vezeeta</label>
                     <input id="vezeeta" type="url" class="form-control @error('vezeeta') is-invalid @enderror" wire:model="vezeeta">
                     @error('vezeeta') <div class="invalid-feedback">{{ $message }}</div> @enderror

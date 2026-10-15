@@ -10,6 +10,8 @@ class SocialMediaForm extends Component
 {
     public ?string $facebook = null;
 
+    public ?string $instagram = null;
+
     public ?string $vezeeta = null;
 
     public ?string $youtube = null;
@@ -27,6 +29,7 @@ class SocialMediaForm extends Component
         $profile = SocialProfile::query()->firstOrFail();
 
         $this->facebook = $profile->facebook;
+        $this->instagram = $profile->instagram;
         $this->vezeeta = $profile->vezeeta;
         $this->youtube = $profile->youtube;
         $this->tiktok = $profile->tiktok;
@@ -34,7 +37,7 @@ class SocialMediaForm extends Component
 
     public function save(): void
     {
-        foreach (['facebook', 'vezeeta', 'youtube', 'tiktok'] as $field) {
+        foreach (['facebook', 'instagram', 'vezeeta', 'youtube', 'tiktok'] as $field) {
             $this->{$field} = trim((string) $this->{$field}) ?: null;
         }
 
@@ -48,6 +51,7 @@ class SocialMediaForm extends Component
 
         SocialProfile::query()->firstOrFail()->update([
             'facebook' => $this->facebook,
+            'instagram' => $this->instagram,
             'vezeeta' => $this->vezeeta,
             'youtube' => $this->youtube,
             'tiktok' => $this->tiktok,
@@ -70,6 +74,7 @@ class SocialMediaForm extends Component
 
         return [
             'facebook' => $url,
+            'instagram' => $url,
             'vezeeta' => $url,
             'youtube' => $url,
             'tiktok' => $url,

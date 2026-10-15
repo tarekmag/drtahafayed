@@ -43,6 +43,7 @@ class Content
 
         return $contact?->toContentArray() ?? [
             'phone' => '',
+            'phone_secondary' => '',
             'whatsapp' => '',
             'email' => '',
             'booking_url' => '',
@@ -52,6 +53,13 @@ class Content
     public static function phoneUrl(): ?string
     {
         $phone = self::contact()['phone'];
+
+        return $phone !== '' ? 'tel:'.preg_replace('/\s+/', '', $phone) : null;
+    }
+
+    public static function secondaryPhoneUrl(): ?string
+    {
+        $phone = self::contact()['phone_secondary'];
 
         return $phone !== '' ? 'tel:'.preg_replace('/\s+/', '', $phone) : null;
     }

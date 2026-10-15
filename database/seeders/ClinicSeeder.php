@@ -63,7 +63,6 @@ class ClinicSeeder extends Seeder
             'slug' => $slug,
             'name' => $this->json($name),
             'address' => $this->json($address),
-            'hours' => $this->json(['ar' => '', 'en' => '']),
             'days' => $this->json([]),
             'opens' => null,
             'closes' => null,

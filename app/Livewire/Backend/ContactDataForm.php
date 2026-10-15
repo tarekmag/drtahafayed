@@ -10,6 +10,8 @@ class ContactDataForm extends Component
 {
     public string $phone = '';
 
+    public string $phoneSecondary = '';
+
     public string $whatsapp = '';
 
     public string $email = '';
@@ -27,6 +29,7 @@ class ContactDataForm extends Component
         $contact = ClinicContact::query()->firstOrFail();
 
         $this->phone = (string) $contact->phone;
+        $this->phoneSecondary = (string) $contact->phone_secondary;
         $this->whatsapp = (string) $contact->whatsapp;
         $this->email = (string) $contact->email;
         $this->bookingUrl = $contact->booking_url;
@@ -35,6 +38,7 @@ class ContactDataForm extends Component
     public function save(): void
     {
         $this->phone = trim($this->phone);
+        $this->phoneSecondary = trim($this->phoneSecondary);
         $this->whatsapp = preg_replace('/\D+/', '', $this->whatsapp) ?? '';
         $this->email = trim($this->email);
         $this->bookingUrl = trim((string) $this->bookingUrl) ?: null;
@@ -49,6 +53,7 @@ class ContactDataForm extends Component
 
         ClinicContact::query()->firstOrFail()->update([
             'phone' => $this->phone,
+            'phone_secondary' => $this->phoneSecondary !== '' ? $this->phoneSecondary : null,
             'whatsapp' => $this->whatsapp,
             'email' => $this->email,
             'booking_url' => $this->bookingUrl,
@@ -69,6 +74,7 @@ class ContactDataForm extends Component
     {
         return [
             'phone' => ['required', 'string', 'max:30'],
+            'phoneSecondary' => ['nullable', 'string', 'max:30'],
             'whatsapp' => ['required', 'regex:/^[0-9]{8,20}$/'],
             'email' => ['required', 'email', 'max:255'],
             'bookingUrl' => ['nullable', 'url', 'max:500'],

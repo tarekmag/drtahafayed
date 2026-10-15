@@ -11,6 +11,10 @@ return new class extends Migration
      */
     public function up(): void
     {
+        if (! Schema::hasTable('patient_reviews') || Schema::hasColumn('patient_reviews', 'source')) {
+            return;
+        }
+
         Schema::table('patient_reviews', function (Blueprint $table) {
             $table->string('source', 20)->default('website')->after('locale');
         });

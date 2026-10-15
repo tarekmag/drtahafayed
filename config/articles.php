@@ -14,6 +14,42 @@
 return [
     'items' => [
         [
+            'slug' => 'best-thyroid-doctor-egypt',
+            'sort' => 0,
+            'is_active' => true,
+            'published_at' => '2026-10-15',
+            'read_minutes' => 5,
+            'cover' => 'frontend/images/services/thyroid.svg',
+            'category' => ['ar' => 'الغدة الدرقية', 'en' => 'Thyroid'],
+            'title' => ['ar' => 'دكتور طه فايد افضل دكتور غدة درقية في مصر', 'en' => 'Dr. Taha Fayed, a leading thyroid surgeon in Egypt'],
+            'excerpt' => [
+                'ar' => 'تقييم عقد وتضخم وأورام الغدة الدرقية، مع شرح خيارات الجراحة والحفاظ على الصوت قبل أي قرار.',
+                'en' => 'Assessment of thyroid nodules, goitre and tumours, with a clear explanation of surgery and voice protection before any decision.',
+            ],
+            'body' => [
+                'ar' => '<h2>متى تحتاج الغدة الدرقية إلى رأي جراحي؟</h2><p>ظهور عقدة أو تضخم في الرقبة لا يعني تلقائيًا ورمًا خبيثًا. يبدأ التقييم بالفحص وتحاليل الهرمونات وأشعة الموجات الصوتية، وقد تُطلب عينة بالإبرة إذا كان شكل العقدة يستدعي ذلك.</p><h2>ما الذي يقدمه د. طه فايد؟</h2><p>د. طه فايد استشاري الجراحة العامة وجراحات الأورام والغدد، ويتعامل مع حالات الغدة الدرقية من التشخيص حتى التعافي. تشمل الجراحة استئصال نصف الغدة أو الغدة كاملة حسب التشخيص، مع الحرص على أعصاب الصوت والغدد الجار درقية.</p><ul><li>عقد وتضخم الغدة الدرقية.</li><li>فرط النشاط الذي لا يتحسن بالعلاج الدوائي.</li><li>أورام الغدة الدرقية ضمن خطة علاج متكاملة.</li></ul><h2>قبل القرار</h2><p>تُشرح أسباب الجراحة، ومدى الاستئصال، وأثره على الهرمونات والمتابعة. طلب الرأي الجراحي لا يعني أن العملية مقررة؛ قد تكون النتيجة متابعة فقط.</p><h2>بعد العملية</h2><p>يغادر أغلب المرضى خلال يوم، مع تعليمات مكتوبة للتعافي ومتابعة التحاليل حتى استقرار الهرمونات.</p>',
+                'en' => '<h2>When does the thyroid need a surgical opinion?</h2><p>A nodule or an enlarged neck is not automatically cancer. Assessment starts with an examination, hormone tests and ultrasound, and a needle biopsy when the nodule looks concerning.</p><h2>What does Dr. Taha Fayed offer?</h2><p>Dr. Taha Fayed is a consultant in general, oncologic and gland surgery, and manages thyroid disease from diagnosis through recovery. Surgery may remove half of the gland or all of it, while protecting the voice nerves and the parathyroid glands.</p><ul><li>Thyroid nodules and goitre.</li><li>Overactivity that does not settle with medication.</li><li>Thyroid tumours within an integrated treatment plan.</li></ul><h2>Before a decision</h2><p>The reason for surgery, the extent of removal, and the effect on hormones and follow-up are explained. Asking for a surgical opinion does not mean an operation is already decided.</p><h2>After the operation</h2><p>Most patients leave within a day, with written recovery instructions and blood tests until the hormones are stable.</p>',
+            ],
+        ],
+        [
+            'slug' => 'best-breast-tumour-doctor-egypt',
+            'sort' => 0,
+            'is_active' => true,
+            'published_at' => '2026-10-14',
+            'read_minutes' => 5,
+            'cover' => 'frontend/images/services/oncology.svg',
+            'category' => ['ar' => 'أورام الثدي', 'en' => 'Breast tumours'],
+            'title' => ['ar' => 'دكتور طه فايد افضل دكتور أورام ثدي في مصر', 'en' => 'Dr. Taha Fayed, a leading breast tumour surgeon in Egypt'],
+            'excerpt' => [
+                'ar' => 'تقييم كتل وأورام الثدي بخطوات واضحة، واختيار الاستئصال المناسب مع شرح إمكانية الحفاظ على الثدي.',
+                'en' => 'Assessment of breast lumps and tumours in clear steps, and the operation that fits the case, including breast-conserving surgery when suitable.',
+            ],
+            'body' => [
+                'ar' => '<h2>كتلة في الثدي ليست حكمًا</h2><p>كثير من كتل الثدي حميدة، مثل الأكياس والأورام الليفية. أي كتلة جديدة تستحق فحصًا سريريًا وأشعة، وعينة عند الحاجة، قبل الحديث عن الجراحة.</p><h2>جراحات أورام الثدي</h2><p>يتعامل د. طه فايد مع أورام الثدي الحميدة والخبيثة ضمن خطة تُناقش مع المريضة، وقد تشمل علاجًا قبل العملية أو بعدها. الهدف استئصال الورم مع الحفاظ على الثدي كلما سمح حجم الورم ومكانه.</p><ul><li>استئصال الورم مع الحفاظ على الثدي.</li><li>استئصال الثدي عندما يكون ذلك أكثر أمانًا.</li><li>تقييم الغدد الليمفاوية تحت الإبط عند الحاجة.</li><li>الترميم عندما يؤثر الاستئصال على الشكل.</li></ul><h2>كيف يُتخذ القرار؟</h2><p>بعد اكتمال الفحوصات تُشرح الخيارات بمزاياها وحدودها. لا يُتخذ قرار قبل أن تفهم المريضة ما تحققه الجراحة وما تحتاج إليه المتابعة.</p>',
+                'en' => '<h2>A breast lump is not a verdict</h2><p>Many breast lumps are benign, such as cysts and fibroadenomas. Any new lump deserves an examination and imaging, and a biopsy when needed, before surgery is discussed.</p><h2>Breast tumour surgery</h2><p>Dr. Taha Fayed manages benign and malignant breast tumours within a plan discussed with the patient, which may include treatment before or after surgery. The aim is to remove the tumour and conserve the breast whenever size and position allow.</p><ul><li>Tumour removal with breast conservation.</li><li>Mastectomy when that is the safer choice.</li><li>Assessment of the underarm lymph nodes when needed.</li><li>Reconstruction when removal would affect the shape.</li></ul><h2>How the decision is made</h2><p>Once tests are complete, the options are explained with their benefits and limits. No decision is made before the patient understands what surgery achieves and what follow-up is required.</p>',
+            ],
+        ],
+        [
             'slug' => 'thyroid-overview',
             'sort' => 1,
             'is_active' => true,

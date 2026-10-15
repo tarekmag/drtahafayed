@@ -19,9 +19,10 @@ class ClinicContactSeeder extends Seeder
         $now = now();
 
         DB::table('clinic_contacts')->insert([
-            'phone' => '01507003099',
-            'whatsapp' => '201507003099',
-            'email' => 'clinic@drtahafayed.com',
+            'phone' => '01029305718',
+            'phone_secondary' => '01507003099',
+            'whatsapp' => '201029305718',
+            'email' => 'Tahafayed40@gmail.com',
             'booking_url' => null,
             'created_at' => $now,
             'updated_at' => $now,

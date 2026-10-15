@@ -4,6 +4,9 @@
         <div class="channel">
             <h3>{{ __('site.contact.phone_label') }}</h3>
             <a href="{{ $phoneUrl }}" dir="ltr">{{ $phone }}</a>
+            @if ($secondaryPhoneUrl)
+                <a href="{{ $secondaryPhoneUrl }}" dir="ltr">{{ $secondaryPhone }}</a>
+            @endif
         </div>
     @endif
     @if ($whatsappUrl)

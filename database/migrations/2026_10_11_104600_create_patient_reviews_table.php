@@ -14,6 +14,7 @@ return new class extends Migration
             $table->unsignedTinyInteger('rating');
             $table->text('body');
             $table->string('locale', 2);
+            $table->string('source', 20)->default('website');
             $table->boolean('is_published')->default(false);
             $table->timestamps();
         });

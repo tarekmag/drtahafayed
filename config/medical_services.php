@@ -120,7 +120,7 @@ return [
             'icon' => 'endocrine',
             'image' => 'frontend/images/services/endocrine.svg',
             'video' => 'https://www.youtube.com/watch?v=USoQMLuo1P8',
-            'title' => ['ar' => 'جراحات الغدد', 'en' => 'Gland surgery'],
+            'title' => ['ar' => 'علاج وجراحات الغدد', 'en' => 'Gland treatment and surgery'],
             'excerpt' => [
                 'ar' => 'جراحات الغدة الدرقية والجار درقية واللعابية والكظرية بعد تقييم هرموني وتصويري دقيق.',
                 'en' => 'Thyroid, parathyroid, salivary and adrenal surgery after careful hormonal and imaging assessment.',

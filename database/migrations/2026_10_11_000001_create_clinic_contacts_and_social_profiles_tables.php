@@ -14,6 +14,7 @@ return new class extends Migration
         Schema::create('clinic_contacts', function (Blueprint $table) {
             $table->id();
             $table->string('phone')->nullable();
+            $table->string('phone_secondary')->nullable();
             $table->string('whatsapp')->nullable();
             $table->string('email')->nullable();
             $table->string('booking_url')->nullable();
@@ -23,6 +24,7 @@ return new class extends Migration
         Schema::create('social_profiles', function (Blueprint $table) {
             $table->id();
             $table->string('facebook', 500)->nullable();
+            $table->string('instagram', 500)->nullable();
             $table->string('vezeeta', 500)->nullable();
             $table->string('youtube', 500)->nullable();
             $table->string('tiktok', 500)->nullable();

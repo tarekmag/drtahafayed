@@ -2,8 +2,10 @@
 @use('App\Support\Content')
 
 @php
+    $contact = Content::contact();
     $phone = Content::phoneUrl();
-    $email = Content::contact()['email'];
+    $secondaryPhone = Content::secondaryPhoneUrl();
+    $email = $contact['email'];
 @endphp
 
 <footer class="site-footer">
@@ -40,7 +42,10 @@
         <div class="footer-contact">
             <p class="footer-label">{{ __('site.footer.contact') }}</p>
             @if ($phone)
-                <a href="{{ $phone }}" dir="ltr">{{ Content::contact()['phone'] }}</a>
+                <a href="{{ $phone }}" dir="ltr">{{ $contact['phone'] }}</a>
+            @endif
+            @if ($secondaryPhone)
+                <a href="{{ $secondaryPhone }}" dir="ltr">{{ $contact['phone_secondary'] }}</a>
             @endif
             @if ($email)
                 <a href="mailto:{{ $email }}">{{ $email }}</a>

@@ -121,7 +121,7 @@
                 @if (! empty($doctor['credentials']))
                     <h3>{{ __('site.home.credentials_title') }}</h3>
                     <ul class="credentials">
-                        @foreach (array_slice($doctor['credentials'], 0, 4) as $item)
+                        @foreach ($doctor['credentials'] as $item)
                             <li><x-icon name="check" /> <span>{{ LocaleText::get($item) }}</span></li>
                         @endforeach
                     </ul>

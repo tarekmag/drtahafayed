@@ -10,9 +10,13 @@ class ContactAside extends Component
 {
     public ?string $phoneUrl;
 
+    public ?string $secondaryPhoneUrl;
+
     public ?string $whatsappUrl;
 
     public string $phone;
+
+    public string $secondaryPhone;
 
     public string $email;
 
@@ -20,8 +24,10 @@ class ContactAside extends Component
     {
         $contact = Content::contact();
         $this->phoneUrl = Content::phoneUrl();
+        $this->secondaryPhoneUrl = Content::secondaryPhoneUrl();
         $this->whatsappUrl = Content::whatsappUrl();
         $this->phone = $contact['phone'];
+        $this->secondaryPhone = $contact['phone_secondary'];
         $this->email = $contact['email'];
     }
 

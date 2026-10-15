@@ -2,7 +2,9 @@
 @use('App\Support\Content')
 
 @php
+    $contact = Content::contact();
     $phone = Content::phoneUrl();
+    $secondaryPhone = Content::secondaryPhoneUrl();
 @endphp
 
 <header class="site-header" data-header>
@@ -11,7 +13,10 @@
             <p class="topbar-note">{{ __('site.brand.specialty') }}</p>
             <div class="topbar-actions">
                 @if ($phone)
-                    <a href="{{ $phone }}" dir="ltr">{{ Content::contact()['phone'] }}</a>
+                    <a href="{{ $phone }}" dir="ltr">{{ $contact['phone'] }}</a>
+                @endif
+                @if ($secondaryPhone)
+                    <a href="{{ $secondaryPhone }}" dir="ltr">{{ $contact['phone_secondary'] }}</a>
                 @endif
                 <x-social-links />
                 <a class="lang-switch" href="{{ $switchUrl }}">{{ __('site.nav.switch') }}</a>

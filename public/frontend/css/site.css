@@ -912,6 +912,7 @@ a {
 }
 
 .channel a {
+    display: block;
     color: var(--accent-deep);
     font-weight: 700;
     text-decoration: none;

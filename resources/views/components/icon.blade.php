@@ -112,6 +112,16 @@
         @case('facebook')
             <path d="M14.2 8.5V6.7c0-.8.4-1.2 1.3-1.2H17V3h-2.2C12 3 10.8 4.4 10.8 6.6v1.9H9v2.6h1.8V21h3.2v-9.9h2.2l.4-2.6h-2.4z" fill="currentColor" stroke="none"/>
             @break
+        @case('instagram')
+            <rect x="4" y="4" width="16" height="16" rx="4.5"/>
+            <circle cx="12" cy="12" r="3.4"/>
+            <circle cx="16.7" cy="7.3" r="0.7" fill="currentColor" stroke="none"/>
+            @break
+        @case('breast')
+            <path d="M12 10.4c-1.3-2.3-5-2.5-5.8.3-.7 2.1 1.2 3.6 3.3 4.8"/>
+            <path d="M12 10.4c1.3-2.3 5-2.5 5.8.3.7 2.1-1.2 3.6-3.3 4.8"/>
+            <path d="M9.5 15.5 7.2 20.4M14.5 15.5l2.3 4.9"/>
+            @break
         @case('vezeeta')
             <path d="M5 5.2h3.2L12 15.4l3.8-10.2H19L12 19.4 5 5.2z" fill="currentColor" stroke="none"/>
             @break

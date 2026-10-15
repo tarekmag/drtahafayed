@@ -37,6 +37,11 @@
                             <input id="phone" type="text" class="form-control @error('phone') is-invalid @enderror" wire:model="phone">
                             @error('phone') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
+                        <div class="mb-3">
+                            <label for="phone-secondary" class="form-label">Second phone</label>
+                            <input id="phone-secondary" type="text" class="form-control @error('phoneSecondary') is-invalid @enderror" wire:model="phoneSecondary">
+                            @error('phoneSecondary') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                        </div>
                     </div>
                     <div class="col-md-6">
                         <div class="mb-3">

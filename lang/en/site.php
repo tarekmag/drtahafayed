@@ -23,6 +23,7 @@ return [
         'menu' => 'Menu',
         'close' => 'Close menu',
         'facebook' => 'Facebook',
+        'instagram' => 'Instagram',
         'vezeeta' => 'Vezeeta',
         'youtube' => 'YouTube',
         'tiktok' => 'TikTok',
@@ -77,7 +78,8 @@ return [
         'specialties' => [
             ['icon' => 'general', 'title' => 'General surgery', 'text' => 'Hernia, gallbladder, appendix and abdominal surgery.'],
             ['icon' => 'oncology', 'title' => 'Surgical oncology', 'text' => 'Precise tumour removal within an integrated plan.'],
-            ['icon' => 'thyroid', 'title' => 'Gland surgery', 'text' => 'Thyroid, parathyroid, salivary and adrenal glands.'],
+            ['icon' => 'thyroid', 'title' => 'Gland treatment and surgery', 'text' => 'Thyroid, parathyroid, salivary and adrenal glands.'],
+            ['icon' => 'breast', 'title' => 'Breast surgery', 'text' => 'Benign and malignant breast tumours, preserving shape whenever possible.'],
         ],
         'about_eyebrow' => 'About the doctor',
         'about_title' => 'Surgical expertise that starts with listening',
@@ -120,7 +122,7 @@ return [
         'portrait_alt' => 'Portrait of Dr. Taha Fayed',
         'credentials_title' => 'Qualifications and memberships',
         'pillars_eyebrow' => 'Areas of practice',
-        'pillars_title' => 'Three connected specialties',
+        'pillars_title' => 'Four connected specialties',
         'values_eyebrow' => 'Philosophy of care',
         'values_title' => 'What makes the experience different?',
         'values' => [
@@ -139,7 +141,7 @@ return [
         'specialties' => [
             'general' => 'General surgery',
             'oncology' => 'Surgical oncology',
-            'endocrine' => 'Gland surgery',
+            'endocrine' => 'Gland treatment and surgery',
         ],
         'video_title' => 'Video explanation',
         'conditions_title' => 'Conditions within this service',
