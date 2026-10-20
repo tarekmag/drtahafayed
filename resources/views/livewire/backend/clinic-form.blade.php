@@ -172,9 +172,10 @@
                         </div>
                     @endforeach
                 </div>
-                <input type="file" class="form-control @error('photoUploads.*') is-invalid @enderror" wire:model="photoUploads" accept="image/*" multiple>
-                <div wire:loading wire:target="photoUploads" class="form-text">Uploading...</div>
-                @error('photoUploads.*') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                <x-upload-progress>
+                    <input type="file" class="form-control @error('photoUploads.*') is-invalid @enderror" wire:model="photoUploads" accept="image/*" multiple>
+                    @error('photoUploads.*') <div class="invalid-feedback d-block">{{ $message }}</div> @enderror
+                </x-upload-progress>
             </div>
         </div>
 

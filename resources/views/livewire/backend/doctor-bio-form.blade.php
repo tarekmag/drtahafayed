@@ -201,9 +201,10 @@
                                     <img src="{{ $url }}" alt="" class="rounded border" style="max-height: 160px;">
                                 </div>
                             @endif
-                            <input id="hero-upload" type="file" accept="image/*" class="form-control @error('heroUpload') is-invalid @enderror" wire:model="heroUpload">
-                            @error('heroUpload') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                            <div class="form-text" wire:loading wire:target="heroUpload">Uploading...</div>
+                            <x-upload-progress>
+                                <input id="hero-upload" type="file" accept="image/*" class="form-control @error('heroUpload') is-invalid @enderror" wire:model="heroUpload">
+                                @error('heroUpload') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                            </x-upload-progress>
                         </div>
                     </div>
                     <div class="col-md-6">
@@ -214,9 +215,10 @@
                                     <img src="{{ $url }}" alt="" class="rounded border" style="max-height: 160px;">
                                 </div>
                             @endif
-                            <input id="portrait-upload" type="file" accept="image/*" class="form-control @error('portraitUpload') is-invalid @enderror" wire:model="portraitUpload">
-                            @error('portraitUpload') <div class="invalid-feedback">{{ $message }}</div> @enderror
-                            <div class="form-text" wire:loading wire:target="portraitUpload">Uploading...</div>
+                            <x-upload-progress>
+                                <input id="portrait-upload" type="file" accept="image/*" class="form-control @error('portraitUpload') is-invalid @enderror" wire:model="portraitUpload">
+                                @error('portraitUpload') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                            </x-upload-progress>
                         </div>
                     </div>
                 </div>

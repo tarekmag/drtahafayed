@@ -265,9 +265,10 @@
                 @if ($url = $this->imageUrl())
                     <img src="{{ $url }}" alt="" class="img-fluid rounded mb-3" style="max-height: 180px">
                 @endif
-                <input type="file" class="form-control @error('imageUpload') is-invalid @enderror" wire:model="imageUpload" accept="image/*">
-                <div wire:loading wire:target="imageUpload" class="form-text">Uploading...</div>
-                @error('imageUpload') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                <x-upload-progress>
+                    <input type="file" class="form-control @error('imageUpload') is-invalid @enderror" wire:model="imageUpload" accept="image/*">
+                    @error('imageUpload') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </x-upload-progress>
             </div>
         </div>
 

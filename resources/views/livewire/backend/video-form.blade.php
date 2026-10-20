@@ -95,9 +95,10 @@
                                     <img src="{{ $url }}" alt="" class="img-fluid rounded" style="max-height: 180px">
                                 </div>
                             @endif
-                            <input type="file" class="form-control @error('coverUpload') is-invalid @enderror" wire:model="coverUpload" accept="image/*">
-                            <div wire:loading wire:target="coverUpload" class="form-text">Uploading...</div>
-                            @error('coverUpload') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                            <x-upload-progress>
+                                <input type="file" class="form-control @error('coverUpload') is-invalid @enderror" wire:model="coverUpload" accept="image/*">
+                                @error('coverUpload') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                            </x-upload-progress>
                         </div>
                     </div>
                 </div>

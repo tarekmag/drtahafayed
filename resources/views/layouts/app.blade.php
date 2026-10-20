@@ -36,6 +36,7 @@
     <link href="{{ asset('backendtheme/assets/css/custom.min.css') }}" rel="stylesheet" type="text/css" />
 
     @livewireStyles
+    <style>[x-cloak]{display:none !important}</style>
 </head>
 
 <body>
