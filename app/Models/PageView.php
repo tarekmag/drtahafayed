@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 
-#[Fillable(['page', 'path', 'locale', 'session_id', 'duration_seconds'])]
+#[Fillable(['page', 'path', 'locale', 'session_id', 'visitor_id', 'visited_on', 'duration_seconds'])]
 class PageView extends Model
 {
     /**
@@ -14,6 +14,7 @@ class PageView extends Model
     protected function casts(): array
     {
         return [
+            'visited_on' => 'date',
             'duration_seconds' => 'integer',
         ];
     }

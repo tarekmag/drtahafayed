@@ -20,9 +20,9 @@ class SiteAnalytics
      */
     public function dashboard(): array
     {
-        $today = PageView::query()->whereDate('created_at', today())->count();
-        $yesterday = PageView::query()->whereDate('created_at', today()->subDay())->count();
-        $month = PageView::query()->where('created_at', '>=', now()->startOfMonth())->count();
+        $today = $this->visitsOn(today());
+        $yesterday = $this->visitsOn(today()->subDay());
+        $month = $this->visitsSince(now()->startOfMonth());
         $average = (int) round((float) PageView::query()->where('duration_seconds', '>', 0)->avg('duration_seconds'));
         $pages = $this->pages();
 
@@ -45,8 +45,8 @@ class SiteAnalytics
                 'pageLabels' => $pages->pluck('label')->values(),
                 'pageViews' => $pages->pluck('views')->values(),
                 'locales' => [
-                    (int) PageView::query()->where('locale', 'ar')->count(),
-                    (int) PageView::query()->where('locale', 'en')->count(),
+                    $this->visitorsForLocale('ar'),
+                    $this->visitorsForLocale('en'),
                 ],
             ],
         ];
@@ -71,7 +71,7 @@ class SiteAnalytics
     {
         return PageView::query()
             ->select('page')
-            ->selectRaw('COUNT(*) as views')
+            ->selectRaw('COUNT(DISTINCT '.$this->visitorKey().') as views')
             ->selectRaw('ROUND(AVG(NULLIF(duration_seconds, 0))) as avg_duration')
             ->selectRaw('SUM(duration_seconds) as total_duration')
             ->groupBy('page')
@@ -93,11 +93,40 @@ class SiteAnalytics
     {
         $counts = PageView::query()
             ->where('created_at', '>=', now()->subDays(self::DAYS - 1)->startOfDay())
-            ->selectRaw('DATE(created_at) as day, COUNT(*) as views')
+            ->selectRaw('DATE(created_at) as day, COUNT(DISTINCT '.$this->visitorKey().') as views')
             ->groupByRaw('DATE(created_at)')
             ->pluck('views', 'day');
 
         return $this->days()->map(fn (Carbon $day) => (int) ($counts[$day->toDateString()] ?? 0));
+    }
+
+    private function visitsOn(Carbon $day): int
+    {
+        return (int) PageView::query()
+            ->whereDate('created_at', $day)
+            ->selectRaw('COUNT(DISTINCT '.$this->visitorKey().') as visits')
+            ->value('visits');
+    }
+
+    private function visitsSince(Carbon $from): int
+    {
+        return (int) PageView::query()
+            ->where('created_at', '>=', $from)
+            ->selectRaw('COUNT(DISTINCT CONCAT('.$this->visitorKey().', DATE(created_at))) as visits')
+            ->value('visits');
+    }
+
+    private function visitorsForLocale(string $locale): int
+    {
+        return (int) PageView::query()
+            ->where('locale', $locale)
+            ->selectRaw('COUNT(DISTINCT '.$this->visitorKey().') as visits')
+            ->value('visits');
+    }
+
+    private function visitorKey(): string
+    {
+        return 'COALESCE(visitor_id, session_id)';
     }
 
     /**

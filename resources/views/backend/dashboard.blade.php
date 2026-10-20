@@ -23,7 +23,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <p class="fw-medium text-muted mb-0">Views today</p>
+                                    <p class="fw-medium text-muted mb-0">Visits today</p>
                                     <h2 class="mt-4 ff-secondary fw-semibold">{{ number_format($today) }}</h2>
                                     <p class="mb-0 text-muted">Yesterday {{ number_format($yesterday) }}</p>
                                 </div>
@@ -39,7 +39,7 @@
                         <div class="card-body">
                             <div class="d-flex justify-content-between">
                                 <div>
-                                    <p class="fw-medium text-muted mb-0">Views this month</p>
+                                    <p class="fw-medium text-muted mb-0">Visits this month</p>
                                     <h2 class="mt-4 ff-secondary fw-semibold">{{ number_format($month) }}</h2>
                                     <p class="mb-0 text-muted">{{ $services }} services · {{ $articles }} articles · {{ $clinics }} clinics</p>
                                 </div>
@@ -92,7 +92,7 @@
                 <div class="col-xl-8">
                     <div class="card">
                         <div class="card-header">
-                            <h4 class="card-title mb-0">Website views</h4>
+                            <h4 class="card-title mb-0">Daily visits</h4>
                         </div>
                         <div class="card-body">
                             <div id="views-chart" class="apex-charts" dir="ltr"></div>
