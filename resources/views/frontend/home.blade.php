@@ -40,7 +40,7 @@
                 <a class="scroll-hint" href="#specialties">{{ __('site.common.scroll') }} <x-icon name="chevron-down" /></a>
             </div>
             @if ($next)
-                <aside class="hero-card reveal">
+                {{-- <aside class="hero-card reveal">
                     <small>{{ __('site.home.next_label') }}</small>
                     <strong>{{ LocaleText::get($next['clinic']['name'] ?? '') }}</strong>
                     @php
@@ -52,7 +52,7 @@
                             · <span dir="ltr">{{ $nextTime }}</span>
                         @endif
                     </p>
-                </aside>
+                </aside> --}}
             @endif
         </div>
     </section>
@@ -159,6 +159,9 @@
                     <x-button :href="route('site.review')" variant="gold" icon="star">{{ __('site.nav.review') }}</x-button>
                     @if ($vezeeta = (Content::socials()['vezeeta'] ?? null))
                         <x-button :href="$vezeeta" variant="outline" icon="vezeeta" external>{{ __('site.nav.vezeeta') }}</x-button>
+                    @endif
+                    @if ($clinido = (Content::socials()['clinido'] ?? null))
+                        <x-button :href="$clinido" variant="outline" icon="clinido" external>{{ __('site.nav.clinido') }}</x-button>
                     @endif
                 </x-slot:actions>
             </x-section-head>

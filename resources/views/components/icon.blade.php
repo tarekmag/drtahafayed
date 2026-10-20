@@ -125,6 +125,10 @@
         @case('vezeeta')
             <path d="M5 5.2h3.2L12 15.4l3.8-10.2H19L12 19.4 5 5.2z" fill="currentColor" stroke="none"/>
             @break
+        @case('clinido')
+            <circle cx="12" cy="12" r="8"/>
+            <path d="M15.4 8.2a4.8 4.8 0 1 0 .2 7.7"/>
+            @break
         @case('youtube')
             <path d="M23 12.2s0-3.2-.4-4.6c-.2-.9-.9-1.6-1.8-1.8C19.2 5.4 12 5.4 12 5.4s-7.2 0-8.8.4c-.9.2-1.6.9-1.8 1.8C1 9 1 12.2 1 12.2s0 3.2.4 4.6c.2.9.9 1.6 1.8 1.8 1.6.4 8.8.4 8.8.4s7.2 0 8.8-.4c.9-.2 1.6-.9 1.8-1.8.4-1.4.4-4.6.4-4.6zM9.8 15.5V8.9l6.2 3.3-6.2 3.3z" fill="currentColor" stroke="none"/>
             @break

@@ -51,6 +51,13 @@ class MediaEmbed
             ];
         }
 
+        if ($facebook = self::facebookEmbed($value)) {
+            return [
+                'type' => 'iframe',
+                'src' => $facebook,
+            ];
+        }
+
         if (preg_match('/\.(mp4|webm|ogg)(\?.*)?$/i', $value)) {
             return [
                 'type' => 'file',
@@ -91,6 +98,30 @@ class MediaEmbed
             'link' => 'https://www.google.com/maps/search/?api=1&query='.$query,
             'src' => 'https://maps.google.com/maps?q='.$query.'&z=15&output=embed',
         ];
+    }
+
+    private static function facebookEmbed(string $value): ?string
+    {
+        if (preg_match('#facebook\.com/plugins/video\.php#i', $value)) {
+            return $value;
+        }
+
+        $isFacebook = preg_match('#^https?://(?:[\w-]+\.)?(?:facebook\.com|fb\.watch)/#i', $value) === 1;
+
+        if (! $isFacebook) {
+            return null;
+        }
+
+        $canonical = preg_replace('#^https?://(?:[\w-]+\.)?facebook\.com#i', 'https://www.facebook.com', $value) ?? $value;
+        $isVideo = preg_match('#facebook\.com/(?:reel|reels|watch)(?:/|\?|$)#i', $canonical) === 1
+            || preg_match('#facebook\.com/.+/videos/#i', $canonical) === 1
+            || preg_match('#fb\.watch/#i', $value) === 1;
+
+        if (! $isVideo) {
+            return null;
+        }
+
+        return 'https://www.facebook.com/plugins/video.php?href='.rawurlencode($canonical).'&show_text=false';
     }
 
     private static function youtubeId(string $value): ?string

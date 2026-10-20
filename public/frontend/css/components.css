@@ -117,6 +117,15 @@
     background: #d4b67a;
 }
 
+.btn-whatsapp {
+    background: #25d366;
+    color: white;
+}
+
+.btn-whatsapp:hover {
+    background: #1ebe5d;
+}
+
 .btn-outline,
 .btn-ghost {
     border-color: rgba(28, 51, 56, 0.18);
@@ -379,7 +388,10 @@ a:hover .link-arrow .icon,
     font-weight: 600;
 }
 
-.nav-cta {
+.nav-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
     margin-top: 1rem;
     align-self: start;
 }
@@ -1566,9 +1578,10 @@ body.lightbox-open {
         pointer-events: auto;
     }
 
-    .nav-cta {
+    .nav-actions {
         align-self: center;
         margin-top: 0;
+        flex-wrap: nowrap;
     }
 
     .clinic-tabs {

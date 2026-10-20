@@ -91,7 +91,7 @@
                     <div class="col-md-8">
                         <div class="mb-3">
                             <label for="video" class="form-label">Video URL</label>
-                            <input id="video" type="text" class="form-control @error('video') is-invalid @enderror" wire:model="video" placeholder="https://www.youtube.com/watch?v=...">
+                            <input id="video" type="text" class="form-control @error('video') is-invalid @enderror" wire:model="video" placeholder="YouTube or Facebook video URL">
                             @error('video') <div class="invalid-feedback">{{ $message }}</div> @enderror
                         </div>
                     </div>

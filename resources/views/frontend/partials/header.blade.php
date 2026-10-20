@@ -5,6 +5,7 @@
     $contact = Content::contact();
     $phone = Content::phoneUrl();
     $secondaryPhone = Content::secondaryPhoneUrl();
+    $whatsapp = Content::whatsappUrl(__('site.contact.wa_intro'));
 @endphp
 
 <header class="site-header" data-header>
@@ -56,7 +57,12 @@
                 </div>
 
                 <a class="nav-link {{ request()->routeIs('site.contact') ? 'is-active' : '' }}" href="{{ route('site.contact') }}" @if (request()->routeIs('site.contact')) aria-current="page" @endif>{{ __('site.nav.contact') }}</a>
-                <x-button class="nav-cta" :href="Content::bookingUrl()" variant="gold" icon="calendar">{{ __('site.nav.book') }}</x-button>
+                <div class="nav-actions">
+                    <x-button :href="Content::bookingUrl()" variant="gold" icon="calendar">{{ __('site.nav.book') }}</x-button>
+                    @if ($whatsapp)
+                        <x-button :href="$whatsapp" variant="whatsapp" icon="whatsapp" external>{{ __('site.common.whatsapp') }}</x-button>
+                    @endif
+                </div>
             </nav>
         </div>
     </div>

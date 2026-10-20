@@ -14,6 +14,8 @@ class SocialMediaForm extends Component
 
     public ?string $vezeeta = null;
 
+    public ?string $clinido = null;
+
     public ?string $youtube = null;
 
     public ?string $tiktok = null;
@@ -31,13 +33,14 @@ class SocialMediaForm extends Component
         $this->facebook = $profile->facebook;
         $this->instagram = $profile->instagram;
         $this->vezeeta = $profile->vezeeta;
+        $this->clinido = $profile->clinido;
         $this->youtube = $profile->youtube;
         $this->tiktok = $profile->tiktok;
     }
 
     public function save(): void
     {
-        foreach (['facebook', 'instagram', 'vezeeta', 'youtube', 'tiktok'] as $field) {
+        foreach (['facebook', 'instagram', 'vezeeta', 'clinido', 'youtube', 'tiktok'] as $field) {
             $this->{$field} = trim((string) $this->{$field}) ?: null;
         }
 
@@ -53,6 +56,7 @@ class SocialMediaForm extends Component
             'facebook' => $this->facebook,
             'instagram' => $this->instagram,
             'vezeeta' => $this->vezeeta,
+            'clinido' => $this->clinido,
             'youtube' => $this->youtube,
             'tiktok' => $this->tiktok,
         ]);
@@ -76,6 +80,7 @@ class SocialMediaForm extends Component
             'facebook' => $url,
             'instagram' => $url,
             'vezeeta' => $url,
+            'clinido' => $url,
             'youtube' => $url,
             'tiktok' => $url,
         ];

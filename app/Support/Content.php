@@ -177,9 +177,11 @@ class Content
             ->map(fn (PatientReview $review) => [
                 'rating' => $review->rating,
                 'name' => $review->name,
-                'place' => $review->source === 'vezeeta'
-                    ? ['ar' => 'فيزيتا', 'en' => 'Vezeeta']
-                    : ['ar' => 'الموقع', 'en' => 'Website'],
+                'place' => match ($review->source) {
+                    'vezeeta' => ['ar' => 'فيزيتا', 'en' => 'Vezeeta'],
+                    'clinido' => ['ar' => 'كليندو', 'en' => 'Clinido'],
+                    default => ['ar' => 'الموقع', 'en' => 'Website'],
+                },
                 'text' => $review->body,
             ]);
     }

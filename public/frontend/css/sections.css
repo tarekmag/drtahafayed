@@ -388,7 +388,28 @@
 
 @media (max-width: 699px) {
     .hero {
-        min-height: 92svh;
+        min-height: 0;
+        display: block;
+        padding-top: calc(var(--header) + 3.2rem);
+    }
+
+    .hero-media {
+        position: relative;
+        inset: auto;
+        height: 46svh;
+    }
+
+    .hero-media img,
+    .hero-media picture img {
+        object-position: center 12%;
+    }
+
+    .hero-media::after {
+        background: linear-gradient(180deg, rgba(16, 40, 46, 0.05) 40%, rgba(16, 40, 46, 0.96) 100%);
+    }
+
+    .hero-grid {
+        padding-block: 1.3rem 2.4rem;
     }
 
     .journey {

@@ -46,6 +46,11 @@
                     @error('vezeeta') <div class="invalid-feedback">{{ $message }}</div> @enderror
                 </div>
                 <div class="mb-3">
+                    <label for="clinido" class="form-label">Clinido</label>
+                    <input id="clinido" type="url" class="form-control @error('clinido') is-invalid @enderror" wire:model="clinido">
+                    @error('clinido') <div class="invalid-feedback">{{ $message }}</div> @enderror
+                </div>
+                <div class="mb-3">
                     <label for="youtube" class="form-label">YouTube</label>
                     <input id="youtube" type="url" class="form-control @error('youtube') is-invalid @enderror" wire:model="youtube">
                     @error('youtube') <div class="invalid-feedback">{{ $message }}</div> @enderror

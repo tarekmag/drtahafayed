@@ -28,7 +28,7 @@ class PatientReviewSeeder extends Seeder
                 [
                     'rating' => (int) ($review['rating'] ?? 5),
                     'locale' => 'ar',
-                    'source' => 'vezeeta',
+                    'source' => (string) ($review['source'] ?? 'vezeeta'),
                     'is_published' => (bool) ($review['is_active'] ?? true),
                 ],
             );
