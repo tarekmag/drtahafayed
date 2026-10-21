@@ -29,6 +29,17 @@ Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 Route::get('/sitemap.xsl', [SitemapController::class, 'stylesheet'])->name('sitemap.stylesheet');
 Route::get('/robots.txt', RobotsController::class)->name('robots');
 
+// Search Console looks for this file inside a URL-prefix property such as /ar.
+// The real file stays at the site root; /ar is a language prefix, not a directory.
+Route::get('{locale}/google475a6887ed2488c8.html', function () {
+    $file = public_path('google475a6887ed2488c8.html');
+    abort_unless(is_file($file), 404);
+
+    return response(file_get_contents($file), 200, [
+        'Content-Type' => 'text/html; charset=UTF-8',
+    ]);
+})->where('locale', 'ar|en');
+
 Route::post('/page-views/{pageView}/duration', PageViewDurationController::class)
     ->middleware('throttle:60,1')
     ->name('site.page-views.duration');

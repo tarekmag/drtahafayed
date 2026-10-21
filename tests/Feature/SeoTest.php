@@ -33,6 +33,16 @@ class SeoTest extends TestCase
         $this->seed();
     }
 
+    public function test_search_console_verification_file_is_reachable_under_the_language_prefix(): void
+    {
+        $expected = 'google-site-verification: google475a6887ed2488c8.html';
+
+        $this->get('/ar/google475a6887ed2488c8.html')
+            ->assertOk()
+            ->assertHeader('Content-Type', 'text/html; charset=UTF-8')
+            ->assertSee($expected, false);
+    }
+
     public function test_root_permanently_redirects_to_the_arabic_home_page(): void
     {
         $this->get('/')->assertStatus(301)->assertRedirect('/ar');
