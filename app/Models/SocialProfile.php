@@ -16,8 +16,8 @@ class SocialProfile extends Model
         return array_filter([
             'facebook' => trim((string) $this->facebook),
             'instagram' => trim((string) $this->instagram),
-            'vezeeta' => trim((string) $this->vezeeta),
-            'clinido' => trim((string) $this->clinido),
+            // 'vezeeta' => trim((string) $this->vezeeta),
+            // 'clinido' => trim((string) $this->clinido),
             'youtube' => trim((string) $this->youtube),
             'tiktok' => trim((string) $this->tiktok),
         ]);
