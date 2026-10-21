@@ -16,12 +16,18 @@ use App\Http\Controllers\Backend\UserController;
 use App\Http\Controllers\Backend\VideoController;
 use App\Http\Controllers\Frontend\ArticleController;
 use App\Http\Controllers\Frontend\PageViewDurationController;
+use App\Http\Controllers\Frontend\RobotsController;
 use App\Http\Controllers\Frontend\ServiceController;
+use App\Http\Controllers\Frontend\SitemapController;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // Frontend
 Route::redirect('/', '/ar');
+
+Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
+Route::get('/sitemap.xsl', [SitemapController::class, 'stylesheet'])->name('sitemap.stylesheet');
+Route::get('/robots.txt', RobotsController::class)->name('robots');
 
 Route::post('/page-views/{pageView}/duration', PageViewDurationController::class)
     ->middleware('throttle:60,1')
