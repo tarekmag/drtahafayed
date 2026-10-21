@@ -57,8 +57,9 @@
         </div>
     </section>
 
-    <section class="section" id="specialties">
+    <section class="section" id="specialties" aria-labelledby="specialties-title">
         <div class="container">
+            <h2 class="sr-only" id="specialties-title">{{ __('site.home.specialties_title') }}</h2>
             <div class="specialties">
                 @foreach (__('site.home.specialties') as $item)
                     <article class="specialty reveal" style="--i: {{ $loop->index }}">

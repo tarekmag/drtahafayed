@@ -12,7 +12,10 @@
     <div class="container footer-grid">
         <div class="footer-brand">
             <a class="brand" href="{{ route('site.home') }}">
-                <img src="{{ Asset::versioned('assets/images/logo.png') }}" alt="{{ __('site.brand.logo_alt') }}">
+                <picture>
+                    <source type="image/webp" srcset="{{ Asset::versioned('assets/images/logo-240.webp') }}">
+                    <img src="{{ Asset::versioned('assets/images/logo.png') }}" alt="{{ __('site.brand.logo_alt') }}" width="239" height="240" loading="lazy" decoding="async">
+                </picture>
             </a>
             <p>{{ __('site.footer.tagline') }}</p>
             <x-social-links class="social-links-labeled" labels />

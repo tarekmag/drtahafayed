@@ -33,7 +33,7 @@ class PhotosIndex extends Component
         }
 
         return view('livewire.frontend.photos-index', [
-            'photos' => $this->paginateItems($photos, Pagination::PER_PAGE),
+            'photos' => $this->paginateItems($photos, Pagination::PER_PAGE, ['category' => $active]),
             'categories' => $categories,
             'active' => $active,
         ]);

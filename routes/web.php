@@ -23,7 +23,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 // Frontend
-Route::redirect('/', '/ar');
+Route::permanentRedirect('/', '/ar');
 
 Route::get('/sitemap.xml', SitemapController::class)->name('sitemap');
 Route::get('/sitemap.xsl', [SitemapController::class, 'stylesheet'])->name('sitemap.stylesheet');
@@ -56,7 +56,7 @@ Route::prefix('{locale}')
     });
 
 // Backend
-Route::prefix('backend')->name('backend.')->group(function () {
+Route::prefix('backend')->name('backend.')->middleware('noindex')->group(function () {
     Auth::routes(['register' => false, 'reset' => false, 'verify' => false]);
 
     Route::group(['middleware' => 'auth'], function () {

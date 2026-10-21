@@ -74,7 +74,7 @@ class SocialMediaForm extends Component
      */
     protected function rules(): array
     {
-        $url = ['nullable', 'url', 'max:500'];
+        $url = ['nullable', 'url:https', 'max:500'];
 
         return [
             'facebook' => $url,

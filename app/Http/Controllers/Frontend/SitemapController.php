@@ -13,6 +13,8 @@ use App\Models\Photo;
 use App\Models\SeoPage;
 use App\Models\Service;
 use App\Models\Video;
+use App\Support\Content;
+use App\Support\Seo\PageUrls;
 use DOMDocument;
 use DOMElement;
 use Illuminate\Database\Eloquent\Model;
@@ -24,11 +26,6 @@ class SitemapController extends Controller
     private const SITEMAP_NS = 'http://www.sitemaps.org/schemas/sitemap/0.9';
 
     private const XHTML_NS = 'http://www.w3.org/1999/xhtml';
-
-    /**
-     * @var list<string>
-     */
-    private const LOCALES = ['ar', 'en'];
 
     public function __invoke(): Response
     {
@@ -104,7 +101,7 @@ class SitemapController extends Controller
      */
     private function staticPages(): array
     {
-        return [
+        $pages = [
             'site.home',
             'site.about',
             'site.services',
@@ -113,8 +110,13 @@ class SitemapController extends Controller
             'site.photos',
             'site.videos',
             'site.contact',
-            'site.review',
         ];
+
+        if (Content::hasPublishedWebsiteReviews()) {
+            $pages[] = 'site.review';
+        }
+
+        return $pages;
     }
 
     /**
@@ -124,13 +126,13 @@ class SitemapController extends Controller
     {
         $alternates = [];
 
-        foreach (self::LOCALES as $locale) {
+        foreach (PageUrls::LOCALES as $locale) {
             $alternates[$locale] = route($name, ['locale' => $locale, ...$parameters]);
         }
 
-        $alternates['x-default'] = $alternates['ar'];
+        $alternates['x-default'] = $alternates[PageUrls::DEFAULT_LOCALE];
 
-        foreach (self::LOCALES as $locale) {
+        foreach (PageUrls::LOCALES as $locale) {
             $url = $document->createElementNS(self::SITEMAP_NS, 'url');
             $url->appendChild($this->textElement($document, 'loc', $alternates[$locale]));
 

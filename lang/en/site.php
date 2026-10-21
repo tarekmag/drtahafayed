@@ -59,6 +59,7 @@ return [
         'breadcrumb' => 'Breadcrumb',
         'all' => 'All',
         'pagination' => 'Pagination',
+        'page_number' => 'Page :page',
         'empty' => 'Nothing has been published yet.',
     ],
 
@@ -76,6 +77,7 @@ return [
         'next_label' => 'Next clinic session',
         'today' => 'Today',
         'tomorrow' => 'Tomorrow',
+        'specialties_title' => 'Dr. Taha Fayed’s specialties',
         'specialties' => [
             ['icon' => 'general', 'title' => 'General surgery', 'text' => 'Hernia, gallbladder, appendix and abdominal surgery.'],
             ['icon' => 'oncology', 'title' => 'Surgical oncology', 'text' => 'Precise tumour removal within an integrated plan.'],
@@ -253,8 +255,8 @@ return [
 
     'review' => [
         'nav' => 'Write a review',
-        'meta_title' => 'Write a review | Dr. Taha Fayed',
-        'meta_description' => 'Share your visit with Dr. Taha Fayed and choose a star rating.',
+        'meta_title' => 'Patient reviews | Dr. Taha Fayed',
+        'meta_description' => 'Read patient reviews of Dr. Taha Fayed, consultant in general, oncologic and gland surgery, and share your own visit. Reviews are published after they are checked.',
         'eyebrow' => 'Patient reviews',
         'title' => 'Write a review',
         'lede' => 'Tell us about your visit. The review appears on the site after it is checked.',

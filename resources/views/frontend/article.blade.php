@@ -22,13 +22,22 @@
             $toc[] = ['id' => $id, 'title' => $plain];
         }
     }
+
+    app(\App\Support\Seo\StructuredData::class)->article($article);
 @endphp
 
 @extends('frontend.layouts.app')
 
 @section('meta_title', $metaTitle !== '' ? $metaTitle : $title.' | '.__('site.brand.name'))
 @section('meta_description', $metaDescription !== '' ? $metaDescription : $excerpt)
-@section('og_image', $cover ?: '')
+@section('og_image', \App\Support\ResponsiveImage::isRaster($cover) ? $cover : '')
+@section('og_type', 'article')
+
+@if ($date)
+    @push('meta')
+        <meta property="article:published_time" content="{{ $date->toDateString() }}">
+    @endpush
+@endif
 
 @section('content')
     <x-page-hero
@@ -60,7 +69,7 @@
                         @if (! empty($article['read_minutes']))
                             <span>{{ __('site.common.minutes', ['count' => $article['read_minutes']]) }}</span>
                         @endif
-                        <span>{{ __('site.articles.author') }} {{ __('site.brand.name') }}</span>
+                        <span>{{ __('site.articles.author') }} <a href="{{ route('site.about') }}" rel="author">{{ __('site.brand.name') }}</a></span>
                     </p>
                     <div class="share-row">
                         <button class="btn btn-outline" type="button" data-copy-link data-copied="{{ __('site.common.copied') }}">{{ __('site.common.copy_link') }}</button>
@@ -68,7 +77,7 @@
                 </div>
 
                 @if ($cover)
-                    <img src="{{ $cover }}" alt="" style="width:100%;border-radius:1.2rem;margin-bottom:1.4rem">
+                    <img src="{{ $cover }}" alt="{{ $title }}" loading="lazy" decoding="async" style="width:100%;border-radius:1.2rem;margin-bottom:1.4rem">
                 @endif
 
                 <div class="rich-text">

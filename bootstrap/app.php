@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Middleware\PreventSearchIndexing;
 use App\Http\Middleware\RecordPageView;
+use App\Http\Middleware\RedirectToCanonicalUrl;
 use App\Http\Middleware\SetLocale;
 use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Configuration\Exceptions;
@@ -14,9 +16,12 @@ return Application::configure(basePath: dirname(__DIR__))
         health: '/up',
     )
     ->withMiddleware(function (Middleware $middleware): void {
+        $middleware->append(RedirectToCanonicalUrl::class);
+
         $middleware->alias([
             'set-locale' => SetLocale::class,
             'record-page-view' => RecordPageView::class,
+            'noindex' => PreventSearchIndexing::class,
         ]);
 
         $middleware->redirectGuestsTo(fn () => route('backend.login'));

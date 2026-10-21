@@ -1,0 +1,6 @@
+# Admin theme demo pages are not part of the public website.
+<IfModule mod_headers.c>
+    <FilesMatch "\.html?$">
+        Header set X-Robots-Tag "noindex, nofollow"
+    </FilesMatch>
+</IfModule>

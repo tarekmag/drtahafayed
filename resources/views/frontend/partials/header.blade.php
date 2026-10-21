@@ -28,7 +28,10 @@
     <div class="nav-bar">
         <div class="container nav-row">
             <a class="brand" href="{{ route('site.home') }}">
-                <img src="{{ Asset::versioned('assets/images/logo.png') }}" alt="{{ __('site.brand.logo_alt') }}">
+                <picture>
+                    <source type="image/webp" srcset="{{ Asset::versioned('assets/images/logo-240.webp') }}">
+                    <img src="{{ Asset::versioned('assets/images/logo.png') }}" alt="{{ __('site.brand.logo_alt') }}" width="239" height="240">
+                </picture>
             </a>
 
             <button class="nav-toggle" type="button" data-nav-toggle aria-expanded="false" aria-controls="site-nav">

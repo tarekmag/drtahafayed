@@ -31,7 +31,7 @@
         <div class="container service-layout">
             <div>
                 @if ($image)
-                    <img class="service-cover" src="{{ $image }}" alt="{{ $title }}" style="width:100%;border-radius:1.2rem;margin-bottom:1.4rem">
+                    <img class="service-cover" src="{{ $image }}" alt="{{ $title }}" decoding="async" style="width:100%;border-radius:1.2rem;margin-bottom:1.4rem">
                 @endif
 
                 @if ($body !== '')

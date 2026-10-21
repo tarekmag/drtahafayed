@@ -530,6 +530,12 @@ a:hover .link-arrow .icon,
     margin-bottom: 0.4rem;
 }
 
+.article-meta a {
+    color: inherit;
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+}
+
 .article-card-meta {
     margin-top: auto;
     margin-bottom: 0;
@@ -1364,6 +1370,7 @@ body.lightbox-open {
     padding: 0.55rem 1rem;
     font: inherit;
     font-weight: 700;
+    text-decoration: none;
     cursor: pointer;
 }
 

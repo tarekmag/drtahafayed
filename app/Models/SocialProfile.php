@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Support\Seo\SiteUrl;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Model;
 
@@ -9,6 +10,8 @@ use Illuminate\Database\Eloquent\Model;
 class SocialProfile extends Model
 {
     /**
+     * Public profile links only; local or development addresses are never rendered.
+     *
      * @return array<string, string>
      */
     public function toContentArray(): array
@@ -20,6 +23,6 @@ class SocialProfile extends Model
             // 'clinido' => trim((string) $this->clinido),
             'youtube' => trim((string) $this->youtube),
             'tiktok' => trim((string) $this->tiktok),
-        ]);
+        ], fn (string $url) => $url !== '' && SiteUrl::isPublic($url));
     }
 }

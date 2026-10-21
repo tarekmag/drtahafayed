@@ -167,6 +167,17 @@ class Content
         ];
     }
 
+    /**
+     * The review page shows only approved reviews submitted on this website; without them it is just a form.
+     */
+    public static function hasPublishedWebsiteReviews(): bool
+    {
+        return PatientReview::query()
+            ->where('is_published', true)
+            ->where('source', 'website')
+            ->exists();
+    }
+
     public static function reviews(): Collection
     {
         return PatientReview::query()

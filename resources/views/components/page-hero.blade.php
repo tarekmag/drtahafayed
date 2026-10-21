@@ -5,6 +5,10 @@
     'crumbs' => [],
 ])
 
+@php
+    app(\App\Support\Seo\StructuredData::class)->breadcrumbs($crumbs);
+@endphp
+
 <header {{ $attributes->class(['page-hero']) }}>
     <div class="page-hero-glow" aria-hidden="true"></div>
     <div class="container page-hero-inner">

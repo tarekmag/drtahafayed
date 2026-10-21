@@ -2,10 +2,10 @@
 
 namespace App\Livewire\Frontend;
 
-use App\Enums\Pagination;
 use App\Support\Content;
 use Livewire\Attributes\Url;
 use Livewire\Component;
+use Livewire\Livewire;
 
 class ServicesIndex extends Component
 {
@@ -25,7 +25,9 @@ class ServicesIndex extends Component
         $active = isset($specialties[$this->category]) ? $this->category : '';
 
         return view('livewire.frontend.services-index', [
-            'services' => Content::services($active !== '' ? $active : null, 11),
+            'services' => Content::services($active !== '' ? $active : null, 11)
+                ->withPath(Livewire::originalUrl())
+                ->appends(array_filter(['category' => $active])),
             'specialties' => $specialties,
             'active' => $active,
         ]);

@@ -2,22 +2,25 @@
     use App\Support\Asset;
     use App\Support\Content;
     use App\Support\MediaEmbed;
+    use App\Support\Seo\PageUrls;
+    use App\Support\Seo\SearchIndexing;
 
     $locale = app()->getLocale();
     $direction = $locale === 'ar' ? 'rtl' : 'ltr';
     $otherLocale = $locale === 'ar' ? 'en' : 'ar';
-    $currentRoute = Route::current();
-    $routeParameters = array_intersect_key(
-        $currentRoute->originalParameters(),
-        array_flip($currentRoute->parameterNames())
-    );
-    $switchUrl = route($currentRoute->getName(), array_merge($routeParameters, ['locale' => $otherLocale]));
-    $alternateAr = route($currentRoute->getName(), array_merge($routeParameters, ['locale' => 'ar']));
-    $alternateEn = route($currentRoute->getName(), array_merge($routeParameters, ['locale' => 'en']));
-    $canonical = url()->current();
+    $switchUrl = PageUrls::localized($otherLocale);
+    $alternates = PageUrls::alternates();
+    $canonical = PageUrls::canonical();
+    $page = PageUrls::page();
     $title = trim($__env->yieldContent('meta_title', __('site.brand.name')));
+    $title = $page > 1 ? $title.' – '.__('site.common.page_number', ['page' => $page]) : $title;
     $description = trim($__env->yieldContent('meta_description', __('site.brand.description')));
-    $ogImage = trim($__env->yieldContent('og_image', MediaEmbed::image(Content::doctor()['hero_image'] ?? 'assets/images/dr-1.jpeg')));
+    $robots = trim($__env->yieldContent('meta_robots', SearchIndexing::robots()));
+    $ogType = trim($__env->yieldContent('og_type', 'website'));
+    $ogImage = trim($__env->yieldContent('og_image')) ?: MediaEmbed::image(Content::doctor()['hero_image'] ?? 'assets/images/dr-1.jpeg');
+    $fonts = $locale === 'ar'
+        ? 'family=Alexandria:wght@500;600;700&family=Cairo:wght@400;500;600;700'
+        : 'family=Cairo:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500';
     $isHome = request()->routeIs('site.home');
     $contact = Content::contact();
     $hasDock = $contact['phone'] !== '' || $contact['whatsapp'] !== '';
@@ -30,28 +33,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title }}</title>
     <meta name="description" content="{{ $description }}">
+    <meta name="robots" content="{{ $robots }}">
     <meta name="theme-color" content="#14343C">
     <link rel="canonical" href="{{ $canonical }}">
-    <link rel="alternate" hreflang="ar" href="{{ $alternateAr }}">
-    <link rel="alternate" hreflang="en" href="{{ $alternateEn }}">
+    @foreach ($alternates as $hreflang => $href)
+        <link rel="alternate" hreflang="{{ $hreflang }}" href="{{ $href }}">
+    @endforeach
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32.png') }}">
     <link rel="apple-touch-icon" href="{{ asset('apple-touch-icon.png') }}">
-    <meta property="og:type" content="website">
+    <meta property="og:type" content="{{ $ogType }}">
+    <meta property="og:site_name" content="{{ __('site.brand.name') }}">
     <meta property="og:locale" content="{{ $locale === 'ar' ? 'ar_EG' : 'en_US' }}">
+    <meta property="og:locale:alternate" content="{{ $locale === 'ar' ? 'en_US' : 'ar_EG' }}">
     <meta property="og:title" content="{{ $title }}">
     <meta property="og:description" content="{{ $description }}">
     <meta property="og:url" content="{{ $canonical }}">
     <meta property="og:image" content="{{ $ogImage }}">
+    <meta property="og:image:alt" content="{{ $title }}">
+    @stack('meta')
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{ $title }}">
     <meta name="twitter:description" content="{{ $description }}">
     <meta name="twitter:image" content="{{ $ogImage }}">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Alexandria:wght@500;600;700&family=Cairo:wght@400;500;600;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
-    @if ($isHome)
-        <link rel="preload" as="image" type="image/webp" href="{{ asset('assets/images/dr-1-1200.webp') }}" imagesizes="100vw">
-    @endif
+    <link href="https://fonts.googleapis.com/css2?{{ $fonts }}&display=swap" rel="stylesheet">
+    @stack('preload')
     <script>document.documentElement.classList.add('js');</script>
     <link rel="stylesheet" href="{{ Asset::versioned('frontend/css/tokens.css') }}">
     <link rel="stylesheet" href="{{ Asset::versioned('frontend/css/base.css') }}">
@@ -59,7 +66,7 @@
     <link rel="stylesheet" href="{{ Asset::versioned('frontend/css/sections.css') }}">
     @stack('styles')
     @livewireStyles
-    <x-json-ld />
+    <x-json-ld :title="$title" :description="$description" :url="$canonical" />
 </head>
 <body @class(['page-home' => $isHome, 'has-dock' => $hasDock])>
     <a class="skip-link" href="#content">{{ __('site.common.skip') }}</a>

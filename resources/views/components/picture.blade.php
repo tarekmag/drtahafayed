@@ -7,24 +7,26 @@
     'height' => null,
 ])
 
-@php
-    $isRemote = preg_match('#^https?://#i', $src);
-    $url = $isRemote ? $src : asset(ltrim($src, '/'));
-    $sources = [];
+@use('App\Support\ResponsiveImage')
 
-    if (! $isRemote && preg_match('/\.(jpe?g|png)$/i', $src)) {
-        $base = preg_replace('/\.(jpe?g|png)$/i', '', ltrim($src, '/'));
-        foreach ([480, 800, 1200] as $w) {
-            if (is_file(public_path("{$base}-{$w}.webp"))) {
-                $sources[] = asset("{$base}-{$w}.webp")." {$w}w";
-            }
-        }
-    }
+@php
+    $url = ResponsiveImage::url($src);
+    $srcset = ResponsiveImage::webpSrcset($src);
 @endphp
 
+@if ($priority)
+    @push('preload')
+        @if ($srcset)
+            <link rel="preload" as="image" type="image/webp" imagesrcset="{{ $srcset }}" imagesizes="{{ $sizes }}" fetchpriority="high">
+        @else
+            <link rel="preload" as="image" href="{{ $url }}" fetchpriority="high">
+        @endif
+    @endpush
+@endif
+
 <picture {{ $attributes->only('class') }}>
-    @if ($sources)
-        <source type="image/webp" srcset="{{ implode(', ', $sources) }}" sizes="{{ $sizes }}">
+    @if ($srcset)
+        <source type="image/webp" srcset="{{ $srcset }}" sizes="{{ $sizes }}">
     @endif
     <img
         src="{{ $url }}"
@@ -32,7 +34,7 @@
         @if ($width) width="{{ $width }}" @endif
         @if ($height) height="{{ $height }}" @endif
         @if ($priority) fetchpriority="high" @else loading="lazy" @endif
-        decoding="async"
+        decoding="{{ $priority ? 'sync' : 'async' }}"
         {{ $attributes->except('class') }}
     >
 </picture>

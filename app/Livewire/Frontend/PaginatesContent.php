@@ -2,15 +2,19 @@
 
 namespace App\Livewire\Frontend;
 
-use Illuminate\Support\Collection;
 use Illuminate\Pagination\LengthAwarePaginator;
+use Illuminate\Support\Collection;
+use Livewire\Livewire;
 use Livewire\WithPagination;
 
 trait PaginatesContent
 {
     use WithPagination;
 
-    protected function paginateItems(Collection $items, int $perPage): LengthAwarePaginator
+    /**
+     * @param  array<string, string>  $query  Active filters kept in the crawlable page links.
+     */
+    protected function paginateItems(Collection $items, int $perPage, array $query = []): LengthAwarePaginator
     {
         $page = $this->getPage();
 
@@ -20,8 +24,9 @@ trait PaginatesContent
             $perPage,
             $page,
             [
-                'path' => request()->url(),
+                'path' => Livewire::originalUrl(),
                 'pageName' => 'page',
+                'query' => array_filter($query),
             ]
         );
     }

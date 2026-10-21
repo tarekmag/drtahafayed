@@ -38,7 +38,7 @@ class ArticlesIndex extends Component
         }
 
         return view('livewire.frontend.articles-index', [
-            'articles' => $this->paginateItems($articles, Pagination::PER_PAGE),
+            'articles' => $this->paginateItems($articles, Pagination::PER_PAGE, ['category' => $active]),
             'categories' => $categories,
             'active' => $active,
         ]);
