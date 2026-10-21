@@ -5,13 +5,17 @@ namespace App\Http\Controllers\Frontend;
 use App\Http\Controllers\Controller;
 use App\Models\Article;
 use App\Models\Clinic;
+use App\Models\ClinicContact;
 use App\Models\Doctor;
 use App\Models\Faq;
+use App\Models\PatientReview;
 use App\Models\Photo;
+use App\Models\SeoPage;
 use App\Models\Service;
 use App\Models\Video;
 use DOMDocument;
 use DOMElement;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Http\Response;
 use Illuminate\Support\Carbon;
 
@@ -39,10 +43,8 @@ class SitemapController extends Controller
             $urlset,
         );
 
-        $latest = $this->latestChange();
-
-        foreach ($this->staticPages() as $page) {
-            $this->appendLocalized($document, $urlset, $page['name'], [], $page['priority'], $latest);
+        foreach ($this->staticPages() as $name) {
+            $this->appendLocalized($document, $urlset, $name, [], $this->pageLastmod($name));
         }
 
         Service::query()
@@ -56,7 +58,6 @@ class SitemapController extends Controller
                     $urlset,
                     'site.service',
                     ['service' => $service->slug],
-                    '0.7',
                     $service->updated_at,
                 );
             });
@@ -72,7 +73,6 @@ class SitemapController extends Controller
                     $urlset,
                     'site.article',
                     ['article' => $article->slug],
-                    '0.7',
                     $article->updated_at,
                 );
             });
@@ -100,27 +100,27 @@ class SitemapController extends Controller
     }
 
     /**
-     * @return list<array{name: string, priority: string}>
+     * @return list<string>
      */
     private function staticPages(): array
     {
         return [
-            ['name' => 'site.home', 'priority' => '1.0'],
-            ['name' => 'site.about', 'priority' => '0.8'],
-            ['name' => 'site.services', 'priority' => '0.8'],
-            ['name' => 'site.clinics', 'priority' => '0.6'],
-            ['name' => 'site.articles', 'priority' => '0.8'],
-            ['name' => 'site.photos', 'priority' => '0.5'],
-            ['name' => 'site.videos', 'priority' => '0.5'],
-            ['name' => 'site.contact', 'priority' => '0.6'],
-            ['name' => 'site.review', 'priority' => '0.4'],
+            'site.home',
+            'site.about',
+            'site.services',
+            'site.clinics',
+            'site.articles',
+            'site.photos',
+            'site.videos',
+            'site.contact',
+            'site.review',
         ];
     }
 
     /**
      * @param  array<string, string>  $parameters
      */
-    private function appendLocalized(DOMDocument $document, DOMElement $urlset, string $name, array $parameters, string $priority, ?Carbon $lastmod): void
+    private function appendLocalized(DOMDocument $document, DOMElement $urlset, string $name, array $parameters, ?Carbon $lastmod): void
     {
         $alternates = [];
 
@@ -137,8 +137,6 @@ class SitemapController extends Controller
             if ($lastmod) {
                 $url->appendChild($this->textElement($document, 'lastmod', $lastmod->toDateString()));
             }
-
-            $url->appendChild($this->textElement($document, 'priority', $priority));
 
             foreach ($alternates as $lang => $href) {
                 $link = $document->createElementNS(self::XHTML_NS, 'xhtml:link');
@@ -160,18 +158,69 @@ class SitemapController extends Controller
         return $element;
     }
 
-    private function latestChange(): ?Carbon
+    private function pageLastmod(string $name): ?Carbon
     {
-        $latest = collect([
-            Doctor::query()->max('updated_at'),
-            Service::query()->max('updated_at'),
-            Article::query()->max('updated_at'),
-            Clinic::query()->max('updated_at'),
-            Photo::query()->max('updated_at'),
-            Video::query()->max('updated_at'),
-            Faq::query()->max('updated_at'),
-        ])->filter()->max();
+        $stamps = match ($name) {
+            'site.home' => [
+                Doctor::query()->max('updated_at'),
+                $this->activeStamp(Service::class),
+                $this->activeStamp(Article::class),
+                $this->activeStamp(Photo::class),
+                $this->activeStamp(Faq::class),
+                $this->activeStamp(Clinic::class),
+                PatientReview::query()->where('is_published', true)->max('updated_at'),
+                $this->seoStamp('home'),
+            ],
+            'site.about' => [
+                Doctor::query()->max('updated_at'),
+                $this->seoStamp('about'),
+            ],
+            'site.services' => [
+                $this->activeStamp(Service::class),
+                $this->seoStamp('services'),
+            ],
+            'site.clinics' => [
+                $this->activeStamp(Clinic::class),
+                $this->seoStamp('clinics'),
+            ],
+            'site.articles' => [
+                $this->activeStamp(Article::class),
+                $this->seoStamp('articles'),
+            ],
+            'site.photos' => [
+                $this->activeStamp(Photo::class),
+                $this->seoStamp('photos'),
+            ],
+            'site.videos' => [
+                $this->activeStamp(Video::class),
+                $this->seoStamp('videos'),
+            ],
+            'site.contact' => [
+                ClinicContact::query()->max('updated_at'),
+                $this->activeStamp(Clinic::class),
+                $this->seoStamp('contact'),
+            ],
+            'site.review' => [
+                $this->seoStamp('review'),
+            ],
+            default => [],
+        };
+
+        $latest = collect($stamps)->filter()->max();
 
         return $latest ? Carbon::parse($latest) : null;
+    }
+
+    /**
+     * @param  class-string<Model>  $model
+     */
+    private function activeStamp(string $model): ?string
+    {
+        return $model::query()->where('is_active', true)->max('updated_at');
+    }
+
+    private function seoStamp(string $page): ?string
+    {
+        return SeoPage::query()->where('page', $page)->max('updated_at');
     }
 }

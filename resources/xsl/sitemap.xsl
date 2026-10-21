@@ -32,7 +32,6 @@
                             <tr>
                                 <th>الرابط</th>
                                 <th>آخر تعديل</th>
-                                <th>الأولوية</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -40,7 +39,6 @@
                                 <tr>
                                     <td><a href="{s:loc}"><xsl:value-of select="s:loc"/></a></td>
                                     <td class="meta"><xsl:value-of select="s:lastmod"/></td>
-                                    <td class="meta"><xsl:value-of select="s:priority"/></td>
                                 </tr>
                             </xsl:for-each>
                         </tbody>
